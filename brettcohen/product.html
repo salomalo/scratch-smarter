@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+
+<script language="javascript">
+
+	function gotobuy()
+	{
+		d = document.getElementById("bid").value;
+		window.location ='http://www.secureinfossl.com/?con=my_cart&met=addToCart&bid='+d
+	
+	}
+
+</script>
+
+</head>
+
+<body>
+
+
+
+
+
+<form action="http://www.secureinfossl.com/?con=my_cart&met=addToCart" method="post">
+	<select name="bid" id="bid">
+		
+
+		<option value="17fafe5f6ce2f1904eb09d2e80a4cbf6/0">AZ - Best Games to Play Subscription delivered by email</option>
+		
+	</select>
+	<input type="hidden" name="action" value="2">
+    <input type="button" name="buy" value="BUY" onclick="javascript:gotobuy();">
+</form>
+</body>
+</html>

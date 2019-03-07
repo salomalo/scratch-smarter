@@ -1,0 +1,141 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AffiliateWP - Affiliate Forms For Ninja Forms\n"
+"POT-Creation-Date: 2015-12-17 18:18+1300\n"
+"PO-Revision-Date: 2015-04-22 12:20-0600\n"
+"Last-Translator: Andrew Munro <andrew@sumobi.com>\n"
+"Language-Team: AffiliateWP <support@affiliatewp.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../affiliatewp-affiliate-forms-ninja-forms.php:103
+#: ../affiliatewp-affiliate-forms-ninja-forms.php:115
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: ../affiliatewp-affiliate-forms-ninja-forms.php:295
+msgid "Get more add-ons for AffiliateWP"
+msgstr ""
+
+#: ../affiliatewp-affiliate-forms-ninja-forms.php:295
+msgid "Get add-ons"
+msgstr ""
+
+#: ../includes/admin.php:55 ../includes/admin.php:83
+msgid "View Submission"
+msgstr ""
+
+#: ../includes/admin.php:86
+msgid "This links to the information the affiliate submitted when they registered."
+msgstr ""
+
+#: ../includes/admin.php:126 ../includes/admin.php:137
+msgid "Use this form for affiliate registration"
+msgstr ""
+
+#: ../includes/admin.php:127
+#, php-format
+msgid "Form %s is the affiliate registration form."
+msgstr ""
+
+#: ../includes/class-activation-ninja-forms.php:47
+#: ../includes/class-activation.php:47
+msgid "This plugin"
+msgstr ""
+
+#: ../includes/class-activation-ninja-forms.php:83
+#: ../includes/class-activation.php:83
+#, php-format
+msgid "%s requires %s. Please activate it to continue."
+msgstr ""
+
+#: ../includes/class-activation-ninja-forms.php:86
+#: ../includes/class-activation.php:86
+#, php-format
+msgid "%s requires %s. Please install it to continue."
+msgstr ""
+
+#: ../includes/class-register.php:40 ../includes/class-register.php:69
+msgid "This form requires an Email field"
+msgstr ""
+
+#: ../includes/class-register.php:116
+msgid "This is a required field"
+msgstr ""
+
+#: ../includes/class-register.php:121
+msgid "This email address is already in use"
+msgstr ""
+
+#: ../includes/class-register.php:126
+msgid "This username is already in use"
+msgstr ""
+
+#: ../includes/email-tags.php:63
+msgid "Create AffiliateWP email tag"
+msgstr ""
+
+#: ../includes/emails.php:35
+msgid "Your login details"
+msgstr ""
+
+#: ../includes/emails.php:40
+#, php-format
+msgid "Hi %s!"
+msgstr ""
+
+#: ../includes/emails.php:41
+#, php-format
+msgid "Your username is: %s"
+msgstr ""
+
+#: ../includes/emails.php:42
+#, php-format
+msgid "Your password is: %s"
+msgstr ""
+
+#: ../includes/emails.php:43
+#, php-format
+msgid "Log into your affiliate area at %s"
+msgstr ""
+
+#: ../includes/fields.php:22
+msgid "AffiliateWP Fields"
+msgstr ""
+
+#: ../includes/fields/payment-email.php:13
+msgid "Payment Email"
+msgstr ""
+
+#: ../includes/fields/payment-email.php:54
+msgid "Please enter a valid payment email"
+msgstr ""
+
+#: ../includes/fields/promotion-method.php:13
+msgid "Promo Method"
+msgstr ""
+
+#: ../includes/fields/promotion-method.php:14
+msgid "Promotion Method"
+msgstr ""
+
+#: ../includes/fields/username.php:13
+msgid "Username"
+msgstr ""
+
+#: ../includes/fields/website-url.php:13
+msgid "Website URL"
+msgstr ""
+
+#: ../includes/fields/website-url.php:51
+msgid "Please enter a valid website URL"
+msgstr ""

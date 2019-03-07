@@ -1,0 +1,60 @@
+# Copyright (C) 2017 J.D. Grimes
+# This file is distributed under the same license as the WordPoints Points Admin Profile Options package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WordPoints Points Admin Profile Options 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-23 22:13:47+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: points-admin-profile-options.php:65
+msgid "WordPoints"
+msgstr ""
+
+#: points-admin-profile-options.php:66
+msgid ""
+"If you would like to change the value for a type of points, enter the "
+"desired value in the text field, and check the checkbox beside it. If you "
+"don't check the checkbox, the change will not be saved. To provide a reason "
+"for the change, fill out the text field below."
+msgstr ""
+
+#: points-admin-profile-options.php:67
+msgid "Reason"
+msgstr ""
+
+#. translators: Number of points.
+#: points-admin-profile-options.php:90
+msgid "(current: %s)"
+msgstr ""
+
+#: points-admin-profile-options.php:114
+msgid "My Points"
+msgstr ""
+
+#. Description of the extension
+msgid ""
+"Restored the points editing options to the admin profile screen removed in "
+"WordPoints 2.5.0."
+msgstr ""
+
+#. Author of the extension
+msgid "J.D. Grimes"
+msgstr ""
+
+#. Author URI of the extension
+msgid "https://wordpoints.org/"
+msgstr ""
+
+#. Extension Name of the extension
+msgid "Points Admin Profile Options"
+msgstr ""
+
+#. Extension URI of the extension
+msgid "https://wordpoints.org/modules/points-admin-profile-options/"
+msgstr ""

@@ -1,0 +1,242 @@
+<!--  Hot Tip: Please do not DELETE or ALTER the HIDDEN field values of the form or the customer will not be added to the CRM.  -->
+
+        <script type="text/javascript">
+            var baseurl="https://www.pwccrm.com";
+
+            var doc=document.getElementsByTagName('head').item(0);
+            var jQueryScriptOutputted = false;
+            var jQueryScriptOutputtedplaceholder = false;
+
+            window.onload=function()
+            {
+                initJQuery();
+            };
+
+            function initJQuery() {
+
+                if (typeof(jQuery) == 'undefined') {
+                    if (! jQueryScriptOutputted) {
+                        jQueryScriptOutputted = true;
+                        includeJs('/js/jquery-1.4.4.min.js', true);
+
+                    }
+
+                }
+
+                if (! jQueryScriptOutputtedplaceholder) {
+                    jQueryScriptOutputtedplaceholder = true;
+                    includeJs('/scripts/html5_placeholder.js', true);
+
+                }
+                setTimeout("initJQuery()", 100);
+
+            }
+
+            function includeJs(fileName, jQ, head){
+
+                var js=document.createElement('script');
+                js.setAttribute('language', 'javascript');
+                js.setAttribute('type', 'text/javascript');
+                js.setAttribute('src', baseurl+fileName);
+
+                if(jQ===true){
+                    doc.insertBefore(js, doc.firstChild);
+                    return false;
+                }
+                if(head===true){
+                    doc.appendChild(js);
+                    return false;
+                }
+                document.getElementsByTagName('body').item(0).appendChild(js);
+
+                return false;
+            }
+
+        </script>
+
+ <div class="optin">
+    <form name="form_add_customer" class="standard-form" action="https://www.pwccrm.com/crm_add_new_customer_from_mail.php" method="post" target="_self">
+        
+        <table width="100%" height="100%" cellpadding="0" cellspacing="0" border="0" style="border:none; " >
+			<tbody>	
+				<tr>
+					<td valign="top" align="center" style=" border:none;">
+					<div>
+						<br>   <br><br>
+
+						<span style="font-size: 16px"><span style="font-family: arial, helvetica, sans-serif"><center><br>
+						</center></span></span>    </div>
+					</td>
+				</tr>
+				<tr>
+					<td align="center" style="padding:5px;  border:none;">
+    
+						<div style="padding-bottom: 10px; display: none; " id="closePopUp"> 
+							<span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; float:right; "><a href="#" onclick="javascript:hide_div1('DivPopUp');return false;">Close</a></span>
+						</div>
+						<table width="100%" cellpadding="0" cellspacing="0" border="0" style="  border:5px thick #080808;  border:none;">
+							<tbody>
+								<tr>
+									<td width="100%" valign="top" style="  border:none;">
+										<table width="100%" cellspacing="1" cellpadding="0" style="border:none;">
+											<tbody>
+												<tr>
+													<td align="left" class="general_text" style="font-size:16px;padding-top:10px;border:none;">
+													</td>
+												</tr>
+												<tr>
+													<td  align="left" class="general_text" style="font-size:16px;padding-top:10px;border:none;">
+														<ul id="phoneticlong" style="list-style-type:none; padding:0; margin:0;border:none;">
+															<li itemid="27721" style="list-style-type:none; padding:0; margin:0;border:none;" id="27721">
+																<div id="bug_cate" style="cursor:default;border:none;">
+																	<table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:none;">
+																		<tbody>
+																			<tr>
+																				<td width="100%" class="general_text" align="center" style="border:none;padding-right:10px; padding-left:10px; color:#000000; font-size:12px;" valign="middle">		
+																						<strong>First Name        <span id="mandatory_fields_27721" style="color: rgb(255, 0, 0)">*</span></strong>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td width="100%" valign="top" style="border:none; padding-left:5px;">
+																					<input style="width:90%;  height:20px; padding:0px 0px 0px 10px;" type="text" placeholder="First Name" name="txt_27721" id="txt_27721" value="">
+																				</td>
+																			</tr> 
+																		</tbody>
+																	</table>
+																</div>
+															</li>
+															<div align="left" class="general_text" style="font-size:16px;padding-top:10px;border:none;">
+															</div>
+
+															<li itemid="27725" style="list-style-type:none; padding:0; margin:0;border:none;" id="27725">
+																<div id="bug_cate" style="cursor:default;border:none;">
+																	<table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:none;">
+																		<tbody>
+																			<tr>
+																				<td width="100%" class="general_text" align="center" style="border:none;padding-right:10px; padding-left:10px; color:#000000; font-size:12px;" valign="middle">		
+																							<strong>Email        <span id="mandatory_fields_27725" style="color: rgb(255, 0, 0)">*</span></strong>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td width="100%" valign="top" style="border:none; padding-left:5px;">
+																					<input style=" width:90%; height:20px; padding:0px 0px 0px 10px;" type="text" placeholder="Email" name="txt_27725" id="txt_27725" value="">
+																				</td>
+																			</tr> 
+																		</tbody>
+																	</table>
+																</div>
+															</li>
+															<div align="left" class="general_text" style="font-size:16px;padding-top:10px;border:none;">
+															</div>
+															<li itemid="27741" style="list-style-type:none; padding:5; margin:0;border:none;" id="27741">
+																<div id="bug_cate" style="cursor:default;border:none;">
+																	<table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:none;">
+																		<tbody>
+																			<tr>
+																				<td width="100%" class="general_text" align="right" style="border:none;padding-right:10px; padding-left:10px; color:#000000; font-size:12px;" valign="middle">		
+																					<strong>State / Province        <span id="mandatory_fields_27741" style="color: rgb(255, 0, 0)">*</span></strong>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td width="100%" valign="top" style="border:none; padding-left:5px;">
+<!-- 																					<input style=" width:90%; height:20px; padding:0px 0px 0px 10px;" type="text" placeholder="State / Province" name="txt_27741" id="txt_27741" value="">
+ -->																			
+																						<select class="required" id="txt_27741" name="txt_27741" style="width: 80%;">
+																							<option value="">State / Province</option>
+																							<option value="AR">Arkansas</option>
+																							<option value="AZ">Arizona</option>
+																							<option value="CA">California</option>
+																							<option value="CO">Colorado</option>
+																							<option value="CT">Connecticut</option>
+																							<option value="DC">District of Columbia</option>
+																							<option value="DE">Delaware</option>
+																							<option value="FL">Florida</option>
+																							<option value="GA">Georgia</option>
+																							<option value="IA">Iowa</option>
+																							<option value="ID">Idaho</option>
+																							<option value="IL">Illinois</option>
+																							<option value="IN">Indiana</option>
+																							<option value="KS">Kansas</option>
+																							<option value="KY">Kentucky</option>
+																							<option value="LA">Louisiana</option>
+																							<option value="MA">Massachusetts</option>
+																							<option value="MD">Maryland</option>
+																							<option value="ME">Maine</option>
+																							<option value="MI">Michigan</option>
+																							<option value="MN">Minnesota</option>
+																							<option value="MO">Missouri</option>
+																							<option value="MT">Montana</option>
+																							<option value="NC">North Carolina</option>
+																							<option value="NE">Nebraska</option>
+																							<option value="NH">New Hampshire</option>
+																							<option value="NJ">New Jersey</option>
+																							<option value="NM">New Mexico</option>
+																							<option value="NY">New York</option>
+																							<option value="OH">Ohio</option>
+																							<option value="OK">Oklahoma</option>
+																							<option value="OR">Oregon</option>
+																							<option value="PA">Pennsylvania</option>
+																							<option value="RI">Rhode Island</option>
+																							<option value="SC">South Carolina</option>
+																							<option value="SD">South Dakota</option>
+																							<option value="TN">Tennessee</option>
+																							<option value="TX">Texas</option>
+																							<option value="VA">Virginia</option>
+																							<option value="VT">Vermont</option>
+																							<option value="WA">Washington</option>
+																							<option value="WI">Wisconsin</option>
+																							<option value="WV">West Virginia</option>
+																						</select>
+																				</td>
+																			</tr> 
+																	   </tbody>
+																	</table>
+																</div>
+															</li>
+														</ul>
+														<input type="hidden" id="total_country" value="0">
+														<input type="hidden" id="total_country_phone_code" value="0">
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td style="border:none;">
+										<div align="center"> 
+											<div align="center" class="general_text" style="font-size:16px;padding-top:10px;border:none;">
+											
+											</div>
+											<input type="submit" value="Submit" class="pwccrm_submit_button" style="cursor:pointer;">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td width="80%" style="   border:none;">
+										<div align="center" class="general_text" style="font-size:16px;padding-top:10px;border:none;">
+											<br><br><br><br>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+    
+    <input name="merchant_id" type="hidden" value="1847">
+    <input name="funnel_id" type="hidden" value="2113">
+    <input name="sp_id" type="hidden" value="2249">
+    <input name="tag_id" type="hidden" value="">
+    <input name="opt_id" type="hidden" value="1583">
+    <input name="pwccrm_same_or_landing_page" id="pwccrm_same_or_landing_page" type="hidden" value="0">
+    <input name="pwccrm_mandatory_fields" id="pwccrm_mandatory_fields" type="hidden" value="27721|27725|27741">
+    
+    <input name="go_to_location" id="go_to_location" type="hidden" value="http://scratchsmarter.com/thank-you-for-opt-ing-in/">
+    <input name="pwccrm_bot_checking" id="pwccrm_bot_checking" type="text" value="" style="display:none;">
+    <input name="pwccrm_return_path_1583" id="pwccrm_return_path_1583" type="hidden" value="">
+ 	    <input type="text" id="total_mandatory_field_after_checking" value="" style="display:none;"> 
+     </form>       </div>                                                                                        
+        <script type='text/javascript'>document.getElementById('pwccrm_return_path_1583').value = document.location.href;</script>

@@ -1,0 +1,356 @@
+
+
+/*
+Theme Name:     Twenty Twelve Child
+Description:    Child theme for the Twenty Twelve theme 
+Author:         Dave White
+Template:       twentytwelve
+Version:        0.1.0
+*/
+
+@import url("../twentytwelve/style.css");
+
+a.footer:hover{
+	color:white;
+	font-size:Large;
+}
+
+a.footer:link{
+	color:white;
+	font-size:Large;
+}
+
+a.footer:visited{
+	color:white;
+	font-size:Large;
+}
+
+a.footer:active{
+	color:white;
+	font-size:Large;
+}
+
+.site-content article{
+	border-bottom:none;
+	margin-bottom: 0;
+	margin-top:0;
+	
+}
+
+footer[role="contentinfo"] {
+	border-top:none;
+	margin-top:0;
+}
+
+.entry-content img{
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.widget img{
+	border-radius: 0;
+	box-shadow: none;
+}
+
+
+.required {
+color: black;
+}
+
+footer {
+margin-top: 0;
+}
+/*
+.site-content {
+	margin-top:0;	width: 100%;
+}
+*/
+/*
+#main {
+  background: url('//scratchsmarter.com/images/burst.jpg');
+  background-repeat:no-repeat;
+  background-position:right bottom;
+}
+*/
+
+.VideoContainer{
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background: url("//www.scratchsmarter.com/images/video_final.gif");
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+}
+
+.VideoContainer1{
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 1px;
+	padding-bottom: 20px;
+	background: url("//www.scratchsmarter.com/images/video_final.gif");
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+}
+
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* video dimensions - height/width */
+    padding-top: 0px;
+    height: 0;
+    z-index: 0;
+
+}
+ 
+video {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1;
+}    
+ 
+video.video-js {
+  z-index: 1000;
+}               
+ 
+.video-js .vjs-controls {
+  z-index: 1001;
+}
+ 
+.video-js .vjs-big-play-button {
+  z-index: 1002;
+}
+ 
+.videoWrapper .video-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1;
+    background: #000000;
+}         
+ 
+.videoWrapper object,
+.videoWrapper embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100% !important;
+  z-index: 1;
+}        
+ 
+.vjs-spinner {
+  display: none !important;
+}
+ 
+.video-js img.vjs-poster {
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 1;
+  max-width: 100%;
+}
+
+img#wpstats{display:none}
+
+.InstantAccess{
+	background: url("//scratchsmarter.com/images/Yellow Box Revised 2-12-13.png");
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+}
+
+.iaText{
+	color:black; 
+	font-family:arial; 
+	font-size: 15px;
+	text-indent:10px;
+	padding-top:10px;
+}
+
+.iainput{
+	color:black; 
+	font-family:arial; 
+	font-size: 15px;
+	text-align: center;
+
+}
+
+.subscribe{
+	background: url("//www.scratchsmarter.com/images/subscribe_area.jpg");
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+	width:100%;
+	background-position:center; 
+}
+
+.subscribegrn{
+	background: url("//www.scratchsmarter.com/images/greenbackground.png");
+	background-repeat:no-repeat;
+	background-size: 260px 360px;
+	width:100%;
+	background-position:center; 
+}
+
+.subscribeylw{
+	background: url("//www.scratchsmarter.com/images/yellowbackground.png");
+	background-repeat:no-repeat;
+	background-size: 260px 360px;
+	width:100%;
+	background-position:center; 
+}
+
+
+.optin{
+	background: url("//www.scratchsmarter.com/images/opt_in_background_green.jpg");
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+	width:100%;
+	background-position:center; 
+}
+ins {
+ background: #ffffff !important;
+}
+
+.compheader{
+	color:black; 
+	font-family:arial; 
+	font-size:Large;
+	text-align: center;
+	border-width: medium;
+	border-color: #0f699d;
+	border-top-style: solid;
+    border-bottom-style: solid;
+}
+.compitem{
+	color:black; 
+	font-family:arial; 
+	font-size:Large;
+	text-align: left;
+	border-width: thin;
+	border-color: #0f699d;
+	border-top-style: solid;
+    border-bottom-style: solid;
+	width: 50%;
+}
+.compcell{
+	color:black; 
+	font-family:arial; 
+	font-size:Large;
+	text-align: center;
+	border-width: thin;
+	border-color: #0f699d;
+	border-top-style: solid;
+    border-bottom-style: solid;
+	width: 25%;
+}
+.compyes{
+	background: url("//www.scratchsmarter.com/images/greencheckmark.jpg");
+	background-repeat:no-repeat;
+	background-size: 25px 25px;
+	background-position:center; 
+	border-width: thin;
+	border-color: #0f699d;
+	border-top-style: solid;
+    border-bottom-style: solid;
+	width: 25%;
+}
+
+
+#nf-field-127-wrap,#nf-field-128-wrap,#nf-field-129-wrap,
+#nf-field-144-wrap,#nf-field-145-wrap,#nf-field-146-wrap{display:none !important;}
+#nf-field-130-wrap .nf-field-label,
+#nf-field-132-wrap .nf-field-label,#nf-field-147-wrap .nf-field-label,#nf-field-148-wrap .nf-field-label{margin-bottom:0px !important;}
+#nf-field-130-container{margin-bottom:10px !important;}
+#nf-field-130,#nf-field-132{height:36px;border: 2px solid #0043a2;}
+#nf-form-17-cont .nf-error.field-wrap .nf-field-element:after{height: 36px;width: 40px;line-height: 38px;}
+#nf-form-17-cont .nf-pass.field-wrap .nf-field-element:after{height: 36px;width: 40px;line-height: 38px;right:0;}
+
+#nf-form-19-cont .nf-error.field-wrap .nf-field-element:after{height: 29px;width: 26px;line-height: 30px;font-size: 17px;}
+#nf-form-19-cont .nf-pass.field-wrap .nf-field-element:after{height: 36px;width: 40px;line-height: 33px;right:0;}
+
+
+#nf-field-147-container{margin-bottom:0px !important;}
+
+#nf-field-134{
+    word-wrap: break-word !important;
+    white-space: normal !important;
+    width: 188px;
+    float: right;
+    background: #ffde00;
+    color: #000;
+    border-radius: 20px;
+    border: 3px solid #FFF;
+    height: 77px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#nf-field-149{
+    word-wrap: break-word !important;
+    white-space: normal !important;
+    width: 188px;
+    float: right;
+    background: #28903b;
+    color: #FFF;
+    border-radius: 15px;
+    border: 3px solid #231f20;
+    height: 52px;
+    font-weight: bold;
+    font-size: 17px;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 20px;
+    margin-top: 3px;
+}
+
+.sign-up{
+	color: #28903b;
+    font-weight: 900;
+    font-size: 32px;
+    letter-spacing: -2px;
+}
+
+.secrets{color:#99ca3c;}
+
+
+#nf-field-147, #nf-field-148 {
+    height: 32px;
+    border: 2px solid #28903b;
+}
+
+
+#nf-form-19-cont .nf-field-container{margin-bottom: 0 !important;}
+
+#nf-field-147-container,
+#nf-field-148-container{
+    position: relative;
+    top: -11px;
+}
+
+@media screen and (max-width:580px){
+	#nf-form-17-cont,#nf-form-19-cont{width:auto !important;}
+}
+
+@media screen and (max-width:500px){
+	.sign-up{font-size: 25px;}
+	.nf-form-content .nf-field-container #nf-field-150-wrap .nf-field-label label{font-size: 14pt !important;}
+	#nf-field-143-wrap .nf-field-label label{font-size: 14pt !important;line-height: 18px !important;}
+	#nf-form-17-cont{padding:20px !important;}
+	#nf-form-19-cont{padding:22px !important;}
+	#nf-field-143-container{margin-bottom:0 !important;}
+	.nf-field-container .nf-field-label,#nf-field-130-container{margin-bottom:0 !important;}
+	#nf-form-17-cont #ninja_forms_required_items, .nf-field-container{margin-bottom:10px !important;}
+	#nf-field-149{margin-top: -13px;}
+}
+
+@media screen and (max-width:420px){
+	#nf-form-19-cont{background-size: 100% 100% !important;}
+}
+
+@media screen and (max-width:350px){
+	#nf-field-143-wrap .nf-field-label label{font-size: 11pt !important;line-height: 10px !important;}
+
+}

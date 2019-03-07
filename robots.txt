@@ -1,0 +1,15 @@
+Sitemap: http://scratchsmarter.com/sitemap_index.xml
+
+User-agent: *
+Disallow: /scraper/
+Disallow: /Backup/
+Disallow: /test/
+Disallow: /wordpress/
+Disallow: /wordpress1/
+Disallow: /exitpop2/
+Disallow: /stats/
+Disallow: /promo/
+Disallow: /surveys/
+Disallow: /*?action*
+Disallow: /*sort=*
+Disallow: /*msg*

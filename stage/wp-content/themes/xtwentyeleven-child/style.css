@@ -1,0 +1,11 @@
+/*
+Theme Name:     Twenty Eleven Child
+Theme URI:      http://example.com/
+Description:    Child theme for the Twenty Eleven theme 
+Author:         Dave White
+Author URI:     http://example.com/about/
+Template:       twentyeleven-child
+Version:        0.1.0
+*/
+
+@import url("../twentyeleven/style.css");

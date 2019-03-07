@@ -1,0 +1,6 @@
+Options -Indexes
+Deny from all
+<FilesMatch '\.(jpg|png|gif|mp3|ogg)$'>
+Order Allow,Deny
+Allow from all
+</FilesMatch>

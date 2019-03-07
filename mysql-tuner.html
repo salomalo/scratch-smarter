@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8" />
+<title>MySQL Tuner Report</title>
+</head>
+<body style="color:white; background-color:black">
+<pre>
+[<span style="color:lime;">OK</span>] Currently running supported MySQL version 5.6.40-log
+[<span style="color:lime;">OK</span>] Operating on 64-bit architecture
+ 
+-------- Log file Recommendations ------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Log file: ./ip-172-30-2-184.ec2.internal.err(0B)
+[<span style="color:red;">!!</span>] Log file ./ip-172-30-2-184.ec2.internal.err doesn't exist
+[<span style="color:red;">!!</span>] Log file ./ip-172-30-2-184.ec2.internal.err isn't readable.
+ 
+-------- Storage Engine Statistics -----------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Status: <span style="color:lime;">+ARCHIVE </span><span style="color:lime;">+BLACKHOLE </span><span style="color:lime;">+CSV </span><span style="color:red;">-FEDERATED </span><span style="color:lime;">+InnoDB </span><span style="color:lime;">+MEMORY </span><span style="color:lime;">+MRG_MYISAM </span><span style="color:lime;">+MyISAM </span><span style="color:lime;">+PERFORMANCE_SCHEMA </span>
+[<span style="color:#3333FF;">--</span>] Data in MyISAM tables: 380M (Tables: 507)
+[<span style="color:#3333FF;">--</span>] Data in InnoDB tables: 1G (Tables: 393)
+[<span style="color:#3333FF;">--</span>] Data in ARCHIVE tables: 26K (Tables: 3)
+[<span style="color:lime;">OK</span>] Total fragmented tables: 0
+ 
+-------- Security Recommendations ------------------------------------------------------------------
+[<span style="color:lime;">OK</span>] There are no anonymous accounts for any database users
+[<span style="color:red;">!!</span>] User 'spacegat@%' has no password set.
+[<span style="color:red;">!!</span>] User 'spacegat@cpe84948c2bcaf1-cm84948c2bcaf0.cpe.net.cable.rogers.com' has no password set.
+[<span style="color:red;">!!</span>] User 'spacegat@%' hasn't specific host restriction.
+[<span style="color:red;">!!</span>] There is no basic password file list!
+ 
+-------- CVE Security Recommendations --------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Skipped due to --cvefile option undefined
+ 
+-------- Performance Metrics -----------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Up for: 7m 38s (16K q [35.854 qps], 264 conn, TX: 206M, RX: 2M)
+[<span style="color:#3333FF;">--</span>] Reads / Writes: 97% / 3%
+[<span style="color:#3333FF;">--</span>] Binary logging is disabled
+[<span style="color:#3333FF;">--</span>] Physical Memory     : 1.8G
+[<span style="color:#3333FF;">--</span>] Max MySQL memory    : 499.2M
+[<span style="color:#3333FF;">--</span>] Other process memory: 1.4G
+[<span style="color:#3333FF;">--</span>] Total buffers: 171.0M global + 1.8M per thread (151 max threads)
+[<span style="color:#3333FF;">--</span>] P_S Max memory usage: 63M
+[<span style="color:#3333FF;">--</span>] Galera GCache Max memory usage: 0B
+[<span style="color:lime;">OK</span>] Maximum reached memory usage: 263.0M (14.31% of installed RAM)
+[<span style="color:lime;">OK</span>] Maximum possible memory usage: 499.2M (27.17% of installed RAM)
+[<span style="color:red;">!!</span>] Overall possible memory usage with other process exceeded memory
+[<span style="color:lime;">OK</span>] Slow queries: 0% (0/16K)
+[<span style="color:lime;">OK</span>] Highest usage of available connections: 10% (16/151)
+[<span style="color:lime;">OK</span>] Aborted connections: 1.52%  (4/264)
+[<span style="color:red;">!!</span>] name resolution is active : a reverse name resolution is made for each new connection and can reduce performance
+[<span style="color:red;">!!</span>] Query cache may be disabled by default due to mutex contention.
+[<span style="color:red;">!!</span>] Query cache efficiency: 0.0% (0 cached / 14K selects)
+[<span style="color:lime;">OK</span>] Query cache prunes per day: 0
+[<span style="color:lime;">OK</span>] Sorts requiring temporary tables: 0% (0 temp sorts / 1K sorts)
+[<span style="color:red;">!!</span>] Joins performed without indexes: 170
+[<span style="color:lime;">OK</span>] Temporary tables created on disk: 19% (866 on disk / 4K total)
+[<span style="color:lime;">OK</span>] Thread cache hit rate: 93% (16 created / 264 connections)
+[<span style="color:red;">!!</span>] Table cache hit rate: 0% (64 open / 14K opened)
+[<span style="color:lime;">OK</span>] Open file limit used: 10% (107/1K)
+[<span style="color:lime;">OK</span>] Table locks acquired immediately: 99% (15K immediate / 15K locks)
+ 
+-------- Performance schema ------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Memory used by P_S: 64.0M
+[<span style="color:#3333FF;">--</span>] Sys schema is installed.
+ 
+-------- ThreadPool Metrics ------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] ThreadPool stat is disabled.
+ 
+-------- MyISAM Metrics ----------------------------------------------------------------------------
+[<span style="color:red;">!!</span>] Key buffer used: 23.4% (3M used / 16M cache)
+[<span style="color:lime;">OK</span>] Key buffer size / total MyISAM indexes: 16.0M/89.0M
+[<span style="color:lime;">OK</span>] Read Key buffer hit rate: 99.9% (2M cached / 1K reads)
+[<span style="color:red;">!!</span>] Write Key buffer hit rate: 62.0% (461 cached / 286 writes)
+ 
+-------- InnoDB Metrics ----------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] InnoDB is enabled.
+[<span style="color:#3333FF;">--</span>] InnoDB Thread Concurrency: 0
+[<span style="color:lime;">OK</span>] InnoDB File per table is activated
+[<span style="color:red;">!!</span>] InnoDB buffer pool / data size: 128.0M/1.9G
+[<span style="color:red;">!!</span>] Ratio InnoDB log file size / InnoDB Buffer pool size (50 %): 32.0M * 2/128.0M should be equal 25%
+[<span style="color:lime;">OK</span>] InnoDB buffer pool instances: 1
+[<span style="color:#3333FF;">--</span>] InnoDB Buffer Pool Chunk Size not used or defined in your version
+[<span style="color:lime;">OK</span>] InnoDB Read buffer efficiency: 98.92% (140011 hits/ 141535 total)
+[<span style="color:red;">!!</span>] InnoDB Write Log efficiency: 105.26% (20 hits/ 19 total)
+[<span style="color:lime;">OK</span>] InnoDB log waits: 0.00% (0 waits / 39 writes)
+ 
+-------- AriaDB Metrics ----------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] AriaDB is disabled.
+ 
+-------- TokuDB Metrics ----------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] TokuDB is disabled.
+ 
+-------- XtraDB Metrics ----------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] XtraDB is disabled.
+ 
+-------- RocksDB Metrics ---------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] RocksDB is disabled.
+ 
+-------- Spider Metrics ----------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Spider is disabled.
+ 
+-------- Connect Metrics ---------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Connect is disabled.
+ 
+-------- Galera Metrics ----------------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Galera is disabled.
+ 
+-------- Replication Metrics -----------------------------------------------------------------------
+[<span style="color:#3333FF;">--</span>] Galera Synchronous replication: NO
+[<span style="color:#3333FF;">--</span>] No replication slave(s) for this server.
+[<span style="color:#3333FF;">--</span>] This is a standalone server.
+ 
+-------- Recommendations ---------------------------------------------------------------------------
+General recommendations:
+    Set up a Password for user with the following SQL statement ( SET PASSWORD FOR 'user'@'SpecificDNSorIp' = PASSWORD('secure_password'); )
+    Restrict Host for user@% to user@SpecificDNSorIp
+    MySQL started within last 24 hours - recommendations may be inaccurate
+    Dedicate this server to your database for highest performance.
+    Configure your accounts with ip or subnets only, then update your configuration with skip-name-resolve=1
+    Adjust your join queries to always utilize indexes
+    Increase table_open_cache gradually to avoid file descriptor limits
+    Read this before increasing table_open_cache over 64: http://bit.ly/1mi7c4C
+    Beware that open_files_limit (1024) variable 
+    should be greater than table_open_cache (64)
+Variables to adjust:
+    query_cache_size (=0)
+    query_cache_type (=0)
+    query_cache_limit (&gt; 1M, or use smaller result sets)
+    join_buffer_size (&gt; 256.0K, or always use indexes with joins)
+    table_open_cache (&gt; 64)
+    innodb_buffer_pool_size (&gt;= 1G) if possible.
+    innodb_log_file_size * innodb_log_files_in_group should be equal to 1/4 of buffer pool size (=64M) if possible.
+</pre>
+</body>
+</html>

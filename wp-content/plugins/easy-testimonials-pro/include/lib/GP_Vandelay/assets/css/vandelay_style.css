@@ -1,0 +1,202 @@
+#vandelay_import_wizard,
+#vandelay_import_wizard * {
+	box-sizing: border-box;
+}
+
+#vandelay_import_wizard {
+	min-width: 600px;
+}
+
+#vandelay_import_wizard .wizard_tabs_heading {
+	border-bottom: 1px solid lightgray;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#vandelay_drop_target {
+    border: 4px dashed lightgray;	
+    height: 400px;
+    margin: 20px 0 40px;
+    min-width: 100px;
+	position: relative;
+	text-align: center;
+    width: 100%;
+}
+
+#vandelay_drop_target.drag_hover {
+    border: 4px dashed black;
+	background-color: lightyellow;
+}
+
+#vandelay_drop_target .spinner {
+	visibility: visible; /* override WP admin styles which hides these */
+}
+
+#vandelay_drop_target #vandelay_file_select_wrapper {
+	
+	position: absolute;
+	top: 50%;
+    text-align: center;
+	left: 50%;
+	margin-top: -50px;
+	height: 100px;
+	margin-left: -200px;
+    width: 400px;
+    vertical-align: middle;
+}
+
+#vandelay_drop_target #vandelay_file_select_wrapper .explain {
+	font-style: italic;
+}
+
+#match_columns {
+    margin-bottom: 40px;
+}
+
+#match_columns .select_match {
+    border: 1px solid lightgray;
+    border-width: 0 1px 1px;
+    display: block;
+    height: auto;
+    min-height: 52px;
+    padding: 10px;
+    width: 400px;
+}
+
+#match_columns .select_match:first-child {
+    border-top-width: 1px;
+}
+
+#match_columns select {
+    display: inline-block;
+	vertical-align: top;
+	width: 240px;
+}
+
+#match_columns label .label {
+    display: inline-block;
+    font-weight: bold;
+    padding-right: 10px;
+    width: 130px;
+}
+
+#match_columns #continue_button
+{
+	margin-top: 20px;
+}
+
+#run_import_button
+{
+	margin-top: 20px;
+}
+
+.vandelay_button_group {
+	margin-top: 20px;
+}
+
+.vandelay_button_group .button_wrapper {
+	display: inline-block;
+	margin: 0 10px;
+	
+}
+
+.vandelay_button_group .button_wrapper:first-child {
+	margin-left: 0;
+}
+
+/* Wizard */
+
+/* Wizard tabs */
+.wizard_steps_list {
+	height: 60px;
+	width: auto;
+	margin: 0;
+}
+
+.wizard_steps_list > li {
+	background-color: #fff;
+	border: 1px solid lightgray;
+	border-bottom-width: 0;
+	border-left: none;
+	display: inline-block;
+	height: 60px;
+	min-width: 140px;
+	width: auto;
+	padding: 0 20px;
+	line-height: 60px;
+	text-align: center;
+}
+
+.wizard_steps_list > li > a {
+	color: #343434;
+}
+
+.wizard_steps_list > li:first-child {
+	border-left: 1px solid lightgray;
+}
+
+.wizard_steps_list > li.ui-tabs-active,
+.wizard_steps_list > li.current_step {
+	background-color: lightyellow;
+	border-bottom: 2px solid forestgreen;
+}
+
+.wizard_steps_list > li.current_step > a {
+	color: green;
+}
+
+.wizard_steps_list > li.completed_step {
+	background-color: honeydew;
+	border-bottom: 2px solid forestgreen;
+}
+
+.wizard_steps_list > li > a {
+	text-decoration: none;
+}
+
+.wizard_steps_list > li.current_step a {
+	font-weight: bold;
+}
+
+.vandelay_progress_bar
+{
+	background-color: white;
+    border: 1px solid lightgray;
+    height: 40px;
+    max-width: 580px;
+    position: relative;
+    width: 100%;
+}
+
+.vandelay_progress_bar_inner
+{
+	background-color: steelblue;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 0;
+}
+
+/* Job History Table */
+table.vandelay_job_history {
+    border-color: lightgray;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+	margin: 20px 0;
+    width: 720px;
+}
+
+table.vandelay_job_history th {
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    padding: 8px;
+    text-align: left;
+}
+
+table.vandelay_job_history td {
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    padding: 8px;
+}

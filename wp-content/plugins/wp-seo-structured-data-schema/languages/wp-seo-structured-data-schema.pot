@@ -1,0 +1,1144 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: WP SEO Structured Data Schema\n"
+"POT-Creation-Date: 2018-09-26 12:25+0600\n"
+"PO-Revision-Date: 2018-09-26 12:25+0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: wp-seo-structured-data-schema.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: lib/classes/KcSeoInit.php:32
+msgid "Documentation"
+msgstr ""
+
+#: lib/classes/KcSeoInit.php:33
+msgid "Get Pro"
+msgstr ""
+
+#: lib/classes/KcSeoInit.php:155 lib/classes/KcSeoInit.php:178
+msgid "Settings successfully updated"
+msgstr ""
+
+#: lib/classes/KcSeoInit.php:157 lib/classes/KcSeoInit.php:180
+msgid "Security Error !!"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: lib/classes/KcSeoInit.php:205 lib/views/schema-options.php:7
+msgid "WP SEO Structured Data Schema"
+msgstr ""
+
+#: lib/classes/KcSeoInit.php:205
+msgid "WP SEO Schema"
+msgstr ""
+
+#: lib/classes/KcSeoInit.php:207
+msgid "WP SEO Schema settings"
+msgstr ""
+
+#: lib/classes/KcSeoInit.php:207
+msgid "Settings"
+msgstr ""
+
+#: lib/classes/KcSeoMetaData.php:46
+msgid ""
+"WP SEO Structured Data Schema by <a href=\"https://wpsemplugins.com/"
+"\">WPSEMPlugins.com</a>"
+msgstr ""
+
+#: lib/classes/KcSeoMetaData.php:63 lib/views/schema-options.php:26
+msgid ""
+"For more detailed information on how to configure this plugin, please visit:"
+msgstr ""
+
+#: lib/classes/KcSeoMetaData.php:64
+msgid ""
+"Once you save these structured data schema settings, validate this page url "
+"here:"
+msgstr ""
+
+#: lib/classes/KcSeoMetaData.php:66 lib/views/schema-options.php:546
+#: lib/views/settings.php:49
+msgid "Pro Version Features"
+msgstr ""
+
+#: lib/classes/KcSeoMetaData.php:68 lib/views/schema-options.php:548
+#: lib/views/settings.php:51
+msgid "Includes Auto-fill function <---Popular"
+msgstr ""
+
+#: lib/classes/KcSeoMetaData.php:69 lib/views/schema-options.php:549
+#: lib/views/settings.php:52
+msgid "Supports Custom Post Types beyond default page and posts"
+msgstr ""
+
+#: lib/classes/KcSeoMetaData.php:70 lib/views/schema-options.php:550
+#: lib/views/settings.php:53
+msgid "Supports WordPress Multisite"
+msgstr ""
+
+#: lib/classes/KcSeoMetaData.php:71
+msgid ""
+"Supports more schema types: ( Books, Courses, Job Postings, Movies, Music, "
+"Recipe, TV Episode) "
+msgstr ""
+
+#: lib/classes/KcSeoMetaData.php:73 lib/views/schema-options.php:565
+#: lib/views/settings.php:68
+msgid "Get the Pro Version"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:687
+msgid "Article"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:693 lib/models/KcSeoSchemaModel.php:766
+#: lib/models/KcSeoSchemaModel.php:834
+msgid "Headline"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:695 lib/models/KcSeoSchemaModel.php:836
+msgid "Article title"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:699 lib/models/KcSeoSchemaModel.php:772
+#: lib/models/KcSeoSchemaModel.php:840
+msgid "Page URL"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:701 lib/models/KcSeoSchemaModel.php:774
+#: lib/models/KcSeoSchemaModel.php:842
+msgid "The canonical URL of the article page"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:705
+msgid "Author Name"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:707 lib/models/KcSeoSchemaModel.php:780
+#: lib/models/KcSeoSchemaModel.php:848
+msgid "Author display name"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:711
+msgid "Article Feature Image"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:714
+msgid ""
+"Images should be at least 696 pixels wide.<br>Images should be in .jpg, ."
+"png, or. gif format."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:717 lib/models/KcSeoSchemaModel.php:790
+#: lib/models/KcSeoSchemaModel.php:858
+msgid "Published date"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:721 lib/models/KcSeoSchemaModel.php:728
+#: lib/models/KcSeoSchemaModel.php:793 lib/models/KcSeoSchemaModel.php:800
+#: lib/models/KcSeoSchemaModel.php:861 lib/models/KcSeoSchemaModel.php:869
+#: lib/models/KcSeoSchemaModel.php:1108 lib/models/KcSeoSchemaModel.php:1223
+msgid "Like this: 2015-12-25"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:724 lib/models/KcSeoSchemaModel.php:797
+#: lib/models/KcSeoSchemaModel.php:865
+msgid "Modified date"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:731 lib/models/KcSeoSchemaModel.php:804
+#: lib/models/KcSeoSchemaModel.php:872
+msgid "Publisher"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:733 lib/models/KcSeoSchemaModel.php:806
+#: lib/models/KcSeoSchemaModel.php:874
+msgid "Publisher name or Organization name"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:737 lib/models/KcSeoSchemaModel.php:810
+#: lib/models/KcSeoSchemaModel.php:878
+msgid "Publisher Logo"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:739 lib/models/KcSeoSchemaModel.php:812
+#: lib/models/KcSeoSchemaModel.php:880
+msgid ""
+"Logos should have a wide aspect ratio, not a square icon.<br>Logos should be "
+"no wider than 600px, and no taller than 60px.<br>Always retain the original "
+"aspect ratio of the logo when resizing. Ideally, logos are exactly 60px tall "
+"with width <= 600px. If maintaining a height of 60px would cause the width "
+"to exceed 600px, downscale the logo to exactly 600px wide and reduce the "
+"height accordingly below 60px to maintain the original aspect ratio.<br>"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:743 lib/models/KcSeoSchemaModel.php:816
+#: lib/models/KcSeoSchemaModel.php:884 lib/models/KcSeoSchemaModel.php:984
+#: lib/models/KcSeoSchemaModel.php:1064 lib/models/KcSeoSchemaModel.php:1293
+#: lib/models/KcSeoSchemaModel.php:1404 lib/views/schema-options.php:170
+#: lib/views/schema-options.php:255
+msgid "Description"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:745 lib/models/KcSeoSchemaModel.php:818
+#: lib/models/KcSeoSchemaModel.php:886
+msgid "Short description"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:748 lib/models/KcSeoSchemaModel.php:821
+#: lib/models/KcSeoSchemaModel.php:889
+msgid "Article body"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:750 lib/models/KcSeoSchemaModel.php:823
+msgid "Article content"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:753
+msgid "Alternative headline"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:755
+msgid "A secondary headline for the article."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:760
+msgid "Blog Posting"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:768
+msgid "Blog posting title"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:778
+msgid "Author name"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:784
+msgid "Feature Image"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:786 lib/models/KcSeoSchemaModel.php:854
+msgid ""
+"The representative image of the article. Only a marked-up image that "
+"directly belongs to the article should be specified.<br> Images should be at "
+"least 696 pixels wide. <br>Images should be in .jpg, .png, or. gif format."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:828
+msgid "News Article"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:846 lib/models/KcSeoSchemaModel.php:1213
+msgid "Author"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:852 lib/models/KcSeoSchemaModel.php:979
+#: lib/models/KcSeoSchemaModel.php:1372 lib/views/schema-options.php:247
+msgid "Image"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:891
+msgid "Article body content"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:896
+msgid "Event"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:902 lib/models/KcSeoSchemaModel.php:973
+#: lib/models/KcSeoSchemaModel.php:1058 lib/models/KcSeoSchemaModel.php:1119
+#: lib/models/KcSeoSchemaModel.php:1399 lib/views/schema-options.php:224
+msgid "Name"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:905
+msgid "The name of the event."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:908
+msgid "Location name"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:911
+msgid "Event Location name"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:914
+msgid "Location address"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:917
+msgid ""
+"The location of for example where the event is happening, an organization is "
+"located, or where an action takes place."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:920
+msgid "Start date"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:924
+msgid "Event start date"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:927
+msgid "End date (Recommended)"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:930
+msgid "Event end date"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:933
+msgid "Description (Recommended)"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:935
+msgid "Event description"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:938
+msgid "Performer Name (Recommended)"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:940
+msgid "The performer's name."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:943
+msgid "Image URL (Recommended)"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:945
+msgid "URL of an image or logo for the event or tour"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:948
+msgid "Price (Recommended)"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:951
+msgid ""
+"This is highly recommended. The lowest available price, including service "
+"charges and fees, of this type of ticket. <span class='required'>Not "
+"required but (Recommended)</span>"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:954 lib/models/KcSeoSchemaModel.php:1012
+msgid "Price currency"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:956
+msgid "The 3-letter currency code. (USD)"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:962
+msgid ""
+"A link to the event's details page. <span class='required'>Not required but "
+"(Recommended)</span>"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:967
+msgid "Product"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:976
+msgid "The name of the product."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:981
+msgid ""
+"The URL of a product photo. Pictures clearly showing the product, e.g. "
+"against a white background, are preferred."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:986
+msgid "Product description."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:989
+msgid "Brand"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:991
+msgid "The brand of the product."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:994
+msgid "Ratting value"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:997
+msgid "Rating value. (1 , 2.5, 3, 5 etc)"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1000
+msgid "Total review count"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1003
+msgid ""
+"Rating ratting value. <span class='required'>This is required if (Ratting "
+"value) is given</span>"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1006
+msgid "Price"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1009
+msgid ""
+"The lowest available price, including service charges and fees, of this type "
+"of ticket."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1014
+msgid "The 3-letter currency code."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1030
+msgid "Select a availability type"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1042
+msgid "Select a condition"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1045
+msgid "Product URL"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1047
+msgid ""
+"A URL to the product web page (that includes the Offer). (Don't use offerURL "
+"for markup that appears on the product page itself.)"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1052
+msgid "Video"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1061
+msgid "The title of the video"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1067
+msgid "The description of the video"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1074
+msgid ""
+"A URL pointing to the video thumbnail image file. Images must be at least "
+"160x90 pixels and at most 1920x1080 pixels."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1077
+msgid "Updated date"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1080
+msgid "2015-02-05T08:00:00+08:00"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1083
+msgid "Duration"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1085
+msgid "The duration of the video in ISO 8601 format.(PT1M33S)"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1091
+msgid ""
+"A URL pointing to the actual video media file. This file should be in .mpg, ."
+"mpeg, .mp4, .m4v, .mov, .wmv, .asf, .avi, .ra, .ram, .rm, .flv, or other "
+"video file format."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1097
+msgid ""
+"A URL pointing to a player for the specific video. Usually this is the "
+"information in the src element of an < embed> tag.Example: Dailymotion: "
+"http://www.dailymotion.com/swf/x1o2g."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1100
+msgid "Interaction count"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1102
+msgid "The number of times the video has been viewed."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1105
+msgid "Expires"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1113
+msgid "Service"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1122
+msgid "The name of the Service."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1125
+msgid "Service type"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1128
+msgid ""
+"The type of service being offered, e.g. veterans' benefits, emergency "
+"relief, etc."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1134
+msgid ""
+"An additional type for the service, typically used for adding more specific "
+"types from external vocabularies in microdata syntax."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1137
+msgid "Award"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1139
+msgid "An award won by or for this service."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1142
+msgid "Category"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1144
+msgid "A category for the service."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1147
+msgid "Provider mobility"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1149
+msgid ""
+"Indicates the mobility of a provided service (e.g. 'static', 'dynamic')."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1155
+msgid "A short description of the service."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1161
+msgid "An image of the service. This should be a URL."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1167
+msgid ""
+"Indicates a page (or other CreativeWork) for which this thing is the main "
+"entity being described."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1173
+msgid ""
+"URL of a reference Web page that unambiguously indicates the service's "
+"identity. E.g. the URL of the service's Wikipedia page, Freebase page, or "
+"official website."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1179
+msgid "URL of the service."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1182
+msgid "Alternate name"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1184
+msgid "An alias for the service."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1189
+msgid "Review"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1195
+msgid "Name of the reviewed item"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1198
+msgid "The item that is being reviewed."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1201
+msgid "Review body"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1204
+msgid "The actual body of the review."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1207
+msgid "Review name"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1210
+msgid "A particular name for the review."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1217
+msgid "The author of the review. The reviewer’s name needs to be a valid name."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1220
+msgid "Date of Published"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1226
+msgid "Rating value"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1229 lib/models/KcSeoSchemaModel.php:1316
+#: lib/models/KcSeoSchemaModel.php:1323
+msgid "A numerical quality rating for the item."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1232
+msgid "Best rating"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1235
+msgid "The highest value allowed in this rating system."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1238
+msgid "Worst rating"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1241
+msgid ""
+"The lowest value allowed in this rating system. * Required if the rating "
+"system is not on a 5-point scale. If worstRating is omitted, 1 is assumed."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1244
+msgid "Name of the organization"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1246
+msgid "The publisher of the review."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1251
+msgid "Aggregate Ratings"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1257
+msgid "Schema type"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1262
+msgid "Use the most appropriate schema type for what is being reviewed."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1265
+msgid "Name of the item"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1268
+msgid "The item that is being rated."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1280 lib/models/KcSeoSchemaModel.php:1415
+#: lib/views/schema-options.php:118
+msgid "The price range of the business, for example $$$."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1295
+msgid "Description for thr review"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1298
+msgid "Rating Count"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1302
+msgid ""
+"The total number of ratings for the item on your site. <span "
+"class='required'>* At least one of ratingCount or reviewCount is required.</"
+"span>"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1305
+msgid "Review Count"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1309
+msgid ""
+"Specifies the number of people who provided a review with or without an "
+"accompanying rating. At least one of ratingCount or reviewCount is required."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1312 lib/models/KcSeoSchemaModel.php:1319
+msgid "Rating Value"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1326
+msgid "Best Rating"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1330
+msgid ""
+"The highest value allowed in this rating system. <span class='required'>* "
+"Required if the rating system is not a 5-point scale.</span> If bestRating "
+"is omitted, 5 is assumed."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1333
+msgid "Worst Rating"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1337
+msgid ""
+"The lowest value allowed in this rating system. <span class='required'>* "
+"Required if the rating system is not a 5-point scale.</span> If worstRating "
+"is omitted, 1 is assumed."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1342
+msgid "Restaurant"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1348
+msgid "Name of the Restaurant"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1353
+msgid "Description of the Restaurant"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1357 lib/models/KcSeoSchemaModel.php:1362
+msgid "Opening Hours"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1359
+msgid "Mo,Tu,We,Th,Fr,Sa,Su 11:30-23:00"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1364
+msgid "+155501003333"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1367
+msgid "Menu"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1369
+msgid "http://example.com/menu"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1377 lib/views/schema-options.php:270
+msgid "Address"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1381 lib/views/schema-options.php:113
+msgid "Price Range"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1383
+msgid "The price range of the business, for example $$$"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1386
+msgid "Serves Cuisine"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1388 lib/views/schema-options.php:159
+msgid "The cuisine of the restaurant."
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1393
+msgid "Local Business"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1408
+msgid "Business Logo"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1413
+msgid "Price Range (Recommended)"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1418
+msgid "Address locality"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1420
+msgid "City (i.e Kansas city)"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1423
+msgid "Address region"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1425
+msgid "State (i.e. MO)"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1428
+msgid "Postal code"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1432
+msgid "Street address"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1436
+msgid "Telephone (Recommended)"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1997
+msgid "Facebook"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1998
+msgid "Twitter"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:1999
+msgid "Google+"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:2000
+msgid "Instagram"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:2001
+msgid "Youtube"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:2002
+msgid "LinkedIn"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:2003
+msgid "Myspace"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:2004
+msgid "Pinterest"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:2005
+msgid "SoundCloud"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:2006
+msgid "Tumblr"
+msgstr ""
+
+#: lib/models/KcSeoSchemaModel.php:2007
+msgid "Wikidata"
+msgstr ""
+
+#: lib/views/schema-options.php:13
+msgid ""
+"General settings for WP SEO Structured Data Schema by <a href=\"https://"
+"wpsemplugins.com/\">WPSEMPlugins.com</a>"
+msgstr ""
+
+#: lib/views/schema-options.php:35
+msgid "Site Type"
+msgstr ""
+
+#: lib/views/schema-options.php:38
+msgid "Select one type"
+msgstr ""
+
+#: lib/views/schema-options.php:78
+msgid "Organization or Business name"
+msgstr ""
+
+#: lib/views/schema-options.php:85
+msgid "Site Image"
+msgstr ""
+
+#: lib/views/schema-options.php:122
+msgid "Site Telephone"
+msgstr ""
+
+#: lib/views/schema-options.php:127
+msgid "The telephone number."
+msgstr ""
+
+#: lib/views/schema-options.php:131
+msgid "Additional Type"
+msgstr ""
+
+#: lib/views/schema-options.php:138
+msgid "Add \"Additional Type\""
+msgstr ""
+
+#: lib/views/schema-options.php:142
+msgid ""
+"Product Ontology is an extension to schema using WikiPedia definitions that "
+"enables you to further define a type by adding an \"AdditionalType” "
+"attribute.Example for a Tailor (which is not available\n"
+"                                                as a schema “Type”): Pick "
+"LocalBusiness as a generic Type, then add additional type as follows:"
+msgstr ""
+
+#: lib/views/schema-options.php:156
+msgid "Restaurant Information"
+msgstr ""
+
+#: lib/views/schema-options.php:167
+msgid "Others local business info"
+msgstr ""
+
+#: lib/views/schema-options.php:177
+msgid "Operation Hours"
+msgstr ""
+
+#: lib/views/schema-options.php:204
+msgid "GeoCoordinates"
+msgstr ""
+
+#: lib/views/schema-options.php:207
+msgid "Latitude"
+msgstr ""
+
+#: lib/views/schema-options.php:214
+msgid "Longitude"
+msgstr ""
+
+#: lib/views/schema-options.php:221
+msgid "Person"
+msgstr ""
+
+#: lib/views/schema-options.php:231
+msgid "Work For"
+msgstr ""
+
+#: lib/views/schema-options.php:239
+msgid "Job Title"
+msgstr ""
+
+#: lib/views/schema-options.php:251
+msgid "Add your personal photo here"
+msgstr ""
+
+#: lib/views/schema-options.php:262
+msgid "Birth date"
+msgstr ""
+
+#: lib/views/schema-options.php:273
+msgid "Address Country"
+msgstr ""
+
+#: lib/views/schema-options.php:288
+msgid "Address Locality"
+msgstr ""
+
+#: lib/views/schema-options.php:295
+msgid "Address Region"
+msgstr ""
+
+#: lib/views/schema-options.php:302
+msgid "Postal Code"
+msgstr ""
+
+#: lib/views/schema-options.php:308
+msgid "Street Address"
+msgstr ""
+
+#: lib/views/schema-options.php:318
+msgid "Organization Logo"
+msgstr ""
+
+#: lib/views/schema-options.php:320 lib/views/schema-options.php:380
+msgid "Social Profile"
+msgstr ""
+
+#: lib/views/schema-options.php:321
+msgid "Corporate Contacts"
+msgstr ""
+
+#: lib/views/schema-options.php:326
+msgid "Select Organization Logo"
+msgstr ""
+
+#: lib/views/schema-options.php:370
+msgid "Company Name"
+msgstr ""
+
+#: lib/views/schema-options.php:377
+msgid "Social Profiles"
+msgstr ""
+
+#: lib/views/schema-options.php:405
+msgid "Add Social Profile"
+msgstr ""
+
+#: lib/views/schema-options.php:413
+msgid "Contacts"
+msgstr ""
+
+#: lib/views/schema-options.php:432
+msgid "Contact Phone"
+msgstr ""
+
+#: lib/views/schema-options.php:436
+msgid "Please follow the format below"
+msgstr ""
+
+#: lib/views/schema-options.php:446
+msgid "Contact Email"
+msgstr ""
+
+#: lib/views/schema-options.php:453
+msgid "Contact Option"
+msgstr ""
+
+#: lib/views/schema-options.php:457
+msgid "Select an option"
+msgstr ""
+
+#: lib/views/schema-options.php:460
+msgid "TollFree"
+msgstr ""
+
+#: lib/views/schema-options.php:464
+msgid "HearingImpairedSupported"
+msgstr ""
+
+#: lib/views/schema-options.php:470
+msgid "Area Served"
+msgstr ""
+
+#: lib/views/schema-options.php:488
+msgid "Available language"
+msgstr ""
+
+#: lib/views/schema-options.php:506
+msgid "Site Name in Search Results"
+msgstr ""
+
+#: lib/views/schema-options.php:509
+msgid "Enable Site link Search Box"
+msgstr ""
+
+#: lib/views/schema-options.php:517
+msgid "Site Name:"
+msgstr ""
+
+#: lib/views/schema-options.php:524
+msgid "Site Alternative Name:"
+msgstr ""
+
+#: lib/views/schema-options.php:531
+msgid "Site Url:"
+msgstr ""
+
+#: lib/views/schema-options.php:539 lib/views/settings.php:42
+msgid "Save Changes"
+msgstr ""
+
+#: lib/views/schema-options.php:551 lib/views/settings.php:54
+msgid "Supports more schema types:"
+msgstr ""
+
+#: lib/views/schema-options.php:553 lib/views/settings.php:56
+msgid "Books"
+msgstr ""
+
+#: lib/views/schema-options.php:554 lib/views/settings.php:57
+msgid "Courses"
+msgstr ""
+
+#: lib/views/schema-options.php:555 lib/views/settings.php:58
+msgid "Job Postings"
+msgstr ""
+
+#: lib/views/schema-options.php:556 lib/views/settings.php:59
+msgid "Movies"
+msgstr ""
+
+#: lib/views/schema-options.php:557 lib/views/settings.php:60
+msgid "Music"
+msgstr ""
+
+#: lib/views/schema-options.php:558 lib/views/settings.php:61
+msgid "Recipe"
+msgstr ""
+
+#: lib/views/schema-options.php:559 lib/views/settings.php:62
+msgid "TV Episode"
+msgstr ""
+
+#: lib/views/settings.php:6
+msgid "Schema Settings"
+msgstr ""
+
+#: lib/views/settings.php:13
+msgid "Business / Org Schema"
+msgstr ""
+
+#: lib/views/settings.php:17
+msgid ""
+"Home page\n"
+"                                only"
+msgstr ""
+
+#: lib/views/settings.php:21
+msgid ""
+"Sitewide (Apply General Settings schema\n"
+"                                sitewide)"
+msgstr ""
+
+#: lib/views/settings.php:26
+msgid "Turn off (Turn off global schema)"
+msgstr ""
+
+#: lib/views/settings.php:30
+msgid "Delete all data"
+msgstr ""
+
+#: lib/views/settings.php:35
+msgid "Enable"
+msgstr ""
+
+#: lib/views/settings.php:36
+msgid ""
+"This will delete all schema created and applied by this plugin when plugin "
+"is\n"
+"                                deleted."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://wpsemplugins.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Comprehensive JSON-LD based Structured Data solution for WordPress for "
+"adding schema for organizations, businesses, blog posts, ratings & more."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WPSEMPlugins"
+msgstr ""

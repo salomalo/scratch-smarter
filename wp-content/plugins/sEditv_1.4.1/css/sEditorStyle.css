@@ -1,0 +1,280 @@
+
+/*main Div*/
+#sEditorMainFrame{
+	position:relative;
+	width:685px;
+	/*width:800px;*/
+	height:auto;
+	background-image:url("../web_images/background_main_frame.jpg") ;
+	background-color:#313840;/*remove line bellow*/
+	margin:0 auto;
+	text-align: center;
+	overflow: auto;
+
+}
+.rounded-jcrop{
+	
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+
+}
+
+/*input URL windows*/
+	#URLinputHolder{margin:0 auto;position:relative;width:485px;margin-top:10%;min-height:200px;background-image:url("web_images/background_main_frame.jpg") ;background-color:#313840;-moz-border-radius:  10px 10px 10px 10px ;-webkit-border-radius:  10px 10px 10px 10px;border-radius: 10px 10px 10px 10px;}
+
+    #inputForm {margin:0 auto; display:block; padding-top:30px; width:470px; height:50px; border:0px solid red;}
+    #inputForm input, #inputForm button{border:none;background:none;}
+    #inputForm input{width:360px;  border:1px solid red; padding:10px 5px;}
+    #inputForm button {background-color:#3d4146;font-family:verdana; font-size:10px;color:#f5f5f5; margin-right:5px;cursor:pointer; border:3px solid #323638; display:inline-block;padding:8px 15px;-moz-border-radius:  5px 5px 5px 5px ;-webkit-border-radius:  5px 5px 5px 5px ;border-radius: 5px 5px 5px 5px;}
+    #inputForm input{font-family:verdana; font-size:10px; background-color:#111111;color:#f5f5f5; margin-right:5px;  border:3px solid #323638; display:inline-block;padding:10px 3px;-moz-border-radius:  5px 5px 5px 5px ;-webkit-border-radius:  5px 5px 5px 5px ;border-radius: 5px 5px 5px 5px;}
+    #inputForm input:hover{border-color:#999999;}
+    #inputForm button:hover{color:#f5b50c;background-color:#516276;}
+    #URLinputHolder > p{font-family:verdana; font-size:10px; text-align:center; color:#e1e1e1;}
+
+
+#whiteLoading{
+display:block;
+visibility: hidden;
+width:685px;
+height:100%; 
+background-color:#ffffff;
+-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+filter: alpha(opacity=40);
+opacity:0.40;
+position:absolute;
+z-index:400;
+}
+.opacity05{
+-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+filter: alpha(opacity=50);
+opacity:0.50;
+}
+#whiteLoading #preLoader{position: relative; padding-top:50%;}
+
+/* ++++++++++++++++++++++++++ header ++++++++++++++++++++++++++ */
+#sEditorheader{	width:100%;height:170px; color:#f5f5f5;
+	
+}
+
+#sEditorTopMenuHolder{margin:30px 0px 0px 10px;position:relative;float:left;width:100%;height:40px;}/*width:490px;*/
+
+
+#sEditorheader{clear:both;}
+	
+		/* ++++++++++++++++++++++++++ header navigation ++++++++++++++++++++++++++ */
+
+		#sEditorTopMenuHolder ul{margin:0;padding:0;list-style-type:none;}
+		#sEditorTopMenuHolder ul li{margin:0;padding:0;background-position: 0px 0px; background-repeat:no-repeat;display:block; position:relative;cursor:pointer;float:left;width:44px; height:35px; margin-right:5px;}
+		/*#sEditorTopMenuHolder ul li>p{color:#3C4143; font-size:9px; font-weight:bold; font-family:verdana;visibility:hidden;display:block; background:url('../web_images/effectsValueBaloon.png') no-repeat center bottom;position:absolute;width:84px; height:22px; top:-25px; left:-20px;-moz-border-radius:  5px 5px 5px 5px ;-webkit-border-radius: 5px 5px 5px 5px ;border-radius: 5px 5px 5px 5px ;}*/
+		#sEditorTopMenuHolder ul li>p {
+		    color: #3C4143;
+		    font-size: 10px;
+		    font-weight: bold;
+		    font-family: verdana;
+		    visibility: hidden;
+		    display: block;
+		    background: url('../web_images/effectsValueBaloon.png') no-repeat center bottom;
+		    position: absolute;
+		    width: 84px;
+		    height: 22px;
+		    top: -35px;
+		    left: -20px;
+		    -moz-border-radius: 5px 5px 5px 5px;
+		    -webkit-border-radius: 5px 5px 5px 5px;
+		    border-radius: 5px 5px 5px 5px;
+		    line-height: 18px;
+		}
+		#sEditorTopMenuHolder ul li:hover{background-position:0px -35px;}
+		#sEditorTopMenuHolder ul li:active{background-position:0px -70px;}
+
+		#sEditorTopMenuHolder ul li ul{position:relative;visibility:hidden; cursor: default;}
+		#sEditorTopMenuHolder ul li:hover ul,#sEditorTopMenuHolder ul li:hover p{visibility:visible;}
+
+		#sEditorTopMenuHolder ul li ul .TopSubMenuListDivs, .sEitorSaveOptions{ cursor: pointer;display:block; height:27px; width:122px; color:#f5f5f5; background:url('../web_images/naviHorizontalDivider.png') no-repeat 0px 25px;
+		}
+		#sEditorTopMenuHolder ul li ul .TopSubMenuListDivs:hover, .sEitorSaveOptions:hover{color:#f5b50c; background-color:#313536;}
+		#sEditorTopNavigationsubMeni{background: url("../web_images/topSubMenubackground.png") repeat-y scroll 0 0 transparent;min-height: 40px;margin-left: 3px;margin-top: 41px;position: relative;width: 126px;z-index: 301;}
+
+		#subMenuTop{position:absolute;width:124px;height:13px;top:-13px; left:0px;background:url('../web_images/topSubMenuTop.png') no-repeat 0px 0px;}
+
+		#SubMenuBottom{border:0px solid red;position:absolute;width:124px; height:13px; bottom:-9px; left:0px;background:url('../web_images/topSubMenubottom.png') no-repeat 0px 0px;
+		}
+			/*style each effect button*/
+ 
+			#sEditorEffectsButton{background:url('../web_images/top_navi_filters.png')}
+			#sEditorSelectAllButton{background:url('../web_images/top_navi_selectAll.png')}
+			#sEditorSelectionCircleButton{background:url('../web_images/top_navi_CircleSelection.png')}
+			#sEditorSelectionBlockButton{background:url('../web_images/top_navi_blockSelection.png')}
+			#sEditorDeselectButton{background:url('../web_images/top_navi_deselect.png')}
+			#sEditorRevertButton{background:url('../web_images/top_navi_Revert.png')}
+			#sEditorColorPalleteButton{background:url('../web_images/top_navi_Color.png');}
+			#sEditorCropButton{background:url('../web_images/top_navi_Crop.png')}
+			#sEditorApplyButton{background:url('../web_images/top_navi_apply.png')}
+			#sEditorSaveButton{margin-left:20px !important;background:url('../web_images/top_navi_save.png')}
+
+			/*color selector*/
+			#sEditorColorChoser{background:url('../web_images/top_navi_bckgrnd.png') !important; position:relative;}
+			#colorSelector{width:25px; height:20px; border:1px solid #f5f5f5; position:absolute; top:6px;left:8px; -moz-border-radius:  5px 5px 5px 5px ;-webkit-border-radius:  5px 5px 5px 5px ;border-radius: 5px 5px 5px 5px;}
+
+			/*put color picker above jCrop seection*/
+			.colorpicker{z-index:302 !important;}
+			/* /style each effect button*/
+
+		/* ++++++++++++++++++++++++++ /header navigation +++++++++++++++++++++++++ */
+
+		/*  ++++++++++++++++++++++++++ UI slider custom settings  ++++++++++++++++++++++++++*/
+ 
+		#sEditorSliderHolder{font-family: verdana;   font-size: 10px;   font-weight: bold;   height:50px;   position: absolute;   right: 15px;   top: 20px;   width: 152px;
+		    
+		}
+		#sEditorheader .ui-slider .ui-slider-handle{ width:25px;height:25px;  background:url('../web_images/slider_scroller.png') no-repeat; position:absolute; top: -2px; border:0px;cursor: pointer;}
+		#sEditorheader .ui-widget-content { margin-top:20px;background:url('../web_images/slider-background.png') no-repeat; border:0px; }
+		#sEditorheader .ui-state-active{border:0px solid white !important;}
+		#slider{width:152px; height:35px; position:relative;}
+		#slider > div {	visibility:hidden; margin: -25px 0 0 -14px; position: absolute;top:10px;left:0px;width:30px;height:20px;background:url('../web_images/sliderValueBaloon.png') no-repeat 0px 2px;text-align:center;color:#3c4143;  font-family:verdana; font-size:10px;}
+		#slider p{padding-top:15px; text-align:center; color:#f5f5f5; font-size:9px;}
+
+		/*  ++++++++++++++++++++++++++  /UI slider custom settings  ++++++++++++++++++++++++++*/
+
+		/*textbox style*/
+		#sEditorheader #sEditorTextBox {display:none;position:absolute; right: 5px; top: 80px;width: 310px; background:url('../web_images/sEditorTextBackground.png') no-repeat; }
+		#sEditorheader #sEditorTextBox  textarea{width:299px; height:69px; background-color:transparent;border:0px;overflow: hidden; font-size:10px; font-family:verdana; color:#f5f5f5; padding:3px;}
+
+		/*current effect info*/
+		#sEditorheader #sEditorCurrentEffect{ position:absolute; text-align: left;width:170px; height:25px; position:absolute; border:0px solid red; left:10px;top:130px;}
+		#sEditorheader #sEditorCurrentEffect p{position:relative;  float:right;color:#f5b50c;}
+		#sEditorheader #sEditorSelectionInfo{font-size:10px; font-family:verdana;position:absolute; width:360px; height:25px; position:absolute; border:0px solid red; left:10px;top:80px;}/* ++++++++++++++++++++++++++ /header ++++++++++++++++++++++++++ */
+		
+		/*info about selection*/
+		.sEditorSelectionInfo {  background:transparent; border:0px; background-color:#171919; border:2px solid #202324; text-align:center; color:#f5f5f5; font-family:verdana; font-size:8px; display: inline-block; min-width:26px; padding: 2px 5px;}
+		 
+		 /* ++++++++++++++++++++++++++ Save options  ++++++++++++++++++++++++++ */
+
+		 #sEditorSaveOptions:hover,#sEditorSaveBtn:hover,#sEditorCancelBtn:hover{color:#f5b50c;}
+
+		 #newImageName{font-size:10px; text-align:left;}
+
+
+		 #sEditorSave-CancelButtonHolder{padding:15px 0px 15px 0px; display:none;}
+
+		 #sEditorSave,#sEditorSaveBtn,#sEditorCancelBtn{display:none;}
+		 #sEditorSaveBtn,#sEditorCancelBtn{margin-right:5px;cursor:pointer; border:3px solid #323638; display:inline-block;padding:1px 3px;-moz-border-radius:  5px 5px 5px 5px ;-webkit-border-radius:  5px 5px 5px 5px ;border-radius: 5px 5px 5px 5px;}
+
+		 /* +++++++++++++++++++++++++ /Save options  ++++++++++++++++++++++++++ */
+
+
+/* ++++++++++++++++++++++++++ /header ++++++++++++++++++++++++++ */
+
+
+/* ++++++++++++++++++++++++++ img holder ++++++++++++++++++++++ */
+
+#sEditorImageHolder{height:auto;margin:0 auto;border:0px solid white;margin-bottom:10px;padding:5px;}
+
+/* ++++++++++++++++++++++++++ /img holder ++++++++++++++++++++++ */
+
+/* ++++++++++++++++++++++++++ bottom navigation +++++++++++++++ */
+
+.sEditorBottomMenuClass {	position:relative;height:50px !important;padding-left:15px !important;margin:0 auto;width:658px;overflow: hidden; }
+
+
+/*  ++++++++++++++++++++++++++   bottom  effects navigation ++++++++++++++++++++++++++*/
+#sEditorBottomMenu{padding-left: 0px; padding-right: 0px; height: 40px;	
+}
+#sEditorBottomMenu ul{border-radius: 5px 5px 5px 5px;
+    display: inline-block;
+    left: 10px;
+    margin: 0;
+    position: absolute;}
+#sEditorBottomMenu ul li{border:2px solid #51585a; border-right:3px solid #312f30;list-style-type:none; background-color:#313536;float:left;display:inline-block; cursor:pointer; padding:9px 15px; margin-bottom:15px; color:#111111; font-family:arial; font-size:11px; font-weight:bold;}
+#sEditorBottomMenu ul li:hover{color:#f5f5f5; background:#202425}
+
+/*first and last round corners*/
+#sEditorBottomMenu ul li:first-child{-moz-border-radius:  5px 0px 0px 5px ;-webkit-border-radius: 5px 0px 0px 5px  ;border-radius: 5px 0px 0px 5px ;}
+#sEditorBottomMenu ul li:last-child{border-right:2px solid #51585a;-moz-border-radius:  0px 5px 5px 0px ;-webkit-border-radius:  0px 5px 5px 0px ;border-radius: 0px 5px 5px 0px;}
+/*  ++++++++++++++++++++++++++   /bottom  effects navigation ++++++++++++++++++++++++++*/
+
+/* ++++++++++++++++++++++++++ /bottom navigation +++++++++++++++ */
+
+/* ++++++++++++++++++++++++++ effect sample images +++++++++++++++ */
+#effectsListHolder{position: relative;border:0px solid red;padding:10px 0px 0px 0px;height: 150px;}
+.sEditorEffectsSampleImages{width:658px;height:145px !important;margin:0 auto; border:0px solid red; overflow: hidden;}
+
+.sEditorEffectsSampleImages .imageEffectSampleImageHodlder{ display:block; /*background:url('../web_images/imageEffectSample.png') no-repeat 3px 0px;*/ float:left; width:93px; height:103px; margin-right:12px; margin-bottom:20px; }
+
+.sEditorEffectsSampleImages .imageEffectSampleImageHodlder img{border:2px solid #626262; cursor: pointer; width:88px; height:100px;}
+.sEditorEffectsSampleImages .imageEffectSampleImageHodlder p{color:#f5f5f5; font-size:10px;}
+/* ++++++++++++++++++++++++++ /effect sample images +++++++++++++++ */
+
+
+
+
+
+
+/*  ++++++++++++++++++++++++++   HoverScroll  ++++++++++++++++++++++++++*/
+
+/**
+ * HoverScroll Style Sheet
+ *
+ * @author RasCarlito <carl.ogren@gmail.com>
+ * @version 0.2.4
+ * @revision 21
+ */
+
+/* Main container */
+div.hoverscroll {
+	position:relative;
+}
+
+
+/* List container */
+div.hoverscroll div.listcontainer {
+	overflow:hidden;
+}
+div.hoverscroll div.fixed-listcontainer {
+    overflow: hidden;
+    float: left;
+}
+
+/*fix ui content*/
+.hoverscroll{position:absolute; top:0px;left:0px;width: 658px; height: 135px;
+	background:none;
+	border:0px;
+	padding:0;
+	margin:0;padding-bottom:15px;
+}
+.listcontainer{border:1px solid blue;}
+/*  ++++++++++++++++++++++++++   /HoverScroll  ++++++++++++++++++++++++++*/
+
+
+/* wp Admin section*/
+
+#sEdit_display_image_sizes{
+	position:relative;
+	width:685px;
+	height:auto;
+	background-image:url("../web_images/background_main_frame.jpg") ;
+	background-color:#313840;/*remove line bellow*/
+	margin:0 auto;
+	color: white;
+	text-indent: 5px;
+	min-height: 270px;
+	display: block;
+
+}
+
+#sEdit_display_image_sizes ul li{
+	float:left; 
+	border:1px solid #e1e1e1; 
+	border-radius:5px; 
+	margin:1px;
+	background-image:url("../web_images/background_main_frame.jpg") ;
+	background-color:#313840;/*remove line bellow*/
+}
+
+.selectedSourceImage{border: 2px solid rgb(0, 240, 255) !important;}
+
+
+
+ 
+

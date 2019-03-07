@@ -1,0 +1,66 @@
+# Copyright (C) 2019 SkyVerge
+# This file is distributed under the GNU General Public License v3.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Order Status Control 1.10.0\n"
+"Report-Msgid-Bugs-To: "
+"https://woocommerce.com/my-account/marketplace-ticket-form/\n"
+"POT-Creation-Date: 2019-01-09 19:25:34+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: class-wc-order-status-control.php:137
+msgid "Order auto-completion skipped: deleted or non-existent product found."
+msgstr ""
+
+#: class-wc-order-status-control.php:222
+msgid "Orders to Auto-Complete"
+msgstr ""
+
+#: class-wc-order-status-control.php:223
+msgid ""
+"Select which types of orders should be changed to completed when payment is "
+"received. Default WooCommerce behavior is \"Virtual & Downloadable\"."
+msgstr ""
+
+#: class-wc-order-status-control.php:229
+msgid "None"
+msgstr ""
+
+#: class-wc-order-status-control.php:230
+msgid "All Orders"
+msgstr ""
+
+#: class-wc-order-status-control.php:231
+msgid "Virtual Orders"
+msgstr ""
+
+#: class-wc-order-status-control.php:232
+msgid "Virtual & Downloadable Orders"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Order Status Control"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.woocommerce.com/products/woocommerce-order-status-control/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Automatically change order status to complete for all orders or just "
+"virtual orders when payment is successful"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "SkyVerge"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.woocommerce.com"
+msgstr ""

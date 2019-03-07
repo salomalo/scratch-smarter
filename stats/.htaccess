@@ -1,0 +1,6 @@
+AuthType Basic
+AuthName " Statistics"
+AuthName "scratchsmarter.com Statistics"
+AuthUserFile /srv/www/vhosts/www.scratchsmarter.com/stats/.statspwd
+Require valid-user
+DirectoryIndex index.html
