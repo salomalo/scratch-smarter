@@ -143,7 +143,8 @@ process_items(list,true);}}};if(typeof configObj['formIdentifier']!=='undefined'
 {var $=fbuilderjQuery,id,item,form_data,form_obj;if(typeof cpcff_default!='undefined')
 {id=o.identifier.replace(/[^\d]/g,'');if(typeof cpcff_default[id]!='undefined')
 {form_data=cpcff_default[id];id='_'+id;form_obj=$.fbuilder['forms'][id];for(var field_id in form_data)
-{item=form_obj.getItem(field_id+id);if(typeof item['setVal']!='undefined')item.setVal(form_data[field_id]);}
+{item=form_obj.getItem(field_id+id);try{if(typeof item['setVal']!='undefined')item.setVal(form_data[field_id]);}
+catch(err){}}
 $.fbuilder.showHideDep({'formIdentifier':o.identifier,'throwEvent':true});}}};window.addEventListener('popstate',function(){try
 {$(".ui-datepicker").hide();$.fbuilder.manageHistory();}
 catch(err){}});$(window).on('load',function(){$.fbuilder.manageHistory();});$.fbuilder.controls['ftext']=function(){};$.extend($.fbuilder.controls['ftext'].prototype,$.fbuilder.controls['ffields'].prototype,{title:"Untitled",ftype:"ftext",predefined:"",predefinedClick:false,required:false,readonly:false,size:"medium",minlength:"",maxlength:"",equalTo:"",regExp:"",regExpMssg:"",show:function()
@@ -226,7 +227,7 @@ else opt['value']=Math.min(Math.max(me._getAttr('predefined'),opt.min),opt.max);
 {try{v=JSON.parse(v);}catch(err){}
 try{$('[name="'+this.name+'"]').val(v);$('#'+this.name+'_slider').slider((($.isArray(v))?'values':'value'),v);this._setFieldValue();}catch(err){}}});$.fbuilder.controls['femail']=function(){};$.extend($.fbuilder.controls['femail'].prototype,$.fbuilder.controls['ffields'].prototype,{title:"Email",ftype:"femail",predefined:"",predefinedClick:false,required:false,readonly:false,size:"medium",equalTo:"",show:function()
 {return'<div class="fields '+this.csslayout+' '+this.name+' cff-email-field" id="field'+this.form_identifier+'-'+this.index+'"><label for="'+this.name+'">'+this.title+''+((this.required)?"<span class='r'>*</span>":"")+'</label><div class="dfield"><input id="'+this.name+'" name="'+this.name+'" '+((this.equalTo!="")?"equalTo=\"#"+$.fbuilder.htmlEncode(this.equalTo+this.form_identifier)+"\"":"")+' class="field email '+this.size+((this.required)?" required":"")+'" type="email" value="'+$.fbuilder.htmlEncode(this.predefined)+'" '+((this.readonly)?'readonly':'')+' /><span class="uh">'+this.userhelp+'</span></div><div class="clearer"></div></div>';},val:function(raw)
-{raw=raw||false;var e=$('[id="'+this.name+'"]:not(.ignore)');if(e.length)return $.fbuilder.parseValStr(e.val(),raw);return 0;}});$.fbuilder.controls['fdate']=function(){};$.extend($.fbuilder.controls['fdate'].prototype,$.fbuilder.controls['ffields'].prototype,{title:"Date",ftype:"fdate",predefined:"",predefinedClick:false,size:"medium",required:false,dformat:"mm/dd/yyyy",dseparator:"/",tformat:"24",showDropdown:false,dropdownRange:"-10:+10",minDate:"",maxDate:"",invalidDates:"",minHour:0,maxHour:23,minMinute:0,maxMinute:59,stepHour:1,stepMinute:1,showDatepicker:true,showTimepicker:false,defaultDate:"",defaultTime:"",working_dates:[true,true,true,true,true,true,true],_getAttr:function(attr)
+{raw=raw||false;var e=$('[id="'+this.name+'"]:not(.ignore)');if(e.length)return $.fbuilder.parseValStr(e.val(),raw);return 0;}});$.fbuilder.controls['fdate']=function(){};$.extend($.fbuilder.controls['fdate'].prototype,$.fbuilder.controls['ffields'].prototype,{title:"Date",ftype:"fdate",predefined:"",predefinedClick:false,size:"medium",required:false,dformat:"mm/dd/yyyy",dseparator:"/",tformat:"24",showDropdown:false,dropdownRange:"-10:+10",minDate:"",maxDate:"",invalidDates:"",minHour:0,maxHour:23,minMinute:0,maxMinute:59,stepHour:1,stepMinute:1,showDatepicker:true,showTimepicker:false,ariaHourLabel:'hours',ariaMinuteLabel:'minutes',ariaAMPMLabel:'am or pm',defaultDate:"",defaultTime:"",working_dates:[true,true,true,true,true,true,true],_getAttr:function(attr)
 {var me=this,f,v=$.trim(me[attr]);if($.isNumeric(v))return parseFloat(v);f=(/^fieldname\d+$/i.test(v))?me.getField(v):false;if(f)
 {v=f.val();if(f.ftype=='fdate')return new Date(v*86400000);if($.isNumeric(v))return parseFloat(v);return v.replace(/^"+/,'').replace(/"+$/,'');}
 return v;},_setHndl:function(attr,one)
@@ -256,12 +257,12 @@ else
 me.minHour=_checkValue(me.minHour,0,23);me.maxHour=_checkValue(me.maxHour,0,23);me.minMinute=_checkValue(me.minMinute,0,59);me.maxMinute=_checkValue(me.maxMinute,0,59);me.stepHour=_checkValue(me.stepHour,1,Math.max(1,me.maxHour-me.minHour));me.stepMinute=_checkValue(me.stepMinute,1,Math.max(1,me.maxMinute-me.minMinute));me._setHndl('minDate');me._setHndl('maxDate');},get_hours:function()
 {var me=this,str='',i=0,h,from=(me.tformat==12)?1:me.minHour,to=(me.tformat==12)?12:me.maxHour;while((h=from+me.stepHour*i)<=to)
 {if(h<10)h='0'+''+h;str+='<option value="'+h+'">'+h+'</option>';i++;}
-return'<select id="'+me.name+'_hours" name="'+me.name+'_hours" class="hours-component">'+str+'</select>:';},get_minutes:function()
+return'<select id="'+me.name+'_hours" name="'+me.name+'_hours" class="hours-component" aria-label="'+$.fbuilder.htmlEncode(me.ariaHourLabel)+'">'+str+'</select>:';},get_minutes:function()
 {var me=this,str='',i=0,m,n=(me.minHour==me.maxHour)?me.minMinute:0,x=(me.minHour==me.maxHour)?me.maxMinute:59;while((m=n+me.stepMinute*i)<=x)
 {if(m<10)m='0'+''+m;str+='<option value="'+m+'">'+m+'</option>';i++;}
-return'<select id="'+me.name+'_minutes" name="'+me.name+'_minutes" class="minutes-component">'+str+'</select>';},get_ampm:function()
+return'<select id="'+me.name+'_minutes" name="'+me.name+'_minutes" class="minutes-component" aria-label="'+$.fbuilder.htmlEncode(me.ariaMinuteLabel)+'">'+str+'</select>';},get_ampm:function()
 {var str='';if(this.tformat==12)
-{return'<select id="'+this.name+'_ampm" class="ampm-component"><option value="am">am</option><option value="pm">pm</option></select>';}
+{return'<select id="'+this.name+'_ampm" class="ampm-component"  aria-label="'+$.fbuilder.htmlEncode(this.ariaAMPMLabel)+'"><option value="am">am</option><option value="pm">pm</option></select>';}
 return str;},set_dateTime:function()
 {var me=this,str=$('#'+me.name+'_date').val();if(me.showTimepicker)
 {var h=$('#'+me.name+'_hours').val()*1;str+=' ';if(me.tformat==12)
@@ -281,7 +282,7 @@ else
 {var d=new Date();time['hour']=Math.min(Math.max(d.getHours(),me.minHour),me.maxHour);time['minute']=d.getMinutes();if(time['hour']==me.minHour)time['minute']=Math.max(time['minute'],me.minMinute);if(time['hour']==me.maxHour)time['minute']=Math.min(time['minute'],me.maxMinute);}
 _setValue(me.name+'_hours',(me.tformat==12)?((time['hour']>12)?time['hour']-12:((time['hour']==0)?12:time['hour'])):time['hour'],(me.tformat==12)?12:me.maxHour);_setValue(me.name+'_minutes',time['minute'],me.maxMinute);$('#'+me.name+'_ampm'+' [value="'+((time['hour']<12)?'am':'pm')+'"]').prop('selected',true);}},show:function()
 {var me=this,n=me.name,attr='value',format_label=[],date_tag_type='text',disabled='',date_tag_class='field date'+me.dformat.replace(/[^a-z]/ig,"")+' '+me.size+((me.required)?' required':'');if(me.predefinedClick)attr='placeholder';if(me.showDatepicker)format_label.push(me.dformat);else{date_tag_type='hidden';disabled='disabled';}
-if(me.showTimepicker)format_label.push('HH:mm');return'<div class="fields '+me.csslayout+' '+n+' cff-date-field" id="field'+me.form_identifier+'-'+me.index+'"><label for="'+n+'">'+me.title+''+((me.required)?"<span class='r'>*</span>":"")+((format_label.length)?' <span class="dformat">('+format_label.join(' ')+')</span>':'')+'</label><div class="dfield"><input id="'+n+'" name="'+n+'" type="hidden" value="'+$.fbuilder.htmlEncode(me.predefined)+'"/><input id="'+n+'_date" name="'+n+'_date" class="'+date_tag_class+' date-component" type="'+date_tag_type+'" '+attr+'="'+$.fbuilder.htmlEncode(me.predefined)+'" '+disabled+' />'+((me.showTimepicker)?' '+me.get_hours()+me.get_minutes()+' '+me.get_ampm():'')+'<span class="uh">'+me.userhelp+'</span></div><div class="clearer"></div></div>';},after_show:function()
+if(me.showTimepicker)format_label.push('HH:mm');return'<div class="fields '+me.csslayout+' '+n+' cff-date-field" id="field'+me.form_identifier+'-'+me.index+'"><label for="'+n+'_date">'+me.title+''+((me.required)?"<span class='r'>*</span>":"")+((format_label.length)?' <span class="dformat">('+format_label.join(' ')+')</span>':'')+'</label><div class="dfield"><input id="'+n+'" name="'+n+'" type="hidden" value="'+$.fbuilder.htmlEncode(me.predefined)+'"/><input id="'+n+'_date" name="'+n+'_date" class="'+date_tag_class+' date-component" type="'+date_tag_type+'" '+attr+'="'+$.fbuilder.htmlEncode(me.predefined)+'" '+disabled+' />'+((me.showTimepicker)?' '+me.get_hours()+me.get_minutes()+' '+me.get_ampm():'')+'<span class="uh">'+me.userhelp+'</span></div><div class="clearer"></div></div>';},after_show:function()
 {var me=this,date_format='date'+me.dformat.replace(/[^a-z]/ig,""),validator=function(v,e)
 {try
 {var _dp=$.datepicker,_fb=$.fbuilder,p=e.name.replace('_date','').split('_'),_index=(p.length>1)?'_'+p[1]:'',item=('forms'in _fb&&_index in _fb['forms'])?_fb['forms'][_index].getItem(p[0]+'_'+p[1]):null,inst=_dp._getInst(e),minDate=_dp._determineDate(inst,_dp._get(inst,'minDate'),null),maxDate=_dp._determineDate(inst,_dp._get(inst,'maxDate'),null),dateFormat=_dp._get(inst,'dateFormat'),date=_dp.parseDate(dateFormat,v,_dp._getFormatConfig(inst));if(item!=null)
@@ -317,7 +318,7 @@ $('[id*="'+m.name+'"]').rules('add',{maxlength:m.max,messages:{maxlength:m.maxEr
 {var me=this,item=$('[id*="'+me.name+'"]'),form_identifier=me.form_identifier,isHidden=(typeof toHide[me.name]!='undefined'||typeof hiddenByContainer[me.name]!='undefined'),result=[];try
 {item.each(function(i,e){if(typeof me.choicesDep[i]!='undefined'&&me.choicesDep[i].length)
 {var checked=e.checked;for(var j=0,k=me.choicesDep[i].length;j<k;j++)
-{var dep=me.choicesDep[i][j]+form_identifier;if(isHidden||!checked)
+{if(!/fieldname/i.test(me.choicesDep[i][j]))continue;var dep=me.choicesDep[i][j]+form_identifier;if(isHidden||!checked)
 {if(typeof toShow[dep]!='undefined')
 {delete toShow[dep]['ref'][me.name+'_'+i];if($.isEmptyObject(toShow[dep]['ref']))
 delete toShow[dep];}
@@ -351,7 +352,7 @@ e.data('previous-status',m.checked);});}},showHideDep:function(toShow,toHide,hid
 {var me=this,item=$('[id*="'+me.name+'"]'),form_identifier=me.form_identifier,isHidden=(typeof toHide[me.name]!='undefined'||typeof hiddenByContainer[me.name]!='undefined'),result=[];try
 {item.each(function(i,e){if(typeof me.choicesDep[i]!='undefined'&&me.choicesDep[i].length)
 {var checked=e.checked;for(var j=0,k=me.choicesDep[i].length;j<k;j++)
-{var dep=me.choicesDep[i][j]+form_identifier;if(isHidden||!checked)
+{if(!/fieldname/i.test(me.choicesDep[i][j]))continue;var dep=me.choicesDep[i][j]+form_identifier;if(isHidden||!checked)
 {if(typeof toShow[dep]!='undefined')
 {delete toShow[dep]['ref'][me.name+'_'+i];if($.isEmptyObject(toShow[dep]['ref']))
 delete toShow[dep];}
@@ -384,7 +385,7 @@ if(op_o)str+='</optgroup>';return'<div class="fields '+this.csslayout+' '+this.n
 {var selected=[];$(item).find(':selected').each(function(){selected.push($(this).data('i'));});for(var i=0,h=me.choices.length;i<h;i++)
 {if(typeof me.choicesDep[i]!='undefined'&&me.choicesDep[i].length)
 {for(var j=0,k=me.choicesDep[i].length;j<k;j++)
-{var dep=me.choicesDep[i][j]+form_identifier;if(isHidden||$.inArray(i,selected)==-1)
+{if(!/fieldname/i.test(me.choicesDep[i][j]))continue;var dep=me.choicesDep[i][j]+form_identifier;if(isHidden||$.inArray(i,selected)==-1)
 {if(typeof toShow[dep]!='undefined')
 {delete toShow[dep]['ref'][me.name+'_'+i];if($.isEmptyObject(toShow[dep]['ref']))
 delete toShow[dep];}
@@ -466,7 +467,7 @@ else
 {f.addClass('column'+this.columns);if(i%this.columns==0)f.css('clear','left');}
 f.appendTo(e);}},showHideDep:function(toShow,toHide,hiddenByContainer)
 {var me=this,isHidden=(typeof toHide[me.name]!='undefined'||typeof hiddenByContainer[me.name]!='undefined'),fId,result=[];for(var i=0,h=me.fields.length;i<h;i++)
-{fId=me.fields[i]+me.form_identifier;if(isHidden)
+{if(!/fieldname/i.test(me.fields[i]))continue;fId=me.fields[i]+me.form_identifier;if(isHidden)
 {if(typeof hiddenByContainer[fId]=='undefined')hiddenByContainer[fId]={};if(typeof hiddenByContainer[fId][me.name]=='undefined')
 {hiddenByContainer[fId][me.name]={};if(typeof toHide[fId]=='undefined')
 {$('[id*="'+fId+'"],.'+fId).closest('.fields').hide();$('[id*="'+fId+'"]:not(.ignore)').addClass('ignore');result.push(fId);}}}
@@ -534,12 +535,12 @@ delete toShow[id];}},hideField=function(id){$('[id*="'+id+'"],.'+id).closest('.f
 {d=item.attr('dep');if(typeof d!='undefined'&&!/^\s*$/.test(d))d=d.split(',');else d=[];n=item.attr('notdep');if(typeof n!='undefined'&&!/^\s*$/.test(n))n=n.split(',');else n=[];if(isHidden)
 {n=n.concat(d);d=[];}
 for(i=0;i<d.length;i++)
-{dep=d[i]+identifier;delete toHide[dep];if(typeof toShow[dep]=='undefined')
+{if(!/fieldname/i.test(d[i]))continue;dep=d[i]+identifier;delete toHide[dep];if(typeof toShow[dep]=='undefined')
 toShow[dep]={'ref':{}};toShow[dep]['ref'][me.name]=1;if(!(dep in hiddenByContainer))
 {$('[id*="'+dep+'"],.'+dep).closest('.fields').show();$('[id*="'+dep+'"].ignore').removeClass('ignore');}
 if($.inArray(dep,result)==-1)result.push(dep);}
 for(i=0;i<n.length;i++)
-{dep=n[i]+identifier;clearRef(dep);if(typeof toShow[dep]=='undefined'&&typeof toHide[dep]=='undefined')hideField(dep);if($.inArray(dep,result)==-1)result.push(dep);}}
+{if(!/fieldname/i.test(n[i]))continue;dep=n[i]+identifier;clearRef(dep);if(typeof toShow[dep]=='undefined'&&typeof toHide[dep]=='undefined')hideField(dep);if($.inArray(dep,result)==-1)result.push(dep);}}
 catch(e){}}
 return result;},val:function(raw)
 {raw=raw||false;var e=$('[id="'+this.name+'"]:not(.ignore)');if(e.length)

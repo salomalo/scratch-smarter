@@ -94,7 +94,7 @@ class Subscribers extends SGPBTable
 		ob_start();
 		?>
 		<input type="hidden" class="sgpb-subscription-popup-id" name="sgpb-subscription-popup-id" value="<?php echo $selectedPopup;?>">
-		<input type="hidden" name="page" value="sgpbSubscribers" />
+		<input type="hidden" name="page" value="<?php echo SG_POPUP_SUBSCRIBERS_PAGE; ?>" >
 
 		<select name="sgpb-subscription-popup" id="sgpb-subscription-popup">
 			<?php

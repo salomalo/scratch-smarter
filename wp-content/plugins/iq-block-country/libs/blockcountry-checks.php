@@ -84,6 +84,14 @@ function iqblockcountry_retrieve_geoipapi($ipaddress)
     {
         $url = GEOIPAPIURLUS3;
     }
+    if (get_option('blockcountry_geoapilocation') == "EU2")
+    {
+        $url = GEOIPAPIURLEU2;
+    }
+    if (get_option('blockcountry_geoapilocation') == "EU3")
+    {
+        $url = GEOIPAPIURLEU3;
+    }
     if (get_option('blockcountry_geoapilocation') == "ASIA")
     {
         $url = GEOIPAPIURLASIA;
@@ -584,6 +592,13 @@ function iqblockcountry_is_login_page() {
         if (!empty($rwpl)) {
         $pos2 = strpos( $_SERVER['REQUEST_URI'], $rwpl ); }
     } 
+    
+    if ( is_plugin_active( 'wps-hide-login/wps-hide-login.php' ) ) {
+        $whlpage = get_option('whl_page');
+        if (!empty($whlpage)) {
+        $pos2 = strpos( $_SERVER['REQUEST_URI'], $whlpage ); }
+    } 
+    
     
    
     $pos = strpos( $_SERVER['REQUEST_URI'], 'wp-login' );

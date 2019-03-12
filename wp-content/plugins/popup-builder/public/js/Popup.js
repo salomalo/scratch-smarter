@@ -22,7 +22,8 @@ if(contentBox.borderColor){mainDiv.style.borderColor=contentBox.borderColor;}
 if(contentBox.borderRadius){var borderRadiusMeasure='%';if(contentBox.borderRadiusType){var borderRadiusMeasure=contentBox.borderRadiusType;}
 mainDiv.style.borderRadius=contentBox.borderRadius+borderRadiusMeasure;}
 mainDiv.style.borderWidth=contentBox.borderWidth+"px";if(contentBox.padding){mainDiv.style.padding=contentBox.padding+"px";}
-var widthToSet=sizeConfig.width||defaultWidth;if(widthToSet.indexOf("%")>-1){var widthNum=parseFloat(widthToSet);var closeButtonWidthToSubtract=parseInt(closeButton.width);if(closeBehavior.showButton==false||config.closeButton.type=='button'){closeButtonWidthToSubtract=0;}
+var widthToSet=sizeConfig.width||defaultWidth;if(widthToSet.indexOf("%")>-1){var widthNum=parseFloat(widthToSet);if(widthToSet.indexOf("fullScreen")>-1){widthNum=window.innerWidth;}
+var closeButtonWidthToSubtract=parseInt(closeButton.width);if(closeBehavior.showButton==false||config.closeButton.type=='button'){closeButtonWidthToSubtract=0;}
 widthToSet=(((widthNum/100)*window.innerWidth)-(2*(contentBox.padding?contentBox.padding:0))-parseFloat(mainDiv.style.borderLeftWidth)-parseFloat(mainDiv.style.borderRightWidth)-(parseFloat(contentBox.shadowSpread)/2)-closeButtonWidthToSubtract)+'px';}
 else{widthToSet=parseFloat(widthToSet)-2*(contentBox.padding?contentBox.padding:0)+'px';}
 mainDiv.style.width=widthToSet;if(config.popupType=='image'){mainDiv.style.backgroundImage="url("+contentBox.backgroundImage+")";}
@@ -34,7 +35,7 @@ else if(contentBox.backgroundMode=='fit'){if(!fitBackgroundImg){fitBackgroundImg
 else{mainDiv.style.backgroundRepeat="no-repeat";}}
 if(window.sgWindowOldWidth!=window.innerWidth||window.sgWindowOldHeight!=window.innerHeight){window.sgWindowOldWidth=window.innerWidth;window.sgWindowOldHeight=window.innerHeight;var images=document.getElementsByClassName('sgpb-background-image-'+config.popupId);if(images.length){changePopupDimensionRelatedImage(images[0]);}}
 mainDiv.style.backgroundPosition=contentBox.backgroundPosition;var heightToSet=sizeConfig.height||defaultHeight;if(typeof heightToSet!='undefined'&&heightToSet.indexOf("%")>-1){var heightNum=parseFloat(heightToSet);heightToSet=(((heightNum/100)*window.innerHeight)-(2*(contentBox.padding?contentBox.padding:0))-parseInt(mainDiv.style.borderTopWidth)-parseInt(mainDiv.style.borderBottomWidth))+"px";}
-else{heightToSet=parseInt(heightToSet)-2*(contentBox.padding?contentBox.padding:0)+"px";}
+else{heightToSet=parseInt(heightToSet)-2*(contentBox.padding?contentBox.padding:0)+"px";if(sizeConfig.width.indexOf("fullScreen")>-1){heightToSet=(window.innerHeight)+"px";}}
 mainDiv.style.height=heightToSet;if(contentBox.showBackground&&contentBox.backgroundColor){mainDiv.style.backgroundColor=contentBox.backgroundColor;}
 if(contentBox.shadowColor){mainDiv.style.boxShadow="0 0 "+contentBox.shadowBlur+"px "+contentBox.shadowSpread+"px "+contentBox.shadowColor;}
 if(contentBox.scrollingEnabled){mainDiv.style.overflow="auto";}
@@ -48,7 +49,8 @@ var widthDifference=imageWidth-maxWidth;var heightDifference=imageHeight-maxHeig
 else if(imageWidth>maxWidth){var modifiedWidthPercent=Math.floor((widthDifference/imageWidth)*100);var heightMustDecrease=Math.floor((imageHeight*modifiedWidthPercent)/100);var modifiedHeight=imageHeight-heightMustDecrease;imageWidth-=widthDifference;imageHeight-=heightMustDecrease;}
 var result={width:imageWidth,height:imageHeight};return result;}
 function calculateMaxWidth(maxWidth)
-{var contentPadding=(contentBox.padding||0)*2;var shadowSpread=(contentBox.shadowSpread||0)*2;var borderWidth=(contentBox.borderWidth||0)*2;var boxBorderWidth=(contentBox.boxBorderWidth||0)*4;var closeButtonRight=(parseInt(closeBehavior.right)||0)*2;var closeButtonLeft=(parseInt(closeBehavior.left)||0)*2;maxWidth-=contentPadding;maxWidth-=34;maxWidth-=shadowSpread;maxWidth-=borderWidth;maxWidth-=boxBorderWidth;if(!closeBehavior.buttonInside){if(closeButtonRight){maxWidth-=Math.abs(closeButtonRight);}
+{var sizeConfig=getSizeConfig();var dimension=sizeConfig.width;var contentPadding=(contentBox.padding||0)*2;var shadowSpread=(contentBox.shadowSpread||0)*2;var borderWidth=(contentBox.borderWidth||0)*2;var boxBorderWidth=(contentBox.boxBorderWidth||0)*4;var closeButtonRight=(parseInt(closeBehavior.right)||0)*2;var closeButtonLeft=(parseInt(closeBehavior.left)||0)*2;if(dimension.indexOf('fullScreen')=='-1'){maxWidth-=contentPadding;maxWidth-=34;maxWidth-=shadowSpread;maxWidth-=borderWidth;maxWidth-=boxBorderWidth;}
+if(!closeBehavior.buttonInside){if(closeButtonRight){maxWidth-=Math.abs(closeButtonRight);}
 if(closeButtonLeft){maxWidth-=Math.abs(closeButtonLeft);}}
 if(maxWidth<0){return'30px';}
 return maxWidth+'px';}
@@ -56,9 +58,10 @@ function setFitBackground()
 {if(!fitBackgroundImg)return;var imgHeight=fitBackgroundImg.height;var imgWidth=fitBackgroundImg.width;var winHeight=window.innerHeight;var winWidth=window.innerWidth;var minMargin=40;var popupWidth=0,popupHeight=0;if(imgWidth<(winWidth-2*minMargin)&&imgHeight<(winHeight-2*minMargin)){popupWidth=imgWidth;popupHeight=imgHeight;}else{var widthDif=winWidth-imgWidth;var heightDif=winHeight-imgHeight;if(widthDif<heightDif){popupWidth=winWidth-2*minMargin;popupHeight=popupWidth*imgHeight/imgWidth;}else{popupHeight=winHeight-2*minMargin;popupWidth=popupHeight*imgWidth/imgHeight;}}
 var sizeConfig=getSizeConfig();var maxWidth=sizeConfig.maxWidth;var maxHeight=sizeConfig.maxHeight;var border=contentBox.borderWidth||0;var padding=contentBox.padding||0;var shadow=contentBox.shadowSpread||0;popupWidth=parseInt(popupWidth-2);sizeConfig.height=popupHeight+'px';}
 function calculateMaxHeight(maxHeight)
-{var contentPadding=(contentBox.padding||0)*2;var shadowSpread=(contentBox.shadowSpread||0)*4;var borderHeight=(contentBox.borderWidth||0)*2;var boxBorderHeight=(contentBox.boxBorderWidth||0)*4;var closeButtonTop=(parseInt(closeBehavior.top)||0)*2;var closeButtonBottom=(parseInt(closeBehavior.bottom)||0)*2;maxHeight-=contentPadding;if(shadowSpread){maxHeight-=shadowSpread;maxHeight-=35;}
+{var sizeConfig=getSizeConfig();var dimension=sizeConfig.width;var contentPadding=(contentBox.padding||0)*2;var shadowSpread=(contentBox.shadowSpread||0)*4;var borderHeight=(contentBox.borderWidth||0)*2;var boxBorderHeight=(contentBox.boxBorderWidth||0)*4;var closeButtonTop=(parseInt(closeBehavior.top)||0)*2;var closeButtonBottom=(parseInt(closeBehavior.bottom)||0)*2;if(dimension.indexOf('fullScreen')!='-1'){}
+else{maxHeight-=contentPadding;if(shadowSpread){maxHeight-=shadowSpread;maxHeight-=35;}
 maxHeight-=borderHeight;maxHeight-=boxBorderHeight;if(!closeBehavior.buttonInside){if(closeButtonBottom){maxHeight-=Math.abs(closeButtonBottom);}
-if(closeButtonTop){maxHeight-=Math.abs(closeButtonTop);}}
+if(closeButtonTop){maxHeight-=Math.abs(closeButtonTop);}}}
 if(maxHeight<0){return'30px';}
 return maxHeight+'px';}
 function positionPopup()

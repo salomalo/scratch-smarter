@@ -355,8 +355,6 @@
     function wprss_settings_page_display() {
         ?>
         <div class="wrap">
-            <?php screen_icon( 'wprss-aggregator' ); ?>            
-        
             <h2><?php _e( 'WP RSS Aggregator Settings', WPRSS_TEXT_DOMAIN ); ?></h2>   
 
             <?php settings_errors(); ?> 
@@ -576,7 +574,7 @@
 		<input id="<?php echo $field['field_id'] ?>" name="wprss_settings_general[date_format]" type="text" value="<?php echo $date_format ?>" />
 		<?php echo wprss_settings_inline_help( $field['field_id'], $field['tooltip'] ) ?>
         <p>
-            <a href="http://codex.wordpress.org/Formatting_Date_and_Time">
+            <a href="https://codex.wordpress.org/Formatting_Date_and_Time">
                 <?php _e( 'PHP Date Format Reference', WPRSS_TEXT_DOMAIN ); ?>
             </a>
         </p>

@@ -2,6 +2,17 @@
 
 	use Aventura\Wprss\Core\Licensing\License\Status as License_Status;
 
+    /**
+     * Checks if the HS becaon is enabled or not.
+     *
+     * @since 4.12.1
+     *
+     * @return bool True if enabled, false if not.
+     */
+    function wprss_is_help_beacon_enabled() {
+        return (int) get_option('wprss_hs_beacon_enabled', 0) === 1;
+    }
+
 	/**
 	 * Build the Help page
 	 *
@@ -11,8 +22,6 @@
 	    ?>
 
 		<div class="wrap">
-			<?php screen_icon( 'wprss-aggregator' ); ?>
-
 			<h2><?php _e( 'Help & Support', WPRSS_TEXT_DOMAIN ); ?></h2>
 			<h3><?php _e( 'Documentation', WPRSS_TEXT_DOMAIN ) ?></h3>
 			<?php
@@ -24,7 +33,7 @@
 							WPRSS_TEXT_DOMAIN
 						)
 					),
-					'http://docs.wprssaggregator.com/'
+					'https://docs.wprssaggregator.com/'
 				);
 			?>
 			<h3><?php _e( 'Frequently Asked Questions (FAQ)', WPRSS_TEXT_DOMAIN ) ?></h3>
@@ -35,7 +44,7 @@
 							WPRSS_TEXT_DOMAIN
 						)
 					),
-					'http://docs.wprssaggregator.com/category/faqs/'
+					'https://docs.wprssaggregator.com/category/faqs/'
 				)
 			?>
 
@@ -46,10 +55,47 @@
 				wprss_free_help_display();
 			}
 			?>
+            <h3><?php _e( 'Built-in Help Beacon', WPRSS_TEXT_DOMAIN ) ?></h3>
+            <form method="POST">
+                <p>
+                    <?php _e('The help beacon is an interactive button that appears on the bottom-right section of WP RSS Aggregator admin pages.', WPRSS_TEXT_DOMAIN); ?>
+                    <?php _e('It provides access to our documentation and (if you have a valid license for any of our add-ons) you can also contact our support team directly.', WPRSS_TEXT_DOMAIN); ?>
+                </p>
+                <p>
+                    <?php _e('The beacon tracks what pages you were on before clicking it. This helps it provide relevant help results and also helps the support team better understand the problem you are facing.', WPRSS_TEXT_DOMAIN); ?>
+                    <?php _e('The beacon only works on WP RSS Aggregator admin pages and does not track your mouse clicks and keyboard input.', WPRSS_TEXT_DOMAIN); ?>
+                </p>
+                <?php if (wprss_is_help_beacon_enabled()): ?>
+                    <p><?php _e('The support beacon is currently <b>enabled</b>.', WPRSS_TEXT_DOMAIN); ?></p>
+                    <button type="submit" name="wprss_hs_beacon_enabled" value="0" class="button button-secondary">
+                        <?php _e('Disable support beacon', WPRSS_TEXT_DOMAIN); ?>
+                    </button>
+                <?php else: ?>
+                    <p><?php _e('By enabling the help beacon, you are consenting to this data collection.', WPRSS_TEXT_DOMAIN); ?></p>
+                    <button type="submit" name="wprss_hs_beacon_enabled" value="1" class="button button-primary">
+                        <?php _e('Enable support beacon', WPRSS_TEXT_DOMAIN); ?>
+                    </button>
+                <?php endif; ?>
+
+                <?php wp_nonce_field('wprss_hs_beacon_enabled'); ?>
+            </form>
 		</div>
 	<?php
 	}
 
+	// Handler to update the HS beacon enabled option
+	add_action('init', function () {
+	    if (!is_admin()) {
+	        return;
+        }
+
+	    $enabled = filter_input(INPUT_POST, 'wprss_hs_beacon_enabled', FILTER_VALIDATE_INT);
+
+	    if ($enabled !== null) {
+            check_admin_referer('wprss_hs_beacon_enabled');
+            update_option('wprss_hs_beacon_enabled', $enabled);
+        }
+    });
 
     /**
      * Print the premium help section, linking to the contact us page on the site.
@@ -168,7 +214,7 @@
 			wpautop(
 				__( 'Users of the free version of WP RSS Aggregator can ask questions on the <a href="%s">support forum</a>.', WPRSS_TEXT_DOMAIN )
 			),
-			'http://wordpress.org/support/plugin/wp-rss-aggregator'
+			'https://wordpress.org/support/plugin/wp-rss-aggregator'
 		);
 	}
 
@@ -202,7 +248,7 @@
 		// doesn't mean the user received the email, it "only means that the method used
 		// was able to  process the request without any errors."
 		if ($sent === FALSE) {
-			$ret['error'] = sprintf(__('There was an error sending the form. Please use the <a href="%s" target="_blank">contact form on our site.</a>'), esc_attr('http://www.wprssaggregator.com/contact/'));
+			$ret['error'] = sprintf(__('There was an error sending the form. Please use the <a href="%s" target="_blank">contact form on our site.</a>'), esc_attr('https://www.wprssaggregator.com/contact/'));
 			$ret['message'] = $message;
 		} else {
 			$ret['status'] = 'OK';

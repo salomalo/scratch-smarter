@@ -77,6 +77,7 @@
 								{
 									for( var j = 0, k = me.choicesDep[ i ].length; j < k; j++)
 									{
+										if(!/fieldname/i.test(me.choicesDep[i][j])) continue;
 										var dep = me.choicesDep[i][j]+form_identifier;
 										if( isHidden || $.inArray(i,selected) == -1)
 										{

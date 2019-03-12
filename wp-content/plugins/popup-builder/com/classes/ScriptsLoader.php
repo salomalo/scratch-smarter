@@ -102,6 +102,7 @@ class ScriptsLoader
 			$events = json_encode($events);
 
 			$popupOptions = $this->getEncodedOptionsFromPopup($popup);
+			$popupOptions = apply_filters('sgpbLoadToFooterOptions', $popupOptions);
 
 			add_action('wp_footer', function() use ($popupId, $events, $popupOptions, $popupContent) {
 				$footerPopupContent = '<div style="position:fixed;bottom: -999999999999999999999px;">

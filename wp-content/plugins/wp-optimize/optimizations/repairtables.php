@@ -31,7 +31,7 @@ class WP_Optimization_repairtables extends WP_Optimization {
 		if (isset($this->data['optimization_table']) && '' != $this->data['optimization_table']) {
 			$table = $this->optimizer->get_table($this->data['optimization_table']);
 
-			$result = $this->repair_table($table);
+			$result = (false === $table) ? false : $this->repair_table($table);
 
 			if ($result) {
 				$wp_optimize = WP_Optimize();
@@ -88,9 +88,9 @@ class WP_Optimization_repairtables extends WP_Optimization {
 
 		if (false == $table_obj->is_needing_repair) return true;
 
-		$this->logger->info('REPAIR TABLE '.$table_obj->Name);
+		$this->logger->info('REPAIR TABLE `'.$table_obj->Name. '`');
 
-		$results = $wpdb->get_results('REPAIR TABLE '.$table_obj->Name);
+		$results = $wpdb->get_results('REPAIR TABLE `'.$table_obj->Name . '`');
 
 		if (!empty($results)) {
 			foreach ($results as $row) {

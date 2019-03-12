@@ -491,7 +491,7 @@ $cpcff_texts_array = CPCFF_AUXILIARY::array_replace_recursive(
      <table class="form-table">
         <tr valign="top">
         <th scope="row"><?php _e( '"From" email', 'calculated-fields-form' ); ?></th>
-        <td><input type="text" name="fp_from_email" size="40" value="<?php echo esc_attr($form_obj->get_option('fp_from_email', CP_CALCULATEDFIELDSF_DEFAULT_fp_from_email)); ?>" /></td>
+        <td><input type="text" name="fp_from_email" size="40" value="<?php echo esc_attr($form_obj->get_option('fp_from_email', CP_CALCULATEDFIELDSF_DEFAULT_fp_from_email)); ?>" /><br><i>Ex: admin@<?php echo str_replace('www.','',$_SERVER["HTTP_HOST"]); ?></i></td>
         </tr>
         <tr valign="top">
         <th scope="row"><?php _e( 'Destination emails (comma separated)', 'calculated-fields-form' ); ?></th>

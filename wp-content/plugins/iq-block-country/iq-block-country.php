@@ -2,7 +2,7 @@
 /*
 Plugin Name: iQ Block Country
 Plugin URI: https://www.webence.nl/plugins/iq-block-country-the-wordpress-plugin-that-blocks-countries-for-you/
-Version: 1.2.1
+Version: 1.2.2
 Author: Pascal
 Author URI: https://www.webence.nl/
 Description: Block visitors from visiting your website and backend website based on which country their IP address is from. The Maxmind GeoIP lite database is used for looking up from which country an ip address is from.
@@ -13,7 +13,7 @@ Domain Path: /lang
 
 /* This script uses GeoLite Country from MaxMind (http://www.maxmind.com) which is available under terms of GPL/LGPL */
 
-/*  Copyright 2010-2018  Pascal  (email: pascal@webence.nl)
+/*  Copyright 2010-2019  Pascal  (email: pascal@webence.nl)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -65,7 +65,7 @@ function iqblockcountry_buffer() {
  * Attempt on output buffering to protect against headers already send mistakes 
  */
 function iqblockcountry_buffer_flush() {
-	ob_end_flush();
+    if (ob_get_contents()) ob_end_flush();
 } 
 
 
@@ -126,7 +126,7 @@ function iqblockcountry_upgrade()
     $dbversion = get_option( 'blockcountry_version' );
     update_option('blockcountry_version',VERSION);
 
-    if ($dbversion != "" && version_compare($dbversion, "1.1.51", '<') )
+    if ($dbversion != "" && version_compare($dbversion, "1.2.2", '<') )
     {
         iqblockcountry_find_geoip_location();
     }
@@ -208,6 +208,8 @@ define("GEOIP2DBFILE",$upload_dir['basedir'] . "/GeoLite2-Country.mmdb");
 define("TRACKINGURL","https://tracking.webence.nl/iq-block-country-tracking.php");
 define("BANLISTRETRIEVEURL","https://eu.adminblock.webence.nl/iq-block-country-retrieve.php");
 define("GEOIPAPIURL","https://eu.geoip.webence.nl/geoipapi.php");
+define("GEOIPAPIURLEU2","https://eu2.geoip.webence.nl/geoipapi.php");
+define("GEOIPAPIURLEU3","https://eu3.geoip.webence.nl/geoipapi.php");
 define("GEOIPAPIURLUS","https://us.geoip.webence.nl/geoipapi.php");
 define("GEOIPAPIURLUS2","https://us2.geoip.webence.nl/geoipapi.php");
 define("GEOIPAPIURLUS3","https://us3.geoip.webence.nl/geoipapi.php");
@@ -215,7 +217,7 @@ define("GEOIPAPIURLASIA","https://asia.geoip.webence.nl/geoipapi.php");
 define("GEOIPAPICHECKURL","https://eu.geoip.webence.nl/geoipapi-keycheck.php");
 define("ADMINAPICHECKURL","https://tracking.webence.nl/adminapi-keycheck.php");
 define("IPLOOKUPURL",'https://geoip.webence.nl/iplookup/iplookup.php');
-define("VERSION","1.2.1");
+define("VERSION","1.2.2");
 define("DBVERSION","122");
 define("PLUGINPATH",plugin_dir_path( __FILE__ )); 
 

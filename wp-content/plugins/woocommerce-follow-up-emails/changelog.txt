@@ -1,5 +1,10 @@
 *** WooCommerce Follow-Up Emails ***
 
+2019-03-04 - version 4.8.7
+* Fix:    Email column undefined error when subscription is inactive.
+* Fix:    Single emails lost duplicate functionality.
+* Fix:    Prevent rescheduling of emails for same subscriptions.
+
 2019-01-29 - version 4.8.6
 * Fix:    Twitter doesn't accept URL params in connection callback.
 

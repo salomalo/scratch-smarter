@@ -3,6 +3,7 @@ namespace sgpb;
 use \DateTime;
 use \DateTimeZone;
 use \SgpbDataConfig;
+use \Elementor;
 
 class AdminHelper
 {
@@ -35,7 +36,7 @@ class AdminHelper
 			'popupConditionsSection'
 		);
 
- 		return $extensionOptions;
+		return $extensionOptions;
 	}
 
 	public static function getPopupTypesPageURL()
@@ -265,69 +266,12 @@ class AdminHelper
 		echo $str;
 	}
 
-	// countdown popup (number) styles
-	public static function renderCountdownStyles($popupId = 0, $countdownBgColor, $countdownTextColor)
-	{
-		return  "<style type='text/css'>
-			.sgpb-counts-content.sgpb-flipclock-js-$popupId.flip-clock-wrapper ul li a div div.inn {
-				background-color: $countdownBgColor;
-				color: $countdownTextColor;
-			}
-			.sgpb-countdown-wrapper {
-				width: 446px;
-				height: 130px;
-				padding-top: 22px;
-				box-sizing: border-box;
-				margin: 0 auto;
-			}
-			.sgpb-counts-content {
-				display: inline-block;
-			}
-			.sgpb-counts-content > ul.flip {
-				width: 40px;
-				margin: 4px;
-			}
-		</style>";
-	}
-
-	// countdown popup scripts and params
-	public static function renderCountdownScript($id, $seconds, $type, $language, $timezone, $autoclose)
-	{
-		$params = array(
-			'id'        => $id,
-			'seconds'   => $seconds,
-			'type'      => $type,
-			'language'  => $language,
-			'timezone'  => $timezone,
-			'autoclose' => $autoclose
-		);
-
-		return $params;
-	}
-
 	public static function getDateObjFromDate($dueDate, $timezone = 'America/Los_Angeles', $format = 'Y-m-d H:i:s')
 	{
 		$dateObj = new DateTime($dueDate, new DateTimeZone($timezone));
 		$dateObj->format($format);
 
 		return $dateObj;
-	}
-
-	// convert date to seconds
-	public static function dateToSeconds($dueDate, $timezone)
-	{
-		if (empty($timezone)) {
-			return '';
-		}
-
-		$dateObj = self::getDateObjFromDate('now', $timezone);
-		$timeNow = @strtotime($dateObj);
-		$seconds = @strtotime($dueDate)-$timeNow;
-		if ($seconds < 0) {
-			$seconds = 0;
-		}
-
-		return $seconds;
 	}
 
 	/**
@@ -368,33 +312,6 @@ class AdminHelper
 		}
 
 		return $size;
-	}
-
-	/**
-	 * Get site protocol
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return string $protocol
-	 *
-	 */
-	public static function getSiteProtocol()
-	{
-		$protocol = 'http';
-
-		if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') {
-			$protocol = 'https';
-		}
-
-		return $protocol;
-	}
-
-	public static function getCurrentUrl()
-	{
-		$protocol = self::getSiteProtocol();
-		$currentUrl = $protocol."://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-
-		return $currentUrl;
 	}
 
 	public static function deleteSubscriptionPopupSubscribers($popupId)
@@ -687,20 +604,6 @@ class AdminHelper
 		return $role;
 	}
 
-	public static function isAppleMobileDevice()
-	{
-		$isIOS = false;
-
-		$useragent = @$_SERVER['HTTP_USER_AGENT'];
-		preg_match('/iPhone|Android|iPad|iPod|webOS/', $useragent, $matches);
-		$os = current($matches);
-		if ($os == 'iPad' || $os == 'iPhone' || $os == 'iPod') {
-			$isIOS = true;
-		}
-
-		return $isIOS;
-	}
-
 	public static function hexToRgba($color, $opacity = false)
 	{
 		$default = 'rgb(0,0,0)';
@@ -857,21 +760,6 @@ class AdminHelper
 			}
 		}
 	}
-
-	// proStartSilver
-	public static function setPushToBottom($element = '')
-	{
-		$style = '<style type="text/css">';
-		$style .= "$element";
-		$style .= '{position: absolute !important;';
-		$style .= 'left: 0 !important;';
-		$style .= 'right: 0 !important;';
-		$style .= 'bottom: 2px !important;}';
-		$style .= '</style>';
-
-		return $style;
-	}
-	// proEndSilver
 
 	public static function getCurrentPopupType()
 	{
@@ -1196,16 +1084,16 @@ class AdminHelper
 		if (!$periodNextTime) {
 			$usageDays = self::getPopupMainTableCreationDate();
 			update_option('SGPBUsageDays', $usageDays);
-			if (!defined('SG_REVIEW_POPUP_PERIOD')) {
-				define('SG_REVIEW_POPUP_PERIOD', '500');
+			if (!defined('SGPB_REVIEW_POPUP_PERIOD')) {
+				define('SGPB_REVIEW_POPUP_PERIOD', '500');
 			}
 			// For old users
-			if (defined('SG_REVIEW_POPUP_PERIOD') && $usageDays > SG_REVIEW_POPUP_PERIOD && !$dontShowAgain) {
+			if (defined('SGPB_REVIEW_POPUP_PERIOD') && $usageDays > SGPB_REVIEW_POPUP_PERIOD && !$dontShowAgain) {
 				return $shouldOpen;
 			}
-			$remainingDays = SG_REVIEW_POPUP_PERIOD - $usageDays;
+			$remainingDays = SGPB_REVIEW_POPUP_PERIOD - $usageDays;
 
-			$popupTimeZone = @SgPopupGetData::getPopupTimeZone();
+			$popupTimeZone = \ConfigDataHelper::getDefaultTimezone();
 			$timeDate = new DateTime('now', new DateTimeZone($popupTimeZone));
 			$timeDate->modify('+'.$remainingDays.' day');
 
@@ -1390,21 +1278,6 @@ class AdminHelper
 		return $bannerText;
 	}
 
-	public static function findSubscribersByEmail($subscriberEmail = '', $list = 0)
-	{
-		global $wpdb;
-		$subscriber = array();
-
-		$prepareSql = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.SGPB_SUBSCRIBERS_TABLE_NAME.' WHERE email = %s AND subscriptionType = %d ', $subscriberEmail, $list);
-		$subscriber = $wpdb->get_row($prepareSql, ARRAY_A);
-		if (!$list) {
-			$prepareSql = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.SGPB_SUBSCRIBERS_TABLE_NAME.' WHERE email = %s ', $subscriberEmail);
-			$subscriber = $wpdb->get_results($prepareSql, ARRAY_A);
-		}
-
-		return $subscriber;
-	}
-
 	public static function getGutenbergPopupsIdAndTitle($excludesPopups = array())
 	{
 		$allPopups = SGPopup::getAllPopups();
@@ -1455,5 +1328,144 @@ class AdminHelper
 		);
 
 		return $data;
+	}
+
+	public static function checkEditorByPopupId($popupId)
+	{
+		$popupContent = '';
+		if (class_exists('\Elementor\Plugin')) {
+			$elementorContent = get_post_meta($popupId, '_elementor_edit_mode', true);
+			if (!empty($elementorContent) && $elementorContent == 'builder') {
+				$popupContent = Elementor\Plugin::instance()->frontend->get_builder_content_for_display($popupId);
+			}
+		}
+
+		return $popupContent;
+	}
+
+	// countdown popup
+	public static function renderCountdownStyles($popupId = 0, $countdownBgColor, $countdownTextColor)
+	{
+		return  "<style type='text/css'>
+			.sgpb-counts-content.sgpb-flipclock-js-$popupId.flip-clock-wrapper ul li a div div.inn {
+				background-color: $countdownBgColor;
+				color: $countdownTextColor;
+			}
+			.sgpb-countdown-wrapper {
+				width: 446px;
+				height: 130px;
+				padding-top: 22px;
+				box-sizing: border-box;
+				margin: 0 auto;
+			}
+			.sgpb-counts-content {
+				display: inline-block;
+			}
+			.sgpb-counts-content > ul.flip {
+				width: 40px;
+				margin: 4px;
+			}
+		</style>";
+	}
+
+	// countdown popup scripts and params
+	public static function renderCountdownScript($id, $seconds, $type, $language, $timezone, $autoclose)
+	{
+		$params = array(
+			'id'        => $id,
+			'seconds'   => $seconds,
+			'type'      => $type,
+			'language'  => $language,
+			'timezone'  => $timezone,
+			'autoclose' => $autoclose
+		);
+
+		return $params;
+	}
+
+	// countdown popup, convert date to seconds
+	public static function dateToSeconds($dueDate, $timezone)
+	{
+		if (empty($timezone)) {
+			return '';
+		}
+
+		$dateObj = self::getDateObjFromDate('now', $timezone);
+		$timeNow = @strtotime($dateObj);
+		$seconds = @strtotime($dueDate)-$timeNow;
+		if ($seconds < 0) {
+			$seconds = 0;
+		}
+
+		return $seconds;
+	}
+
+	/**
+	 * Get site protocol
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string $protocol
+	 *
+	 */
+	public static function getSiteProtocol()
+	{
+		$protocol = 'http';
+
+		if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') {
+			$protocol = 'https';
+		}
+
+		return $protocol;
+	}
+
+	public static function getCurrentUrl()
+	{
+		$protocol = self::getSiteProtocol();
+		$currentUrl = $protocol."://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+
+		return $currentUrl;
+	}
+
+	public static function isAppleMobileDevice()
+	{
+		$isIOS = false;
+
+		$useragent = @$_SERVER['HTTP_USER_AGENT'];
+		preg_match('/iPhone|Android|iPad|iPod|webOS/', $useragent, $matches);
+		$os = current($matches);
+		if ($os == 'iPad' || $os == 'iPhone' || $os == 'iPod') {
+			$isIOS = true;
+		}
+
+		return $isIOS;
+	}
+
+	public static function setPushToBottom($element = '')
+	{
+		$style = '<style type="text/css">';
+		$style .= "$element";
+		$style .= '{position: absolute !important;';
+		$style .= 'left: 0 !important;';
+		$style .= 'right: 0 !important;';
+		$style .= 'bottom: 2px !important;}';
+		$style .= '</style>';
+
+		return $style;
+	}
+
+	public static function findSubscribersByEmail($subscriberEmail = '', $list = 0)
+	{
+		global $wpdb;
+		$subscriber = array();
+
+		$prepareSql = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.SGPB_SUBSCRIBERS_TABLE_NAME.' WHERE email = %s AND subscriptionType = %d ', $subscriberEmail, $list);
+		$subscriber = $wpdb->get_row($prepareSql, ARRAY_A);
+		if (!$list) {
+			$prepareSql = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.SGPB_SUBSCRIBERS_TABLE_NAME.' WHERE email = %s ', $subscriberEmail);
+			$subscriber = $wpdb->get_results($prepareSql, ARRAY_A);
+		}
+
+		return $subscriber;
 	}
 }

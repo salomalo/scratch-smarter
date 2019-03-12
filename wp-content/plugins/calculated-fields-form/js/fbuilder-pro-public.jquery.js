@@ -568,7 +568,8 @@
 				for( var field_id in form_data )
 				{
 					item = form_obj.getItem( field_id+id );
-					if( typeof item[ 'setVal' ] != 'undefined' ) item.setVal( form_data[ field_id ] );
+					try{ if( typeof item[ 'setVal' ] != 'undefined' ) item.setVal( form_data[ field_id ] ); }
+					catch(err){}
 				}
 
 				$.fbuilder.showHideDep(

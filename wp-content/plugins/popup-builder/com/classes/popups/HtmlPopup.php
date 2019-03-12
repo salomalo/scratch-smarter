@@ -23,7 +23,6 @@ class HtmlPopup extends SGPopup
 	{
 		$htmlContent = '';
 		$popupContent = $this->getContent();
-
 		$htmlContent .= '<div class="sgpb-main-html-content-wrapper">';
 		$htmlContent .= $popupContent;
 		$htmlContent .= '</div>';

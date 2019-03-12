@@ -132,11 +132,13 @@ if(!function_exists('cpcff_init_constants'))
 		// User emails
 		if(!defined('CP_CALCULATEDFIELDSF_DEFAULT_fp_from_email'))
 		{
-			$user_id = get_current_user_id();
-			define(
-				'CP_CALCULATEDFIELDSF_DEFAULT_fp_from_email',
-				($user_id)?get_the_author_meta('user_email', get_current_user_id()):''
-			);
+			$user_email = get_the_author_meta('user_email', get_current_user_id());
+			$host = $_SERVER['HTTP_HOST'];
+			preg_match("/[^\.\/]+(\.[^\.\/]+)?$/", $host, $matches);
+			$domain = $matches[0];
+			$pos = strpos($user_email, $domain);
+			if ($pos === false) define('CP_CALCULATEDFIELDSF_DEFAULT_fp_from_email', 'admin@'.$domain );
+			else define('CP_CALCULATEDFIELDSF_DEFAULT_fp_from_email', $user_email );
 		}
 
 		if(!defined('CP_CALCULATEDFIELDSF_DEFAULT_fp_destination_emails'))

@@ -3,12 +3,13 @@
  * Plugin Name: WP SEO Structured Data Schema
  * Plugin URI: https://wpsemplugins.com/
  * Description: Comprehensive JSON-LD based Structured Data solution for WordPress for adding schema for organizations, businesses, blog posts, ratings & more.
- * Version: 2.5.1
+ * Version: 2.5.6
  * Author: WPSEMPlugins
  * Author URI: https://wpsemplugins.com/
- * License: A "Slug" license name e.g. GPL2
  * Text Domain:  wp-seo-structured-data-schema
  * Domain Path:  /languages
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  */
 if (!defined('ABSPATH')) {
     exit;
@@ -37,8 +38,7 @@ function KCSEO_uninstall()
     global $KcSeoWPSchema;
     $settings = get_option($KcSeoWPSchema->options['main_settings']);
     if (!empty($settings['delete-data'])) {
-        $schemas = new KcSeoSchemaModel;
-        $schemaFields = $schemas->schemaTypes();
+	    $schemaFields = KcSeoOptions::getSchemaTypes();
 
         $args = array(
             'post_type'      => array('page', 'post'),

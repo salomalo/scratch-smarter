@@ -75,6 +75,7 @@ SGPBBackend.prototype.sgInit = function()
 	this.openAnimationPreview();
 	this.closeAnimationPreview();
 	this.resetToDefaultValue();
+	this.editPopupSettingsForFullscreenMode();
 };
 
 SGPBBackend.prototype.resetToDefaultValue = function()
@@ -334,7 +335,9 @@ SGPBBackend.prototype.initRadioAccordions = function()
 	for (var radioButtonIndex in radioButtonsList) {
 
 		var radioButton = radioButtonsList[radioButtonIndex];
-
+		if (typeof radioButton != 'object') {
+			continue;
+		}
 		var that = this;
 		radioButton.each(function() {
 			that.buildRadioAccordionActions(jQuery(this));
@@ -1415,6 +1418,13 @@ SGPBBackend.makeContactAndSubscriptionFieldsRequired = function()
 
 SGPBBackend.prototype.makePopupTitleRequired = function()
 {
+	var editModeBtn = jQuery('#elementor-switch-mode-button');
+	if (editModeBtn.length) {
+		if (!SGPBBackend.getParamFromUrl('post')) {
+			editModeBtn.attr('disabled', 'disabled');
+			editModeBtn.after('<p class="sgpb-text-warning">'+SGPB_JS_LOCALIZATION.publishPopupBeforeElemntor+'</p>');
+		}
+	}
 	if (jQuery('#title').length) {
 		var postType = jQuery('#post_type');
 		if (postType.length && postType.val() == 'popupbuilder') {
@@ -1536,6 +1546,25 @@ SGPBBackend.prototype.eventsAddButtonSpinner = function(element, showHide)
 		jQuery('.sg-rules-add-rule').removeClass('sgpb-events-spinner');
 		jQuery('.sg-rules-add-rule').text(' ' + SGPB_JS_LOCALIZATION.addButtonSpinner);
 	}
+};
+
+SGPBBackend.prototype.editPopupSettingsForFullscreenMode = function(popupId)
+{
+	var responsiveModeSelector = jQuery('.sgpb-responsive-mode-change-js');
+	var that = this;
+	var closeButtonCheckbox = jQuery('#close-button');
+
+	if (typeof responsiveModeSelector == 'undefined') {
+		return false;
+	}
+	responsiveModeSelector.change(function() {
+		var selectedMode = jQuery(this).val();
+		if (selectedMode == 'fullScreen') {
+			if (closeButtonCheckbox.is(':checked')) {
+				closeButtonCheckbox.click();
+			}
+		}
+	});
 };
 
 SGPBBackend.hexToRgba = function(hex, opacity)

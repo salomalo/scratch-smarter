@@ -191,6 +191,8 @@ class Installer
 
 		$terms = $wpdb->get_results($customTermsQuery);
 
+		$terms = apply_filters('sgpbDeleteTerms', $terms);
+
 		foreach ($terms as $term) {
 			if (empty($term)) {
 				continue;
@@ -224,6 +226,7 @@ class Installer
 				)
 			)
 		);
+		$popups = apply_filters('sgpbDeletePopups', $popups);
 
 		foreach ($popups as $popup) {
 			if (empty($popup)) {
@@ -318,6 +321,7 @@ class Installer
 					'boxLabel' => __('Popup Builder License', SG_POPUP_TEXT_DOMAIN)
 				)
 			);
+			$options = apply_filters('sgpbRegisterOptions', $options);
 		}
 
 		@SgpbPopupExtensionRegister::register($pluginName, $classPath, $className, $options);

@@ -165,7 +165,7 @@ class SubscriptionPopup extends SGPopup
 	private function getFieldValue($optionName)
 	{
 		$optionValue = '';
-		$postData = $this->getData();
+		$postData = $this->getPostData();
 
 		if (!empty($postData[$optionName])) {
 			return $postData[$optionName];
@@ -193,7 +193,6 @@ class SubscriptionPopup extends SGPopup
 		$formData = array();
 		$inputStyles = array();
 		$submitStyles = array();
-		$postData = $this->getData();
 		$emailPlaceholder = $this->getFieldValue('sgpb-subs-email-placeholder');
 		if ($this->getFieldValue('sgpb-subs-text-width'))  {
 			$inputWidth = $this->getFieldValue('sgpb-subs-text-width');

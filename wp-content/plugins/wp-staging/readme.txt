@@ -8,8 +8,8 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: staging, duplication, cloning, clone, migration, sandbox, test site, testing, backup, post, admin, administration, duplicate posts
 Requires at least: 3.6+
-Tested up to: 5.0
-Stable tag: 2.4.9
+Tested up to: 5.1
+Stable tag: 2.5.1
 Requires PHP: 5.3
 
 A duplicator plugin! Clone, duplicate and migrate live sites to independent staging and development sites that are available only to administrators.
@@ -146,6 +146,20 @@ https://wp-staging.com
 
 == Changelog ==
 
+= 2.5.1 =
+* Fix: WP Staging > Tools > System Info does not open 
+* New: Open system info log file directly via wp staging > tools
+
+= 2.5.0 =
+* Fix: Do not exclude db.php if it is not located in the wp-content folder
+* Fix: Select All button for db tables not working properly
+* New: Add Filter to exclude certain tables from search & replace operation
+* New: Show PHP user in system info
+* New: Check if there is already one process running before executing the cloning process
+* New: Support up to WordPress 5.1
+
+
+
 = 2.4.9 =
 * New: Add new db table selection manager
 * Fix: Better warning notices before updating a staging site
@@ -217,23 +231,17 @@ https://wp-staging.com
 * Fix: Selected folders are not excluded under Windows IIS server
 * Fix: Windows IIS server compatibilility issues resolved
 
-= 2.3.9 =
-* New: Support for wp-config.php located in one level up of the root folder for multisites
-* New: Allow exclusion of custom options from wp_options from beeing pushed
-* New: Make sure Optimizer is installed and activated
-* New: Show date of site creation/update in list of staging sites
-* Tweak: Better looking UI elements
-* Fix: Requirements Check not working as intended
-* Fix: Filesize() failed if file to copy is not a regular file
-* Fix: remove ? parameter from staging site
-
 
 Complete changelog: [https://wp-staging.com/wp-staging-changelog](https://wp-staging.com/wp-staging-changelog)
 
 == Upgrade Notice ==
 
-= 2.4.9 =
-* Fix: Security, prevent downloading wp staging log files by third party users from uploads folder
-* New: Compatible up to WordPress 5.0.3 Gutenberg
+= 2.5.0 =
+* Fix: Do not exclude db.php if it is not located in the wp-content folder
+* Fix: Select All button for db tables not working properly
+* New: Add Filter to exclude certain tables from search & replace operation
+* New: Show PHP user in system info
+* New: Check if there is already one process running before executing the cloning process
+* New: Support up to WordPress 5.1
 
 

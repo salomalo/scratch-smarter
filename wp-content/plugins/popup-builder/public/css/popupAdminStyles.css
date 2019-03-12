@@ -2050,6 +2050,11 @@ input:checked + .sgpb-slider:before {
 	}
 }
 
+@media (max-width: 1224px) {
+	.sgpb-event-row .col-sm-3 {
+		width: 100% !important;
+	}
+}
 
 @media (max-width: 560px) {
 	.sgpb-rate-us-banner-2 {
@@ -2130,4 +2135,12 @@ input:checked + .sgpb-slider:before {
 .subscribers-wrapper .tablenav.top,
 .subscribers-wrapper .tablenav.bottom {
     margin-left: -8px !important;
+}
+
+.mce-widget .dashicons-menu-icon-sgpb:before {
+	padding-left: 0px !important;
+}
+
+.sgpb-text-warning {
+	color: #007bff !important;
 }

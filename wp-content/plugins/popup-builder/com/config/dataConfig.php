@@ -69,8 +69,8 @@ class SgpbDataConfig
 		$targetDataParams['post_selected'] = apply_filters('sgPopupTargetPostData', array());
 		$targetDataParams['page_selected'] = apply_filters('sgPopupTargetPageSelected', array());
 		$targetDataParams['post_type'] = apply_filters('sgPopupTargetPostType', ConfigDataHelper::getAllCustomPostTypes());
-		$targetDataParams['post_category'] = apply_filters('sgPopupTargetPostType', ConfigDataHelper::getPostsAllCategories());
-		$targetDataParams['page_type'] = apply_filters('sgPopupTargetPostType', ConfigDataHelper::getPageTypes());
+		$targetDataParams['post_category'] = apply_filters('sgPopupTargetPostCategory', ConfigDataHelper::getPostsAllCategories());
+		$targetDataParams['page_type'] = apply_filters('sgPopupTargetPageType', ConfigDataHelper::getPageTypes());
 		$targetDataParams['page_template'] = apply_filters('sgPopupPageTemplates', array());
 		$targetDataParams['post_tags_ids'] = apply_filters('sgPopupTags', ConfigDataHelper::getAllTags());
 		$targetDataParams['everywhere'] = null;
@@ -206,7 +206,7 @@ class SgpbDataConfig
 		$popupTarget['columnTypes'] = apply_filters('sgPopupTargetTypes', $targetElementTypes);
 		$popupTarget['paramsData'] = apply_filters('sgPopupTargetData', $targetDataParams);
 		$popupTarget['initialData'] = apply_filters('sgPopupTargetInitialData', $targetInitialData);
-		$popupTarget['operators'] = apply_filters('sgPopupTargetOperators', $targetOperators);
+		$popupTarget['operators'] = apply_filters('sgpbPopupEventsOperators', $targetOperators);
 		$popupTarget['attrs'] = apply_filters('sgPopupTargetAttrs', $targetAttrs);
 
 		$SGPB_DATA_CONFIG_ARRAY['target'] = $popupTarget;
@@ -432,8 +432,8 @@ class SgpbDataConfig
 			array('param' => 'select_role', 'operator' => '==', 'value' => '')
 		);
 
-		$targetDataParams['param'] = apply_filters('sgPopupTargetParams', $targetParams);
-		$targetDataParams['operator'] = apply_filters('sgPopupTargetOperator', $targetDataOperator);
+		$targetDataParams['param'] = apply_filters('sgpbPopupSpecialEventsParams', $targetParams);
+		$targetDataParams['operator'] = apply_filters('sgpbPopupConditionsOperator', $targetDataOperator);
 
 		$targetDataParams['select_role'] = null;
 
@@ -747,8 +747,8 @@ class SgpbDataConfig
 		$config['paramsData'] = apply_filters('sgPopupSpecialEventsParams', $params);
 		$config['initialData'] = apply_filters('sgPopupSpecialEventsInitialData', $initialData);
 		$config['attrs'] = apply_filters('sgPopupSpecialEventsAttrs', $attrs);
-		$config['operators'] = apply_filters('sgPopupSpecialEventsOperators', array());
-		$config['specialDefaultOperator'] = apply_filters('sgPopupSpecialEventsOperators', ' ');
+		$config['operators'] = apply_filters('sgpbPopupSpecialEventsOperators', array());
+		$config['specialDefaultOperator'] = apply_filters('sgpbPopupSpecialEventsDefaultOperators', ' ');
 
 		return $config;
 	}
@@ -832,38 +832,6 @@ class SgpbDataConfig
 		$options[] = array('name' => 'sgpb-button-image-width', 'type' => 'text', 'defaultValue' => 21);
 		$options[] = array('name' => 'sgpb-button-image-height', 'type' => 'text', 'defaultValue' => 21);
 		$options[] = array('name' => 'sgpb-is-active', 'type' => 'checkbox', 'defaultValue' => 'on');
-		// proStartSilver
-		$options[] = array('name' => 'sgpb-restriction-cookie-level', 'type' => 'checkbox', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-restriction-yes-btn-radius', 'type' => 'number', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-restriction-no-btn-radius', 'type' => 'number', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-restriction-yes-btn-radius-type', 'type' => 'text', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-restriction-no-btn-radius-type', 'type' => 'text', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-restriction-yes-btn-bg-color', 'type' => 'text', 'defaultValue' => '#222222');
-		$options[] = array('name' => 'sgpb-restriction-no-btn-bg-color', 'type' => 'text', 'defaultValue' => '#222222');
-		$options[] = array('name' => 'sgpb-restriction-yes-btn-text-color', 'type' => 'text', 'defaultValue' => '#ffffff');
-		$options[] = array('name' => 'sgpb-restriction-yes-btn-border-color', 'type' => 'text', 'defaultValue' => '#222222');
-		$options[] = array('name' => 'sgpb-restriction-yes-btn-border-width', 'type' => 'number', 'defaultValue' => 2);
-		$options[] = array('name' => 'sgpb-restriction-no-btn-border-color', 'type' => 'text', 'defaultValue' => '#222222');
-		$options[] = array('name' => 'sgpb-restriction-no-btn-border-width', 'type' => 'number', 'defaultValue' => 2);
-		$options[] = array('name' => 'sgpb-restriction-no-btn-text-color', 'type' => 'text', 'defaultValue' => '#ffffff');
-		$options[] = array('name' => 'sgpb-restriction-yes-expiration-time', 'type' => 'number', 'defaultValue' => 365);
-		$options[] = array('name' => 'sgpb-restriction-save-choice', 'type' => 'checkbox', 'defaultValue' => 'on');
-		$options[] = array('name' => 'sgpb-restriction-yes-btn', 'type' => 'text', 'defaultValue' => __('Yes', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-restriction-to-bottom', 'type' => 'checkbox', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-restriction-no-btn', 'type' => 'text', 'defaultValue' => __('No', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-countdown-show-on-top', 'type' => 'checkbox', 'defaultValue' => 'on');
-		$options[] = array('name' => 'sgpb-countdown-close-timeout', 'type' => 'checkbox', 'defaultValue' => 'on');
-		$options[] = array('name' => 'sgpb-countdown-repetitive-timer', 'type' => 'checkbox', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-counter-background-color', 'type' => 'text', 'defaultValue' => '#333333');
-		$options[] = array('name' => 'sgpb-counter-text-color', 'type' => 'text', 'defaultValue' => '#cccccc');
-		$options[] = array('name' => 'sgpb-countdown-timezone', 'type' => 'text', 'defaultValue' => ConfigDataHelper::getDefaultTimezone());
-		$options[] = array('name' => 'sgpb-countdown-due-date', 'type' => 'text', 'defaultValue' => ConfigDataHelper::getCurrentDateTime());
-		$options[] = array('name' => 'sgpb-countdown-date-format', 'type' => 'text', 'defaultValue' => 'date');
-		$options[] = array('name' => 'sgpb-countdown-repetitive-seconds', 'type' => 'text', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-countdown-date-days', 'type' => 'text', 'defaultValue' => '1');
-		$options[] = array('name' => 'sgpb-countdown-date-hours', 'type' => 'number', 'defaultValue' => '0');
-		$options[] = array('name' => 'sgpb-countdown-date-minutes', 'type' => 'number', 'defaultValue' => '0');
-		// proEndSilver
 		$options[] = array('name' => 'sgpb-subs-form-bg-color', 'type' => 'text', 'defaultValue' => '#FFFFFF');
 		$options[] = array('name' => 'sgpb-subs-form-bg-opacity', 'type' => 'text', 'defaultValue' => 0.8);
 		$options[] = array('name' => 'sgpb-subs-form-padding', 'type' => 'number', 'defaultValue' => 2);
@@ -897,78 +865,10 @@ class SgpbDataConfig
 		$options[] = array('name' => 'sgpb-subs-gdpr-status', 'type' => 'checkbox', 'defaultValue' =>  '');
 		$options[] = array('name' => 'sgpb-subs-gdpr-label', 'type' => 'text', 'defaultValue' =>  __('Accept Terms', SG_POPUP_TEXT_DOMAIN));
 		$options[] = array('name' => 'sgpb-subs-gdpr-text', 'type' => 'text', 'defaultValue' =>  __(get_bloginfo().' will use the information you provide on this form to be in touch with you and to provide updates and marketing.', SG_POPUP_TEXT_DOMAIN));
-		// proStartSilver
-		$options[] = array('name' => 'sgpb-contact-form-bg-color', 'type' => 'text', 'defaultValue' => '#FFFFFF');
-		$options[] = array('name' => 'sgpb-contact-form-bg-opacity', 'type' => 'text', 'defaultValue' => 0.8);
-		$options[] = array('name' => 'sgpb-contact-form-padding', 'type' => 'number', 'defaultValue' => 2);
-		$options[] = array('name' => 'sgpb-contact-show-form-to-top', 'type' => 'checkbox', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-contact-field-name', 'type' => 'checkbox', 'defaultValue' => 'on');
-		$options[] = array('name' => 'sgpb-contact-name-placeholder', 'type' => 'text', 'defaultValue' => __('Name *', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-contact-name-required', 'type' => 'checkbox', 'defaultValue' => 'on');
-		$options[] = array('name' => 'sgpb-contact-field-subject', 'type' => 'checkbox', 'defaultValue' => 'on');
-		$options[] = array('name' => 'sgpb-contact-subject-placeholder', 'type' => 'text', 'defaultValue' => __('Subject *', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-contact-subject-required', 'type' => 'checkbox', 'defaultValue' => 'on');
-		$options[] = array('name' => 'sgpb-contact-email-placeholder', 'type' => 'text', 'defaultValue' => __('E-mail *', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-contact-message-placeholder', 'type' => 'text', 'defaultValue' => __('Message *', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-contact-receiver-email', 'type' => 'text', 'defaultValue' => get_option('admin_email'));
-		$options[] = array('name' => 'sgpb-contact-error-message', 'type' => 'text', 'defaultValue' => __('Unable to send.', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-contact-required-message', 'type' => 'text', 'defaultValue' => __('This field is required.', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-contact-invalid-email-message', 'type' => 'text', 'defaultValue' => __('Please enter a valid email.', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-contact-inputs-width', 'type' => 'text', 'defaultValue' => '300px');
-		$options[] = array('name' => 'sgpb-contact-inputs-height', 'type' => 'text', 'defaultValue' => '40px');
-		$options[] = array('name' => 'sgpb-contact-inputs-border-width', 'type' => 'text', 'defaultValue' => '2px');
-		$options[] = array('name' => 'sgpb-contact-inputs-bg-color', 'type' => 'text', 'defaultValue' => '#ffffff');
-		$options[] = array('name' => 'sgpb-contact-inputs-border-color', 'type' => 'text', 'defaultValue' => '#CCCCCC');
-		$options[] = array('name' => 'sgpb-contact-inputs-text-color', 'type' => 'text', 'defaultValue' => '#000000');
-		$options[] = array('name' => 'sgpb-contact-inputs-placeholder-color', 'type' => 'text', 'defaultValue' => '#CCCCCC');
-		$options[] = array('name' => 'sgpb-contact-message-width', 'type' => 'text', 'defaultValue' => '300px');
-		$options[] = array('name' => 'sgpb-contact-message-height', 'type' => 'text', 'defaultValue' => '50px');
-		$options[] = array('name' => 'sgpb-contact-message-resize', 'type' => 'text', 'defaultValue' => 'both');
-		$options[] = array('name' => 'sgpb-contact-message-border-width', 'type' => 'text', 'defaultValue' => '2px');
-		$options[] = array('name' => 'sgpb-contact-message-border-color', 'type' => 'text', 'defaultValue' => '#CCCCCC');
-		$options[] = array('name' => 'sgpb-contact-submit-width', 'type' => 'text', 'defaultValue' => '300px');
-		$options[] = array('name' => 'sgpb-contact-submit-height', 'type' => 'text', 'defaultValue' => '40px');
-		$options[] = array('name' => 'sgpb-contact-submit-title', 'type' => 'text', 'defaultValue' => __('Submit', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-contact-submit-title-progress', 'type' => 'text', 'defaultValue' => __('Please wait...', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-contact-submit-bg-color', 'type' => 'text', 'defaultValue' => '#4CAF50');
-		$options[] = array('name' => 'sgpb-contact-submit-text-color', 'type' => 'text', 'defaultValue' => '#FFFFFF');
-		$options[] = array('name' => 'sgpb-contact-message-placeholder-color', 'type' => 'text', 'defaultValue' => '#CCCCCC');
-		$options[] = array('name' => 'sgpb-contact-message-text-color', 'type' => 'text', 'defaultValue' => '#000000');
-		$options[] = array('name' => 'sgpb-contact-message-bg-color', 'type' => 'text', 'defaultValue' => '#ffffff');
-		$options[] = array('name' => 'sgpb-contact-success-behavior', 'type' => 'text', 'defaultValue' => 'showMessage');
-		$options[] = array('name' => 'sgpb-contact-hide-for-contacted-users', 'type' => 'checkbox', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-contact-success-message', 'type' => 'text', 'defaultValue' => __('Your message has been successfully sent', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-contact-success-redirect-URL', 'type' => 'text', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-contact-success-redirect-new-tab', 'type' => 'checkbox', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-contact-gdpr-status', 'type' => 'checkbox', 'defaultValue' =>  '');
-		$options[] = array('name' => 'sgpb-contact-gdpr-label', 'type' => 'text', 'defaultValue' =>  __('Accept Terms', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-contact-gdpr-text', 'type' => 'text', 'defaultValue' =>  __(get_bloginfo().' will use the information you provide on this form to be in touch with you and to provide updates and marketing.', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-social-share-url-type', 'type' => 'text', 'defaultValue' => 'shareUrl');
-		$options[] = array('name' => 'sgpb-social-share-url', 'type' => 'text', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-social-share-theme', 'type' => 'text', 'defaultValue' => 'classic');
-		$options[] = array('name' => 'sgpb-social-theme-size', 'type' => 'text', 'defaultValue' => 14);
-		$options[] = array('name' => 'sgpb-social-show-labels', 'type' => 'checkbox', 'defaultValue' => 'on');
-		$options[] = array('name' => 'sgpb-social-share-count', 'type' => 'text', 'defaultValue' => 'true');
-		$options[] = array('name' => 'sgpb-social-round-buttons', 'type' => 'checkbox', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-social-status-email', 'type' => 'checkbox', 'defaultValue' => 'on');
-		$options[] = array('name' => 'sgpb-social-label-email', 'type' => 'text', 'defaultValue' => __('E-mail', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-social-status-facebook', 'type' => 'checkbox', 'defaultValue' => 'on');
-		$options[] = array('name' => 'sgpb-social-label-facebook', 'type' => 'text', 'defaultValue' => __('Share', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-social-status-linkedin', 'type' => 'checkbox', 'defaultValue' => 'on');
-		$options[] = array('name' => 'sgpb-social-label-linkedin', 'type' => 'text', 'defaultValue' => __('Share', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-social-status-googleplus', 'type' => 'checkbox', 'defaultValue' => 'on');
-		$options[] = array('name' => 'sgpb-social-label-googleplus', 'type' => 'text', 'defaultValue' => __('+1', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-social-status-twitter', 'type' => 'checkbox', 'defaultValue' => 'on');
-		$options[] = array('name' => 'sgpb-social-label-twitter', 'type' => 'text', 'defaultValue' => __('Tweet', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-social-status-pinterest', 'type' => 'checkbox', 'defaultValue' => 'on');
-		$options[] = array('name' => 'sgpb-social-label-pinterest', 'type' => 'text', 'defaultValue' => __('Pin it', SG_POPUP_TEXT_DOMAIN));
-		$options[] = array('name' => 'sgpb-social-to-bottom', 'type' => 'checkbox', 'defaultValue' => '');
-		// proEndSilver
+		$options[] = array('name' => 'sgpb-subs-fields', 'type' => 'sgpb', 'defaultValue' => '');
 		$options[] = array('name' => 'sgpb-fblike-like-url', 'type' => 'text', 'defaultValue' => '');
 		$options[] = array('name' => 'sgpb-fblike-layout', 'type' => 'text', 'defaultValue' => 'standard');
 		$options[] = array('name' => 'sgpb-fblike-dont-show-share-button', 'type' => 'checkbox', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-subs-fields', 'type' => 'sgpb', 'defaultValue' => '');
-		$options[] = array('name' => 'sgpb-contact-fields', 'type' => 'sgpb', 'defaultValue' => '');
 		$options[] = array('name' => 'sgpb-border-color', 'type' => 'text', 'defaultValue' => '#000000');
 		$options[] = array('name' => 'sgpb-border-radius', 'type' => 'text', 'defaultValue' => 0);
 		$options[] = array('name' => 'sgpb-show-popup-same-user', 'type' => 'checkbox', 'defaultValue' => '');

@@ -1,11 +1,10 @@
-﻿=== File Manager ===
+=== File Manager ===
 Contributors: mndpsingh287
-Donate link: http://www.webdesi9.com/donate/?plugin=wp-file-manager
-Tags: wp-file-manager, elfinder,file manager, ftp, wordpress file manager,file manager, Upload Files, WP File Manager, File Manage, Edit Files, Delete Files, FTP, filemanager, wpfilemanager, ftp, file transfer, update, create, delete, view, rename, editor, Cpanel, Control Panel, Admin, Shortcode, explorer, file explorer
+Tags: wp-file-manager, elfinder,file manager, ftp, wp-filemanager,file manager, wp-filemanager, Upload Files, WP File Manager, File Manage, Edit Files, Delete Files, FTP, filemanager, wpfilemanager, ftp, file transfer, update, create, delete, view, rename, editor, Cpanel, Control Panel, Admin, Shortcode, explorer, file explorer, filemanager
 Requires at least: 4.0
-Tested up to: 5.0
+Tested up to: 5.1
 Requires PHP: 5.2.4
-Stable tag: 3.7
+Stable tag: 4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,20 +12,45 @@ file manager provides you ability to edit, delete, upload, download, copy and pa
 
 == Description ==
 
-#### File Manager provides you features to edit, delete, upload, download, copy and paste files and folders. You can easily copy, move files folder or any files from one location to another location.
+#### File Manager allows you to edit, delete, upload, download, zip, copy and paste files and folders directly from the Wordpress backend. Don’t bother with FTP to manage and move your files from location to location. The most powerful, flexible, and easiest Wordpress file management solution ever built!
 
-Multi Langauges Added 
+Multi Languages Added 
        
 = Key Features in File Manager free Version Plugin =
 
-* **Operations:** Various operations with files and folders on a remote server (copy, move, upload, create folder/file, rename, edit, delete etc.)
-* **Move/Copy:** Admin can Move/Copy files with Drag & Drop.
-* **Archives:** Admin can create/extract files(zip, rar, tar, gzip).
-* **File Size:** Admin/User can upload any size files.
-* **File Type:** Control what files can be uploaded and what file can be downloaded.
-* **Shortcode:** Available only for File Manager Pro Edition
-* **Private Folder:** Available only for File Manager Pro Edition
-* **Multiple Themes:** Multiple File Manager Themes Available - New Feature
+Key Features in the Free File Manager plugin include:
+* **Operations**: Various operations with files and folders on a remote server (copy, move, upload, create folder/file, rename, edit, delete, etc.)
+* **Move/Copy**: Admin can Move/Copy files with Drag & Drop. Also includes multi file selection. 
+* **Archives**: Admin can create, archive and extract files(zip, rar, tar, gzip).
+* **File Size**: Admin/User can upload any size files.
+* **File Type**: Control what files can be uploaded and what file can be downloaded.
+* **Code Editor**: File Manager comes with a built in integrated development environment (IDE) - New Feature
+* **Syntax Checker**: File Manager now can complete code reviews before saving files to ensure your site will not go down when updating code. Reviewing code for errors has never been so easy! - New Feature
+* **Multiple Themes**: Multiple File Manager Themes Available – New Feature
+* **Get Info**: All file details, properties, information is now available by simply right clicking a file and selecting Get Info - New Feature 
+* **Share Files by Email**: With File Manager you can easily and quickly share files by Email. Simply right click a file and press share, that’s it! - New Feature 
+* **Private Folder**: Available only for File Manager Pro Edition
+* **Shortcode**: Available only for File Manager Pro Edition
+* **Root Directory**: Quickly and easily edit your root path directory. With this feature you can access files inside and outside of Wordpress
+* **PDF Support**: Preview PDF files easily 
+* **Built-in Trash**: Delete files by moving them to trash
+* **File View**: Icon and list view both available for easy navigation
+* **Preview Support**: Easily preview common file types including media (video, audio, mp3, thumbnails, etc)
+* **Search**: Search functionality is built directly into File Manager making it simple to find your files.
+* **Shortcut Support**: Common shortcuts are available in File Manager
+* **Automatic File Resize**: automatically resize files once uploaded.
+* **Responsive UI**: File Manager works on tablet and mobile devices
+* **Browsing History**: File and folders browsing history
+* **Trash function**: Move to Trash Folder Feature
+* **PDF Preview**: PDF Preview feature available
+* **FTP/SFTP Support**: Alternative to FTP or Cpanel
+* **File Preview**: preview for common MIMEs and file types
+* **Directory Size**: Calculate directory size
+* **Icon View***: List and Icons view available for files and files
+* **Keyboard shortcuts***: Keyboard shortcuts available e.g. copy,paste,drag & drop
+* **Drag and drop**: File Drag & Drop file upload function available
+* **Functions Toolbar**: Rich context menu and file manager functions toolbar
+* **Thumbnails**: Thumbnails for all types of image files
 
 = Key Features in File Manager Pro Editions =
 
@@ -42,7 +66,7 @@ Multi Langauges Added
 * **Hide Files/Folder:** Here admin is able to hide files and folders for user roles and for users.
 * **File Type:** Control what files can be uploaded and what file can be downloaded.
 * **User Role:** admin is able to control file operations and hide and lock Files and Folders for user roles .
-* **Users:** admin is able to control file operations and hide and lock Files and Folders for paticular user .
+* **Users:** admin is able to control file operations and hide and lock Files and Folders for particular user .
 * **High performance:** High performance server backend and light client UI.
 * **File system:** Local file system storage drivers.
 * **Edit file:** User can edit text files and images.
@@ -54,20 +78,20 @@ Multi Langauges Added
 * **Dropbox Integration**        drag drop, copy paste all other operations between file manager and dropbox.   
 
 
-> <strong>[Buy Pro Version](http://filemanager.webdesi9.com/product/file-manager/)</strong> with various features & support.
+> <strong>[Buy Pro Version](https://filemanagerpro.io/product/file-manager/)</strong> with various features & support.
 > <strong>[Contact us](https://webdesi9.zendesk.com/hc/en-us)</strong> for Support Only Pro Version Users.
-> <strong>[Documentation](https://filemanager.webdesi9.com/documentation/)</strong> Click Here.
-> <strong>[Addons](https://filemanager.webdesi9.com/addons)</strong> with various features & support.
-**[Upgrade to Pro Version](http://filemanager.webdesi9.com/product/file-manager/)**
+> <strong>[Documentation](https://filemanagerpro.io/documentation/)</strong> Click Here.
+> <strong>[Addons](https://filemanagerpro.io/addons)</strong> with various features & support.
+**[Upgrade to Pro Version](https://filemanagerpro.io/product/file-manager/)**
 
 = Premium Addons =
 
-<strong>[File Manager Google Drive](https://filemanager.webdesi9.com/product/file-manager-google-drive)</strong> provides you ability to edit, delete, upload, download, copy and paste files and folders in Google Drive.
-<strong>[File Manager OneDrive](https://filemanager.webdesi9.com/product/file-manager-one-drive)</strong> provides you ability to edit, delete, upload, download, copy and paste files and folders in OneDrive from File Manager.
-<strong>[File Manager Dropbox](https://filemanager.webdesi9.com/product/file-manager-dropbox)</strong> provides you ability to edit, delete, upload, download, copy and paste files and folders in dropbox.
-<strong>[File Manager Box](https://filemanager.webdesi9.com/product/file-manager-box)</strong> provides you ability to edit, delete, upload, download, copy and paste files and folders in Box.
-<strong>[File Manager Git](https://filemanager.webdesi9.com/product/file-manager-git)</strong> Github integration for file manager.
-<strong>[File Manager Slack](https://filemanager.webdesi9.com/product/file-manager-slack)</strong> Slack incoming webhook integration to file manager.
+<strong>[File Manager Google Drive](https://filemanagerpro.io/product/file-manager-google-drive)</strong> provides you ability to edit, delete, upload, download, copy and paste files and folders in Google Drive.
+<strong>[File Manager OneDrive](https://filemanagerpro.io/product/file-manager-one-drive)</strong> provides you ability to edit, delete, upload, download, copy and paste files and folders in OneDrive from File Manager.
+<strong>[File Manager Dropbox](https://filemanagerpro.io/product/file-manager-dropbox)</strong> provides you ability to edit, delete, upload, download, copy and paste files and folders in dropbox.
+<strong>[File Manager Box](https://filemanagerpro.io/product/file-manager-box)</strong> provides you ability to edit, delete, upload, download, copy and paste files and folders in Box.
+<strong>[File Manager Git](https://filemanagerpro.io/product/file-manager-git)</strong> Github integration for file manager.
+<strong>[File Manager Slack](https://filemanagerpro.io/product/file-manager-slack)</strong> Slack incoming webhook integration to file manager.
 
 
 == Installation ==
@@ -78,7 +102,7 @@ Multi Langauges Added
 == Frequently asked questions ==
 
 = Can we make zip of any folder or file and download it ? =
-Yes, You can archieve any files and folders as zip then simple download it. Please view screenshots.
+Yes, You can achieve any files and folders as zip then simple download it. Please view screenshots.
 
 == Support == 
 * If any problem occurs, please contact us at https://webdesi9.zendesk.com/hc/en-us
@@ -108,6 +132,34 @@ Yes, You can archieve any files and folders as zip then simple download it. Plea
 
 
 == Changelog ==
+
+= 4.4 (22nd FEB, 2019) =
+
+* Extract issue fixed
+
+= 4.3 (21st FEB, 2019) =
+
+* Syntax checker feature removed for now
+
+= 4.2 (21st FEB, 2019) =
+
+* elFinder Library Updated
+
+= 4.1 (21st JAN, 2019) =
+
+* Syntax Error Feature Added
+
+= 4.0 (10th JAN, 2019) =
+
+* Http API fixes
+
+= 3.9 (10th JAN, 2019) =
+
+* CURL issue fixes
+
+= 3.8 (20th DEC, 2018) =
+
+* php 7.2 warnings fixes
 
 = 3.7 (3rd DEC, 2018) =
 

@@ -28,6 +28,10 @@
 			showDatepicker: true,
 			showTimepicker: false,
 
+			ariaHourLabel: 'hours',
+			ariaMinuteLabel: 'minutes',
+			ariaAMPMLabel: 'am or pm',
+
 			defaultDate:"",
 			defaultTime:"",
 			working_dates:[true,true,true,true,true,true,true],
@@ -185,7 +189,7 @@
 						str += '<option value="' + h + '">' + h + '</option>';
 						i++;
 					}
-					return '<select id="'+me.name+'_hours" name="'+me.name+'_hours" class="hours-component">' + str + '</select>:';
+					return '<select id="'+me.name+'_hours" name="'+me.name+'_hours" class="hours-component" aria-label="'+$.fbuilder.htmlEncode(me.ariaHourLabel)+'">' + str + '</select>:';
 				},
 			get_minutes:function()
 				{
@@ -202,14 +206,14 @@
 						str += '<option value="' + m + '">' + m + '</option>';
 						i++;
 					}
-					return '<select id="'+me.name+'_minutes" name="'+me.name+'_minutes" class="minutes-component">' + str + '</select>';
+					return '<select id="'+me.name+'_minutes" name="'+me.name+'_minutes" class="minutes-component" aria-label="'+$.fbuilder.htmlEncode(me.ariaMinuteLabel)+'">' + str + '</select>';
 				},
 			get_ampm:function()
 				{
 					var str = '';
 					if( this.tformat == 12 )
 					{
-						return '<select id="'+this.name+'_ampm" class="ampm-component"><option value="am">am</option><option value="pm">pm</option></select>';
+						return '<select id="'+this.name+'_ampm" class="ampm-component"  aria-label="'+$.fbuilder.htmlEncode(this.ariaAMPMLabel)+'"><option value="am">am</option><option value="pm">pm</option></select>';
 					}
 					return str;
 				},
@@ -321,7 +325,7 @@
 					else{ date_tag_type = 'hidden'; disabled='disabled';}
                     if( me.showTimepicker ) format_label.push('HH:mm');
 
-					return '<div class="fields '+me.csslayout+' '+n+' cff-date-field" id="field'+me.form_identifier+'-'+me.index+'"><label for="'+n+'">'+me.title+''+((me.required)?"<span class='r'>*</span>":"")+( (format_label.length) ? ' <span class="dformat">('+format_label.join(' ')+')</span>' : '' )+'</label><div class="dfield"><input id="'+n+'" name="'+n+'" type="hidden" value="'+$.fbuilder.htmlEncode(me.predefined)+'"/><input id="'+n+'_date" name="'+n+'_date" class="'+date_tag_class+' date-component" type="'+date_tag_type+'" '+attr+'="'+$.fbuilder.htmlEncode(me.predefined)+'" '+disabled+' />'+( ( me.showTimepicker ) ? ' '+me.get_hours()+me.get_minutes()+' '+me.get_ampm() : '' )+'<span class="uh">'+me.userhelp+'</span></div><div class="clearer"></div></div>';
+					return '<div class="fields '+me.csslayout+' '+n+' cff-date-field" id="field'+me.form_identifier+'-'+me.index+'"><label for="'+n+'_date">'+me.title+''+((me.required)?"<span class='r'>*</span>":"")+( (format_label.length) ? ' <span class="dformat">('+format_label.join(' ')+')</span>' : '' )+'</label><div class="dfield"><input id="'+n+'" name="'+n+'" type="hidden" value="'+$.fbuilder.htmlEncode(me.predefined)+'"/><input id="'+n+'_date" name="'+n+'_date" class="'+date_tag_class+' date-component" type="'+date_tag_type+'" '+attr+'="'+$.fbuilder.htmlEncode(me.predefined)+'" '+disabled+' />'+( ( me.showTimepicker ) ? ' '+me.get_hours()+me.get_minutes()+' '+me.get_ampm() : '' )+'<span class="uh">'+me.userhelp+'</span></div><div class="clearer"></div></div>';
 				},
 			after_show:function()
 				{

@@ -60,7 +60,6 @@ class Updating extends Job {
             'desktop.ini',
             '.gitignore',
             '.log',
-            'db.php',
             'object-cache.php',
             'web.config' // Important: Windows IIS configuartion file. Must not be in the staging site!
 
@@ -150,6 +149,9 @@ class Updating extends Job {
         );
 
         array_unshift( $this->options->directoriesToCopy, ABSPATH );
+                
+        // Process lock state
+        $this->options->isRunning = true;
 
         return $this->saveOptions();
     }

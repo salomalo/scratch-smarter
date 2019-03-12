@@ -7,7 +7,7 @@
  * Author: WP-Staging
  * Author URI: https://wp-staging.com
  * Contributors: ReneHermi, ilgityildirim
- * Version: 2.4.9
+ * Version: 2.5.1
  * Text Domain: wp-staging
  * Domain Path: /languages/
 
@@ -51,7 +51,7 @@ if( !defined( 'WPSTG_PLUGIN_URL' ) ) {
 
 // Version
 if( !defined( 'WPSTG_VERSION' ) ) {
-   define( 'WPSTG_VERSION', '2.4.9' );
+   define( 'WPSTG_VERSION', '2.5.1' );
 }
 
 // Must use version of the optimizer
@@ -79,8 +79,10 @@ $plugin_requirements = new Wpstg_Requirements_Check( array(
  * @param int $seconds
  * @return int
  */
+if ( !function_exists( 'wpstgpro_overwrite_nonce')){
 function wpstg_overwrite_nonce( $seconds ) {
    return 86400;
+}
 }
 
 add_filter( 'nonce_life', 'wpstg_overwrite_nonce', 99999 );

@@ -326,7 +326,7 @@ class RegisterPostType
 			__('Support', SG_POPUP_TEXT_DOMAIN),
 			__('Support', SG_POPUP_TEXT_DOMAIN),
 			'sgpb_manage_options',
-			'support',
+			SG_POPUP_SUPPORT_PAGE,
 			array($this, 'supportLink')
 		);
 	}
@@ -347,7 +347,7 @@ class RegisterPostType
 			__('Subscribers', SG_POPUP_TEXT_DOMAIN),
 			__('Subscribers', SG_POPUP_TEXT_DOMAIN),
 			'sgpb_manage_options',
-			'sgpbSubscribers',
+			SG_POPUP_SUBSCRIBERS_PAGE,
 			array($this, 'subscribersPage')
 		);
 

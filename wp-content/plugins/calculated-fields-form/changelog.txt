@@ -1,5 +1,33 @@
 == Changelog ==
 
+= 1.0.291 =
+
+* Removes some deprecated functions from the PHP 7.2
+
+= 1.0.290 =
+
+* Modifies the dependencies (Checkbox, Radio Buttons, DropDown, Container fields, Calculated fields).
+* Modifies the date/time control for defining the aria-labels for screen readers.
+* Fixes an issue that causes the loopback request to the site fails, caused by the sessions management (Professional, Developer and Platinum versions of the plugin).
+* Includes a new attribute in the troubleshoot section for starting the session as soon as possible (in case of conflict with other plugins) (Professional, Developer, and Platinum versions of the plugin).
+* Modifies the PayPal Pro add-on (Platinum version of the plugin).
+
+= 1.0.289 =
+
+* Improves the Widgets for Page Builder by SiteOrigin.
+* Improves the Widgets for Elementor.
+* Includes a new block for inserting the results list shortcode in the Gutenberg editor (Professional, Developer and Platinum versions of the plugin).
+* Includes a new icon for inserting the results list shortcode in the Classic WordPress editor (Professional, Developer and Platinum versions of the plugin).
+* Modifies the module that generates the default email address used in the "from" attribute (Professional, Developer and Platinum versions of the plugin).
+* Fixes some errors in the CFF - CSV Generator add-on (Platinum version of the plugin).
+
+= 1.0.288 =
+
+* Implements new Widgets to allow the specific integration with the Page Builder by SiteOrigin.
+* Improves the integration with the other pages builders.
+* Modifies the Appearance/Widget, allowing to associate a class name to the form, and pass to it additional attributes (Professional, Developer and Platinum versions of the plugin).
+* Includes minimum changes in the CFF - WooCommerce add-on (Developer and Platinum versions of the plugin).
+
 = 1.0.287 =
 
 * Fixes an issue that causes the loopback request to the site fails.

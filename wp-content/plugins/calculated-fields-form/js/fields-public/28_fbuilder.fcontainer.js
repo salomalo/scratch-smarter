@@ -25,6 +25,7 @@
 
 				for( var i = 0, h = me.fields.length; i < h; i++ )
 				{
+					if(!/fieldname/i.test(me.fields[ i ])) continue;
 					fId = me.fields[ i ]+me.form_identifier;
 					if( isHidden )
 					{

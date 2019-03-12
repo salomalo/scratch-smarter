@@ -488,7 +488,7 @@ class FUE_Addon_Subscriptions_V2 {
 		foreach ( $items as $item ) {
 			$email = new FUE_Email( $item->email_id );
 
-			if ( $email->trigger == 'subs_before_expire' || $email->trigger == 'subs_before_renewal' ) {
+			if ( ( 'end' === $date_type && 'subs_before_expire' === $email->trigger ) || ( 'next_payment' === $date_type && 'subs_before_renewal' === $email->trigger ) ) {
 				// convert to local time
 				$timestamp = strtotime( $datetime );
 

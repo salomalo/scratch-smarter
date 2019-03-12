@@ -36,6 +36,10 @@
 			showDatepicker: true,
 			showTimepicker: false,
 
+			ariaHourLabel: 'hours',
+			ariaMinuteLabel: 'minutes',
+			ariaAMPMLabel: 'am or pm',
+
 			defaultDate:"",
 			defaultTime:"",
 			working_dates:[true,true,true,true,true,true,true],
@@ -74,6 +78,9 @@
 								}
 							},
 							{s:"#sShowDatepicker",e:"click", l:"showDatepicker", f:function(el){return el.is(':checked');}},
+							{s:"#sAriaAMPMLabel",e:"change keyup", l:"ariaAMPMLabel"},
+							{s:"#sAriaHourLabel",e:"change keyup", l:"ariaHourLabel"},
+							{s:"#sAriaMinuteLabel",e:"change keyup", l:"ariaMinuteLabel"},
 							{s:"#sMinHour",e:"change keyup", l:"minHour"},
 							{s:"#sMaxHour",e:"change keyup", l:"maxHour"},
 							{s:"#sMinMinute",e:"change keyup", l:"minMinute"},
@@ -125,6 +132,9 @@
 
 					str += '<div><label>Steps for hours</label><br /><input class="large" name="sStepHour" id="sStepHour" value="'+$.fbuilder.htmlEncode(this.stepHour)+'" /></div>';
 					str += '<div><label>Steps for minutes</label><br /><input class="large" name="sStepMinute" id="sStepMinute" value="'+$.fbuilder.htmlEncode(this.stepMinute)+'" /></div>';
+					str += '<div><label>Label for hours in screen readers</label><br /><input class="large" name="sAriaHourLabel" id="sAriaHourLabel" value="'+$.fbuilder.htmlEncode(this.ariaHourLabel)+'" /></div>';
+					str += '<div><label>Label for minutes in screen readers</label><br /><input class="large" name="sAriaMinuteLabel" id="sAriaMinuteLabel" value="'+$.fbuilder.htmlEncode(this.ariaMinuteLabel)+'" /></div>';
+					str += '<div><label>Label for am/pm component in screen readers</label><br /><input class="large" name="sAriaAMPMLabel" id="sAriaAMPMLabel" value="'+$.fbuilder.htmlEncode(this.ariaAMPMLabel)+'" /></div>';
 					str += '</div>';
 					str += '<hr></hr>';
 					return str;

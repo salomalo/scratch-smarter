@@ -121,7 +121,13 @@ SGPBPopup.prototype.initialsListeners = function()
 	/* one time calling events (sgpbDidOpen, sgpbDidClose ...) */
 	window.SGPB_SOUND = [];
 	var that = this;
-	sgAddEvent(window, 'sgpbDidOpen', function(e) {that.playMusic(e);});
+	sgAddEvent(window, 'sgpbDidOpen', function(e) {
+		that.playMusic(e);
+		jQuery('.sg-popup-close').unbind('click').bind('click',function(){
+			var currentPopupId = jQuery(this).parents('.sg-popup-builder-content').attr('data-id');
+			SGPBPopup.closePopupById(currentPopupId);
+		});
+	});
 
 	sgAddEvent(window, 'sgpbDidClose', function(e) {
 		var args = e.detail;
@@ -139,14 +145,6 @@ SGPBPopup.prototype.onceListener = function()
 	var that = this;
 
 	sgAddEvent(window, 'sgpbDidOpen', function(e) {
-		jQuery('.sg-popup-close').click(function(){
-			var currentPopup = that.getPopupIdForNextEsc();
-			if (!currentPopup) {
-				return false;
-			}
-
-			SGPBPopup.closePopupById(currentPopup.popupId);
-		});
 		document.onkeydown = function(e) {
 			e = e || window.event;
 
@@ -922,7 +920,7 @@ SGPBPopup.prototype.themeCreator = function()
 		}
 	}
 	else {
-		popupConfig.magicCall('setButtonImage', popupData['sgpb-button-image-data']);
+		popupConfig.magicCall('setButtonImage', 'data:image/png;base64,'+popupData['sgpb-button-image-data']);
 		if (popupData['sgpb-button-image-data'] == '' || popupData['sgpb-button-image-data'].indexOf('http') != -1) {
 			popupConfig.magicCall('setButtonImage', popupData['sgpb-button-image']);
 		}
@@ -982,11 +980,15 @@ SGPBPopup.prototype.themeCustomizations = function()
 
 	var overlayClasses = popupTheme+'-overlay sgpb-popup-overlay-'+popupId;
 	/* for old users, which didn't have enable/disable overlay option */
-	var popupOverlayEnable = true;
-	if (SGPB_JS_PACKAGES.extensions['advanced-closing'] && !SGPBPopup.varToBool(popupData['sgpb-enable-popup-overlay'])) {
-		popupOverlayEnable = false;
+	if (typeof popupData['sgpb-enable-popup-overlay'] == 'undefined') {
+		popupData['sgpb-enable-popup-overlay'] = true;
 	}
-	popupConfig.magicCall('setOverlayVisible', popupOverlayEnable);
+	if (SGPB_JS_PACKAGES.extensions['advanced-closing'] && !SGPBPopup.varToBool(popupData['sgpb-enable-popup-overlay'])) {
+		popupData['sgpb-enable-popup-overlay'] = false;
+	}
+
+
+	popupConfig.magicCall('setOverlayVisible', SGPBPopup.varToBool(popupData['sgpb-enable-popup-overlay']));
 	if (SGPBPopup.varToBool(popupData['sgpb-enable-popup-overlay'])) {
 		popupConfig.magicCall('setOverlayAddClass', overlayClasses + ' ' + popupData['sgpb-overlay-custom-class']);
 		var overlayOpacity = popupData['sgpb-overlay-opacity'] || 0.8;
@@ -1569,16 +1571,17 @@ SGPBPopup.prototype.setPopupDimensions = function()
 		}
 	}
 	if (dimensionData == 'responsiveMode') {
+		var dimensionMeasure = popupData['sgpb-responsive-dimension-measure'];
 		/* for image popup type and responsive mode, set background image to fit */
-		if (popupType == 'image') {
+		if (popupType == 'image' && dimensionMeasure != 'fullScreen') {
 			popupConfig.magicCall('setContentBackgroundMode', 'fit');
 			this.setMaxWidthForResponsiveImage();
 		}
 
-		var dimensionMeasure = popupData['sgpb-responsive-dimension-measure'];
 		var popupConfig = this.getPopupConfig();
 		if (dimensionMeasure != 'auto') {
 			popupConfig.magicCall('setWidth', dimensionMeasure+'%');
+
 			popupConfig.magicCall('setContentBackgroundPosition', 'center');
 		}
 		else {
@@ -1591,7 +1594,11 @@ SGPBPopup.prototype.setPopupDimensions = function()
 				popupConfig.magicCall('setContentBackgroundPosition', 'center center');
 				widthToSet += 'px';
 			}
+
 			popupConfig.magicCall('setWidth', widthToSet);
+			if (dimensionMeasure == 'fullScreen') {
+				popupConfig.magicCall('setHeight', widthToSet);
+			}
 		}
 
 		return popupConfig;
@@ -2249,13 +2256,12 @@ SgpbEventListener.prototype.sgpbLoad = function(listenerObj, eventData)
 	timeout = timeout*1000;
 	var timerId,
 		repetitiveTimeout = null;
-
-	sgAddEvent(window, 'load', function() {
-		clearInterval(timerId);
-		timerId = setTimeout(function() {
+	var openOnLoadPopup = function() {
+		setTimeout(function() {
 			popupObj.prepareOpen();
 		}, timeout);
-	});
+	};
+	sgAddEvent(window, 'load', openOnLoadPopup(timeout, popupObj));
 	sgAddEvent(window, 'sgpbDidOpen', function(e) {
 		var args = e.detail;
 		clearInterval(repetitiveTimeout);

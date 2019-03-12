@@ -53,6 +53,7 @@ The "Calculated Fields Form" plugin allows the specific integration with the fol
 * Classic WordPress Editor.
 * Gutenberg Editor.
 * Elementor.
+* Page Builder by SiteOrigin.
 * For other editors, the shortcodes should be inserted using other controls of general purpose, like the controls for inserting HTML or shortcodes.
 
 = Latest Features Added =
@@ -896,17 +897,46 @@ A: Please, visit the following entry in our technical blog:
 2. Inserting the form using the Classic Editor
 3. Inserting the form using the Gutenberg Editor
 4. Inserting the form using Elementor
-5. Sample calculated form
-6. Calculated field settings
-7. Calculator Form builder
-8. Editing general fields
-9. Available designs
-10. Add-ons section
-11. WooCommerce add-on
-12. SalesForce add-on
-13. WebHook add-on, and its integration with Zapier
+5. Inserting the form using Page Builder by SiteOrigin
+6. Sample calculated form
+7. Calculated field settings
+8. Calculator Form builder
+9. Editing general fields
+10. Available designs
+11. Add-ons section
+12. WooCommerce add-on
+13. SalesForce add-on
+14. WebHook add-on, and its integration with Zapier
 
 == Changelog ==
+
+= 1.0.291 =
+
+* Removes some deprecated functions from the PHP 7.2
+
+= 1.0.290 =
+
+* Modifies the dependencies (Checkbox, Radio Buttons, DropDown, Container fields, Calculated fields).
+* Modifies the date/time control for defining the aria-labels for screen readers.
+* Fixes an issue that causes the loopback request to the site fails, caused by the sessions management (Professional, Developer and Platinum versions of the plugin).
+* Includes a new attribute in the troubleshoot section for starting the session as soon as possible (in case of conflict with other plugins) (Professional, Developer, and Platinum versions of the plugin).
+* Modifies the PayPal Pro add-on (Platinum version of the plugin).
+
+= 1.0.289 =
+
+* Improves the Widgets for Page Builder by SiteOrigin.
+* Improves the Widgets for Elementor.
+* Includes a new block for inserting the results list shortcode in the Gutenberg editor (Professional, Developer and Platinum versions of the plugin).
+* Includes a new icon for inserting the results list shortcode in the Classic WordPress editor (Professional, Developer and Platinum versions of the plugin).
+* Modifies the module that generates the default email address used in the "from" attribute (Professional, Developer and Platinum versions of the plugin).
+* Fixes some errors in the CFF - CSV Generator add-on (Platinum version of the plugin).
+
+= 1.0.288 =
+
+* Implements new Widgets to allow the specific integration with the Page Builder by SiteOrigin.
+* Improves the integration with the other pages builders.
+* Modifies the Appearance/Widget, allowing to associate a class name to the form, and pass to it additional attributes (Professional, Developer and Platinum versions of the plugin).
+* Includes minimum changes in the CFF - WooCommerce add-on (Developer and Platinum versions of the plugin).
 
 = 1.0.287 =
 
@@ -937,31 +967,8 @@ A: Please, visit the following entry in our technical blog:
 
 * Fixes an issue in the slider controls.
 
-= 1.0.281 =
-
-* Fixes a conflict with older browsers.
-* Modifies the SESSION Management module.
-* Includes a new module for cleaning the expired transients.
-* The Platinum version of the plugin includes the CSV Generator add-on.
-
-= 1.0.280 =
-
-* Modifies the slider controls allowing to integrate other fields in the form with the attributes: min, max and step, and vary them dynamically at runtime.
-* Modifies the predefined template 12 to display the down arrow in the DropDown fields.
-* Allows to include the tags of the Section Break controls in the notification emails and thank you pages (Professional, Developer and Platinum verisons of the plugin)
-
-= 1.0.279 =
-
-* Fixes an issue with the tooltips defined in the radio buttons and checkbox controls.
-
-= 1.0.278 =
-
-* Modifies the module that generates the forms' previews, and the AMP versions of forms.
-* Implements the specific integration with the Elementor pages builder.
-* Improves the forms appearance in small screens.
-
 == Upgrade Notice ==
 
-= 1.0.287 =
+= 1.0.291 =
 
 Important note: If you are using the Professional version don't update via the WP dashboard but using your personal update link. Contact us if you need further information: http://cff.dwbooster.com/contact-us

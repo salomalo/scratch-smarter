@@ -211,6 +211,8 @@ class ConditionBuilder
 		if (empty($dataObj)) {
 			return array();
 		}
+		$allCondition = array();
+		$result = array();
 
 		foreach ($dataObj as $data) {
 			if (empty($data['conditionName'])) {
@@ -218,8 +220,9 @@ class ConditionBuilder
 			}
 			$conditionName = $data['conditionName'];
 			unset($data['conditionName']);
-			
+
 			foreach ($data as $groupId => $groupData) {
+
 				if (empty($groupData)) {
 					continue;
 				}
@@ -233,11 +236,12 @@ class ConditionBuilder
 					$builderObj->setConditionName($conditionName);
 					$builderObj->setGroupTotal(count($groupData) - 1);
 					$builderObj->setTakeValueFrom('operator');
-					$dataObj[$conditionName] = $builderObj;
+					$allCondition[] = $builderObj;
 				}
 			}
+			$result[$conditionName] = $allCondition;
 		}
 
-		return $dataObj;
+		return $result;
 	}
 }

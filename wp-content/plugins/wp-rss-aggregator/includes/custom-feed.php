@@ -13,13 +13,9 @@
      * @since 3.3
      */
     function wprss_addfeed_add_feed() {
-        $general_settings = get_option( 'wprss_settings_general', 'wprss' );
-        if ( !empty( $general_settings ) && isset( $general_settings['custom_feed_url'] ) && !empty( $general_settings['custom_feed_url'] ) ) {
-            $url = $general_settings['custom_feed_url'];
-        }
-        else {
-            $url = $general_settings['custom_feed_url'] = 'wprss';
-            update_option( 'wprss_settings_general', $general_settings );
+        $url = wprss_get_general_setting('custom_feed_url');
+        if (empty($url)) {
+            $url = 'wprss';
         }
 
         // Add the feed
@@ -119,10 +115,10 @@
             xmlns:content="http://purl.org/rss/1.0/modules/content/"
             xmlns:wfw="http://wellformedweb.org/CommentAPI/"
             xmlns:dc="http://purl.org/dc/elements/1.1/"
-            xmlns:atom="http://www.w3.org/2005/Atom"
+            xmlns:atom="https://www.w3.org/2005/Atom"
             xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
             xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-            xmlns:media="http://search.yahoo.com/mrss/" >
+            xmlns:media="https://search.yahoo.com/mrss/" >
             <channel>
                 <title><?php echo $custom_feed_title; ?></title>
                 <description></description>

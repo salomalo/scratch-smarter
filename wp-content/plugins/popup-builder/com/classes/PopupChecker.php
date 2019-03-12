@@ -155,12 +155,14 @@ class PopupChecker
 			foreach ($permissiveOptions as $permissiveOption) {
 				$isPermissiveConditions = $this->isSatisfyForConditionsOptions($permissiveOption);
 
-				if ($isPermissiveConditions === false) {
+				if ($isPermissiveConditions) {
 					return $isPermissiveConditions;
 				}
 			}
+
+			return false;
 		}
-		// proEndSilver
+
 		return true;
 	}
 
@@ -169,6 +171,7 @@ class PopupChecker
 		global $post;
 		$paramName  = $option['param'];
 		$defaultStatus = false;
+		$isAllowedConditionFilters = array();
 
 		// proStartSilver
 		if ($paramName == 'select_role') {
@@ -179,7 +182,9 @@ class PopupChecker
 			$defaultStatus = true;
 		}
 		// proEndSilver
-		$isAllowedConditionFilters = apply_filters('isAllowedConditionFilters', array($option));
+		if (!isset($isAllowedConditionFilters['status']) || $isAllowedConditionFilters['status'] == false) {
+			$isAllowedConditionFilters = apply_filters('isAllowedConditionFilters', array($option));
+		}
 		if (isset($isAllowedConditionFilters['status']) && $isAllowedConditionFilters['status'] === true) {
 			$defaultStatus = true;
 		}

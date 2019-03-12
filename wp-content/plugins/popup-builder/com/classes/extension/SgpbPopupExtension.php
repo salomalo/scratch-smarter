@@ -89,7 +89,7 @@ class SgpbPopupExtension implements SgpbIPopupExtension
 
 		if (in_array($pageName, $allowPages) || $currentPostType == SG_POPUP_AUTORESPONDER_POST_TYPE) {
 			$jsFiles[] = array('folderUrl'=> '', 'filename' => 'wp-color-picker');
-			$jsFiles[] = array('folderUrl'=> SG_POPUP_JS_URL, 'filename' => 'select2.min.js', 'dep' => '', 'ver' => '3.86', 'inFooter' => '');
+			$jsFiles[] = array('folderUrl'=> SG_POPUP_JS_URL, 'filename' => 'select2.min.js');
 			$jsFiles[] = array('folderUrl'=> SG_POPUP_JS_URL, 'filename' => 'sgpbSelect2.js');
 
 
@@ -139,7 +139,7 @@ class SgpbPopupExtension implements SgpbIPopupExtension
 				'data' => SG_POPUP_PUBLIC_URL
 			);
 		}
-		else if ($pageName == 'popupbuilder_page_sgpbSubscribers' || $pageName == 'sgpbSubscribers') {
+		else if ($pageName == SG_POPUP_SUBSCRIBERS_PAGE) {
 			$jsFiles[] = array('folderUrl'=> SG_POPUP_JS_URL, 'filename' => 'select2.min.js', 'dep' => '', 'ver' => '3.86', 'inFooter' => '');
 			$jsFiles[] = array('folderUrl'=> SG_POPUP_JS_URL, 'filename' => 'sgpbSelect2.js');
 			$jsFiles[] = array('folderUrl'=> SG_POPUP_JS_URL, 'filename' => 'Subscribers.js');
@@ -232,7 +232,7 @@ class SgpbPopupExtension implements SgpbIPopupExtension
 			$cssFiles[] = array('folderUrl' => SG_POPUP_CSS_URL, 'filename' => 'theme.css', 'dep' => array(), 'ver' => SG_POPUP_VERSION, 'inFooter' => false);
 			$cssFiles[] = array('folderUrl' => '', 'filename' => 'wp-color-picker');
 		}
-		else if ($pageName == 'sgpbSubscribers') {
+		else if ($pageName == SG_POPUP_SUBSCRIBERS_PAGE) {
 			$cssFiles[] = array('folderUrl' => SG_POPUP_CSS_URL, 'filename' => 'sgbp-bootstrap.css', 'dep' => array(), 'ver' => SG_POPUP_VERSION, 'inFooter' => false);
 			$cssFiles[] = array('folderUrl' => SG_POPUP_CSS_URL, 'filename' => 'popupAdminStyles.css', 'dep' => array(), 'ver' => SG_POPUP_VERSION, 'inFooter' => false);
 			$cssFiles[] = array('folderUrl' => SG_POPUP_CSS_URL, 'filename' => 'select2.min.css', 'dep' => array(), 'ver' => SG_POPUP_VERSION, 'inFooter' => false);

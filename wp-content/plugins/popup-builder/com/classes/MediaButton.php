@@ -3,9 +3,16 @@ namespace sgpb;
 
 class MediaButton
 {
+	private $hideMediaButton = true;
+
 	public function __toString()
 	{
 		return $this->render();
+	}
+
+	public function __construct($hideMediaButton = true)
+	{
+		$this->hideMediaButton = $hideMediaButton;
 	}
 
 	public static function allowToShow()
@@ -40,6 +47,9 @@ class MediaButton
 
 	public function render()
 	{
+		if (!$this->hideMediaButton && $this->allowToShowJsVariable()) {
+			return '';
+		}
 		$output = $this->mediaButton();
 		$output .= $this->insertJsVariable();
 
@@ -60,7 +70,10 @@ class MediaButton
 
 		$img = '<span class="dashicons dashicons-welcome-widgets-menus" style="padding: 3px 2px 0px 0px"></span>';
 		$output = '<a data-id="sgpb-js-variable-wrapper" href="javascript:void(0);" class="button sgpb-insert-js-variable" title="'.$buttonTitle.'" style="padding-left: .4em;">'. $img.$buttonTitle.'</a>';
-
+		if (!$this->hideMediaButton) {
+			$output = '';
+		}
+		
 		return $output.$jsVariableContent;
 	}
 
@@ -86,6 +99,9 @@ class MediaButton
 
 		$img = '<span class="dashicons dashicons-welcome-widgets-menus" style="padding: 3px 2px 0px 0px"></span>';
 		$output = '<a data-id="sgpb-hidden-media-popup" href="javascript:void(0);" class="button sgpb-insert-media-button-js" title="'.$buttonTitle.'" style="padding-left: .4em;">'. $img.$buttonTitle.'</a>';
+		if (!$this->hideMediaButton) {
+			$output = '';
+		}
 
 		return $output.$mediaButtonContent;
 	}

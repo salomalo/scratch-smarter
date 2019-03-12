@@ -1511,11 +1511,13 @@ if (is_file ( GEOIP2DBFILE ) && (!get_option('blockcountry_geoapikey'))) {
             </th>
     	    <td width="70%">
                 
-                <input type="radio" name="blockcountry_geoapilocation" value="EU" <?php checked('EU', get_option('blockcountry_geoapilocation'), true); ?>> Europe<br />
+                <input type="radio" name="blockcountry_geoapilocation" value="EU" <?php checked('EU', get_option('blockcountry_geoapilocation'), true); ?>> Europe (Netherlands)<br />
+                <input type="radio" name="blockcountry_geoapilocation" value="EU2" <?php checked('EU2', get_option('blockcountry_geoapilocation'), true); ?>> Europe (United Kingdom)<br />
+                <input type="radio" name="blockcountry_geoapilocation" value="EU3" <?php checked('EU3', get_option('blockcountry_geoapilocation'), true); ?>> Europe (Germany)<br />
                 <input type="radio" name="blockcountry_geoapilocation" value="US" <?php checked('US', get_option('blockcountry_geoapilocation'), true); ?>> United States - New York<br />
                 <input type="radio" name="blockcountry_geoapilocation" value="US2" <?php checked('US2', get_option('blockcountry_geoapilocation'), true); ?>> United States - San Fransico<br />
                 <input type="radio" name="blockcountry_geoapilocation" value="US3" <?php checked('US3', get_option('blockcountry_geoapilocation'), true); ?>> United States - Miami<br />
-                <input type="radio" name="blockcountry_geoapilocation" value="ASIA" <?php checked('ASIA', get_option('blockcountry_geoapilocation'), true); ?>> Asia<br />
+
     	    </td></tr>
             <tr valign="top">
     	    <th width="30%"><?php _e('Admin block API Key:', 'iq-block-country'); ?><br />
@@ -1816,15 +1818,15 @@ function iqblockcountry_find_geoip_location()
     $infous3 = curl_getinfo($curl);
     curl_close($curl);
 
-    $curl = curl_init();
-    curl_setopt_array($curl, array(
-        CURLOPT_RETURNTRANSFER => 1,
-        CURLOPT_URL => 'https://asia.geoip.webence.nl/test',
-        CURLOPT_USERAGENT => 'iQ Block Country Asia location test/'  . get_bloginfo('wpurl')
-    ));
-    $resp = curl_exec($curl);
-    $infoasia = curl_getinfo($curl);
-    curl_close($curl);
+//    $curl = curl_init();
+//    curl_setopt_array($curl, array(
+//        CURLOPT_RETURNTRANSFER => 1,
+//        CURLOPT_URL => 'https://asia.geoip.webence.nl/test',
+//        CURLOPT_USERAGENT => 'iQ Block Country Asia location test/'  . get_bloginfo('wpurl')
+//    ));
+//    $resp = curl_exec($curl);
+//    $infoasia = curl_getinfo($curl);
+//    curl_close($curl);
     
     $curl = curl_init();
     curl_setopt_array($curl, array(
@@ -1835,7 +1837,26 @@ function iqblockcountry_find_geoip_location()
     $infoeu = curl_getinfo($curl);
     curl_close($curl);
 
-    $fastestsite = min($infoeu['total_time'],$infous['total_time'],$infous2['total_time'],$infous3['total_time'],$infoasia['total_time']);
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://eu2.geoip.webence.nl/test',
+        CURLOPT_USERAGENT => 'iQ Block Country EU2 location test/'  . get_bloginfo('wpurl')
+    ));
+    $resp = curl_exec($curl);
+    $infoeu2 = curl_getinfo($curl);
+    curl_close($curl);
+
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://eu3.geoip.webence.nl/test',
+        CURLOPT_USERAGENT => 'iQ Block Country EU3 location test/'  . get_bloginfo('wpurl')
+    ));
+    $resp = curl_exec($curl);
+    $infoeu3 = curl_getinfo($curl);
+    curl_close($curl);
+    
+    
+    $fastestsite = min($infoeu['total_time'],$infoeu2['total_time'],$infoeu3['total_time'],$infous['total_time'],$infous2['total_time'],$infous3['total_time']);
     
     if ($infous['total_time'] == $fastestsite)
     {
@@ -1849,9 +1870,17 @@ function iqblockcountry_find_geoip_location()
     {
         update_option('blockcountry_geoapilocation','US3');
     }
-    elseif ($infoasia['total_time'] == $fastestsite)
+//    elseif ($infoasia['total_time'] == $fastestsite)
+//    {
+//        update_option('blockcountry_geoapilocation','ASIA');
+//    }
+    elseif ($infoeu2['total_time'] == $fastestsite)
     {
-        update_option('blockcountry_geoapilocation','ASIA');
+        update_option('blockcountry_geoapilocation','EU2');
+    }
+    elseif ($infoeu3['total_time'] == $fastestsite)
+    {
+        update_option('blockcountry_geoapilocation','EU3');
     }
     else
     {

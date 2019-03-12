@@ -168,7 +168,7 @@ class ConfigDataHelper
 				'order'     => 'ASC'
 			)
 		);
-		$supportedTaxonomies = array();
+		$supportedTaxonomies = array('category');
 		if (!empty($taxonomies)) {
 			$supportedTaxonomies = $taxonomies;
 		}
@@ -386,7 +386,8 @@ class ConfigDataHelper
 			'70' => '70%',
 			'80' => '80%',
 			'90' => '90%',
-			'100' => '100%'
+			'100' => '100%',
+			'fullScreen' => __('Full screen', SG_POPUP_TEXT_DOMAIN)
 		);
 
 		$data['freeConditions'] = array(
@@ -419,11 +420,8 @@ class ConfigDataHelper
 			SG_COUNTDOWN_COUNTER_SECONDS_HIDE => 'DD:HH:MM'
 		);
 
-		// proStartGold
 		$data['countdownTimezone'] = self::getPopupTimeZone();
-		// proEndGold
 
-		// proStartGold
 		$data['countdownLanguage'] = array(
 			'English'    => 'English',
 			'German'     => 'Deutsche',
@@ -438,7 +436,6 @@ class ConfigDataHelper
 			'Czech'      => 'Čeština',
 			'Chinese'    => '中文'
 		);
-		// proEndGold
 
 		$data['weekDaysArray'] = array(
 			'Mon' => __('Monday', SG_POPUP_TEXT_DOMAIN),
@@ -495,78 +492,6 @@ class ConfigDataHelper
 					),
 					'label' => array(
 						'name' => __('Share URL', SG_POPUP_TEXT_DOMAIN).':'
-					)
-				)
-			)
-		);
-
-		$data['popupInsertEventTypes'] = array(
-			'inherit' => __('Inherit', SG_POPUP_TEXT_DOMAIN),
-			'onLoad' => __('On load', SG_POPUP_TEXT_DOMAIN),
-			'click' => __('On click', SG_POPUP_TEXT_DOMAIN),
-			'hover' => __('On hover', SG_POPUP_TEXT_DOMAIN)
-		);
-
-		$data['subscriptionSuccessBehavior'] = array(
-			'template' => array(
-				'fieldWrapperAttr' => array(
-					'class' => 'col-md-6 sgpb-choice-option-wrapper'
-				),
-				'labelAttr' => array(
-					'class' => 'col-md-6 sgpb-choice-option-wrapper sgpb-sub-option-label'
-				),
-				'groupWrapperAttr' => array(
-					'class' => 'row form-group sgpb-choice-wrapper'
-				)
-			),
-			'buttonPosition' => 'right',
-			'nextNewLine' => true,
-			'fields' => array(
-				array(
-					'attr' => array(
-						'type' => 'radio',
-						'name' => 'sgpb-subs-success-behavior',
-						'class' => 'subs-success-message',
-						'data-attr-href' => 'subs-show-success-message',
-						'value' => 'showMessage'
-					),
-					'label' => array(
-						'name' => __('Success message', SG_POPUP_TEXT_DOMAIN).':'
-					)
-				),
-				array(
-					'attr' => array(
-						'type' => 'radio',
-						'name' => 'sgpb-subs-success-behavior',
-						'class' => 'subs-redirect-to-URL',
-						'data-attr-href' => 'subs-redirect-to-URL',
-						'value' => 'redirectToURL'
-					),
-					'label' => array(
-						'name' => __('Redirect to url', SG_POPUP_TEXT_DOMAIN).':'
-					)
-				),
-				array(
-					'attr' => array(
-						'type' => 'radio',
-						'name' => 'sgpb-subs-success-behavior',
-						'class' => 'subs-success-open-popup',
-						'data-attr-href' => 'subs-open-popup',
-						'value' => 'openPopup'
-					),
-					'label' => array(
-						'name' => __('Open popup', SG_POPUP_TEXT_DOMAIN).':'
-					)
-				),
-				array(
-					'attr' => array(
-						'type' => 'radio',
-						'name' => 'sgpb-subs-success-behavior',
-						'class' => 'subs-hide-popup',
-						'value' => 'hidePopup'
-					),
-					'label' => array(
-						'name' => __('Hide popup', SG_POPUP_TEXT_DOMAIN).':'
 					)
 				)
 			)
@@ -703,6 +628,78 @@ class ConfigDataHelper
 			'inside' => __('Inside', SG_POPUP_TEXT_DOMAIN)
 		);
 
+		$data['popupInsertEventTypes'] = array(
+			'inherit' => __('Inherit', SG_POPUP_TEXT_DOMAIN),
+			'onLoad' => __('On load', SG_POPUP_TEXT_DOMAIN),
+			'click' => __('On click', SG_POPUP_TEXT_DOMAIN),
+			'hover' => __('On hover', SG_POPUP_TEXT_DOMAIN)
+		);
+
+		$data['subscriptionSuccessBehavior'] = array(
+			'template' => array(
+				'fieldWrapperAttr' => array(
+					'class' => 'col-md-6 sgpb-choice-option-wrapper'
+				),
+				'labelAttr' => array(
+					'class' => 'col-md-6 sgpb-choice-option-wrapper sgpb-sub-option-label'
+				),
+				'groupWrapperAttr' => array(
+					'class' => 'row form-group sgpb-choice-wrapper'
+				)
+			),
+			'buttonPosition' => 'right',
+			'nextNewLine' => true,
+			'fields' => array(
+				array(
+					'attr' => array(
+						'type' => 'radio',
+						'name' => 'sgpb-subs-success-behavior',
+						'class' => 'subs-success-message',
+						'data-attr-href' => 'subs-show-success-message',
+						'value' => 'showMessage'
+					),
+					'label' => array(
+						'name' => __('Success message', SG_POPUP_TEXT_DOMAIN).':'
+					)
+				),
+				array(
+					'attr' => array(
+						'type' => 'radio',
+						'name' => 'sgpb-subs-success-behavior',
+						'class' => 'subs-redirect-to-URL',
+						'data-attr-href' => 'subs-redirect-to-URL',
+						'value' => 'redirectToURL'
+					),
+					'label' => array(
+						'name' => __('Redirect to url', SG_POPUP_TEXT_DOMAIN).':'
+					)
+				),
+				array(
+					'attr' => array(
+						'type' => 'radio',
+						'name' => 'sgpb-subs-success-behavior',
+						'class' => 'subs-success-open-popup',
+						'data-attr-href' => 'subs-open-popup',
+						'value' => 'openPopup'
+					),
+					'label' => array(
+						'name' => __('Open popup', SG_POPUP_TEXT_DOMAIN).':'
+					)
+				),
+				array(
+					'attr' => array(
+						'type' => 'radio',
+						'name' => 'sgpb-subs-success-behavior',
+						'class' => 'subs-hide-popup',
+						'value' => 'hidePopup'
+					),
+					'label' => array(
+						'name' => __('Hide popup', SG_POPUP_TEXT_DOMAIN).':'
+					)
+				)
+			)
+		);
+
 		$data['buttonsType'] = array(
 			'standard' => __('Standard', SG_POPUP_TEXT_DOMAIN),
 			'box_count' => __('Box with count', SG_POPUP_TEXT_DOMAIN),
@@ -811,7 +808,7 @@ class ConfigDataHelper
 	// proEndSilver
 
 	// proStartGold
-	private static function getPopupTimeZone()
+	public static function getPopupTimeZone()
 	{
 		return array(
 			'Pacific/Midway' => '(GMT-11:00) Midway',
@@ -1083,7 +1080,19 @@ class ConfigDataHelper
 		);
 	}
 
-	// use in countdown popup
+	public static function getJsLocalizedData()
+	{
+		$translatedData = array(
+			'imageSupportAlertMessage' => __('Only image files supported', SG_POPUP_TEXT_DOMAIN),
+			'areYouSure' => __('Are you sure?', SG_POPUP_TEXT_DOMAIN),
+			'addButtonSpinner' => __('Add', SG_POPUP_TEXT_DOMAIN),
+			'audioSupportAlertMessage' => __('Only audio files supported (e.g.: mp3, wav, m4a, ogg)', SG_POPUP_TEXT_DOMAIN),
+			'publishPopupBeforeElemntor' => __('Please, publish the popup before starting to use Elementor with it!', SG_POPUP_TEXT_DOMAIN)
+		);
+
+		return $translatedData;
+	}
+
 	public static function getCurrentDateTime()
 	{
 		return date('Y-m-d H:i', strtotime(' +1 day'));
@@ -1097,18 +1106,5 @@ class ConfigDataHelper
 		}
 
 		return $timezone;
-	}
-	// proEndGold
-
-	public static function getJsLocalizedData()
-	{
-		$translatedData = array(
-			'imageSupportAlertMessage' => __('Only image files supported', SG_POPUP_TEXT_DOMAIN),
-			'areYouSure' => __('Are you sure?', SG_POPUP_TEXT_DOMAIN),
-			'addButtonSpinner' => __('Add', SG_POPUP_TEXT_DOMAIN),
-			'audioSupportAlertMessage' => __('Only audio files supported (e.g.: mp3, wav, m4a, ogg)', SG_POPUP_TEXT_DOMAIN)
-		);
-
-		return $translatedData;
 	}
 }

@@ -1,8 +1,7 @@
 (function ($) {
     'use strict';
 
-    $(document).ready(function () {
-        $(".rt-tab-nav li:first-child a").trigger('click');
+    $(function () {
         if ($(".kcseo-date").length) {
             $('.kcseo-date').datepicker({
                 'format': 'yyyy-mm-dd',
@@ -62,16 +61,17 @@
 
     $(".rt-tab-nav li").on('click', 'a', function (e) {
         e.preventDefault();
-        var container = $(this).parents('.rt-tab-container');
-        var nav = container.children('.rt-tab-nav');
-        var content = container.children(".rt-tab-content");
-        var $this, $id;
-        $this = $(this);
-        $id = $this.attr('href');
-        content.hide();
+        var $this = $(this),
+            li = $this.parent(),
+            container = $this.parents('.rt-tab-container'),
+            nav = container.children('.rt-tab-nav'),
+            content = container.children(".rt-tab-content"),
+            id = li.data('id');
+        content.removeClass('active');
         nav.find('li').removeClass('active');
-        $this.parent().addClass('active');
-        container.find($id).show();
+        li.addClass('active');
+        container.find('#' + id).addClass('active');
+        container.find('#_kcseo_ative_tab').val(id);
     });
 
     $(".kSeoImgAdd").on("click", function (e) {

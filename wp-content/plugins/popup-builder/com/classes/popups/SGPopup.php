@@ -158,7 +158,14 @@ abstract class SGPopup
 
 	public function getContent()
 	{
-		return wpautop($this->content);
+		$postId = $this->getId();
+		$popupContent = wpautop($this->content);
+		$editorContent = AdminHelper::checkEditorByPopupId($postId);
+		if (!empty($editorContent)) {
+			$popupContent = $editorContent;
+		}
+
+		return $popupContent;
 	}
 
 	public function setPostData($postData)
@@ -245,6 +252,8 @@ abstract class SGPopup
 		require_once(dirname(__FILE__).'/PopupData.php');
 		$savedData = PopupData::getPopupDataById($popupId, $saveMode);
 
+		$savedData = apply_filters('sgpbPopupSavedData', $savedData);
+
 		if (empty($savedData)) {
 			return false;
 		}
@@ -299,7 +308,7 @@ abstract class SGPopup
 			}
 		}
 
-		return $eventsData;
+		return apply_filters('sgpbEventsToOneArray', $eventsData);
 	}
 
 	public static function getPopupClassNameFormType($type)
@@ -307,7 +316,7 @@ abstract class SGPopup
 		$popupName = ucfirst(strtolower($type));
 		$popupClassName = $popupName.'Popup';
 
-		return $popupClassName;
+		return apply_filters('sgpbPopupClassNameFromType', $popupClassName);
 	}
 
 	public static function getPopupTypeClassPath($type)
@@ -326,7 +335,12 @@ abstract class SGPopup
 	{
 		switch ($type) {
 			case 'string':
-				$sanitizedValue = htmlspecialchars($value);
+				if (is_array($value)) {
+					$sanitizedValue = $this->recursiveSanitizeTextField($value);
+				}
+				else {
+					$sanitizedValue = htmlspecialchars($value);
+				}
 				break;
 			case 'text':
 				$sanitizedValue = htmlspecialchars($value);
@@ -426,6 +440,8 @@ abstract class SGPopup
 		$obj->setSavedPopupById($data['sgpb-post-id']);
 		$result = $obj->save();
 
+		$result = apply_filters('sgpbPopupCreateResult', $result);
+
 		if ($result) {
 			return $obj;
 		}
@@ -494,6 +510,8 @@ abstract class SGPopup
 
 		$data['sgpb-button-image-data'] = $buttonImageData;
 		$data['sgpb-background-image-data'] = $contentBackgroundImageData;
+
+		$data = apply_filters('sgpbConvertImagesToData', $data);
 		$this->setSanitizedData($data);
 	}
 
@@ -557,6 +575,8 @@ abstract class SGPopup
 			return true;
 		}
 
+		$popupTarget = apply_filters('sgpbPopupTargetMetaData', $popupTarget);
+
 		return update_post_meta($popupId, 'sg_popup_target'.$saveMode, $popupTarget);
 	}
 
@@ -601,6 +621,8 @@ abstract class SGPopup
 			$eventsFromPopup[] = $SGPB_DATA_CONFIG_ARRAY['events']['initialData'];
 		}
 
+		$eventsFromPopup = apply_filters('sgpbPopupEventsMetadata', $eventsFromPopup);
+
 		return update_post_meta($popupId, 'sg_popup_events'.$saveMode, $eventsFromPopup);
 	}
 
@@ -635,6 +657,8 @@ abstract class SGPopup
 		if ($alreadySavedOptions === $popupOptions) {
 			return true;
 		}
+
+		$popupOptions = apply_filters('sgpbPopupSavedOptionsMetaData', $popupOptions);
 
 		return update_post_meta($popupId, 'sg_popup_options'.$saveMode, $popupOptions);
 	}
@@ -938,6 +962,9 @@ abstract class SGPopup
 			}
 		}
 
+		$targetData = apply_filters('sgpbPopupTargetData', $targetData);
+		$eventsData = apply_filters('sgpbPopupEventsData', $eventsData);
+
 		self::saveToTargetFromPage($targetData);
 		self::saveToEventsFromPage($eventsData);
 	}
@@ -1186,7 +1213,7 @@ abstract class SGPopup
 			}
 		}
 
-		return $options;
+		return apply_filters('sgpbPopupInsideShortcodes', $options);
 	}
 
 	/**

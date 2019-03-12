@@ -64,7 +64,7 @@ var WPStaging = (function ($)
     var elements = function ()
     {
         var $workFlow = cache.get("#wpstg-workflow"),
-                isAllChecked = false,
+                isAllChecked = true,
                 urlSpinner = ajaxurl.replace("/admin-ajax.php", '') + "/images/spinner",
                 timer;
 
@@ -99,13 +99,12 @@ var WPStaging = (function ($)
                 .on("click", ".wpstg-button-unselect", function (e) {
                     e.preventDefault();
 
-                        
-                    //if (typeof(isAllChecked) !== 'defined' || true === isAllChecked )
                     if (false === isAllChecked )
                     {
                         console.log('true');
                         cache.get("#wpstg_select_tables_cloning .wpstg-db-table").prop("selected", "selected");
                         cache.get(".wpstg-button-unselect").text("Unselect All");
+                        cache.get(".wpstg-db-table-checkboxes").prop("checked", true);
                         isAllChecked = true;
                     }
                     else
@@ -113,6 +112,7 @@ var WPStaging = (function ($)
                         console.log('false');
                         cache.get("#wpstg_select_tables_cloning .wpstg-db-table").prop("selected", false);
                         cache.get(".wpstg-button-unselect").text("Select All");
+                        cache.get(".wpstg-db-table-checkboxes").prop("checked", false);
                         isAllChecked = false;
                     }
                 })
@@ -332,6 +332,23 @@ var WPStaging = (function ($)
                     $this.parent().append(ajaxSpinner);
 
                     cancelCloningUpdate();
+                })
+                // Restart cloning
+                .on("click", "#wpstg-restart-cloning", function () {
+
+                    var $this = $(this);
+
+                    $("#wpstg-try-again, #wpstg-home-link").hide();
+                    $this.prop("disabled", true);
+
+                    that.isCancelled = true;
+
+                    $("#wpstg-cloning-result").text("Please wait...this can take up a while.");
+                    $("#wpstg-loader, #wpstg-show-log-button").hide();
+
+                    $this.parent().append(ajaxSpinner);
+
+                    restart();
                 })
                 // Delete clone - confirmation
                 .on("click", ".wpstg-remove-clone[data-clone]", function (e) {
@@ -928,6 +945,44 @@ var WPStaging = (function ($)
                 {
                     action: "wpstg_cancel_update",
                     clone: that.data.cloneID,
+                    nonce: wpstg.nonce
+                },
+        function (response)
+        {
+
+
+            if (response && "undefined" !== typeof (response.delete) && response.delete === "finished") {
+                // Load overview
+                loadOverview();
+                return;
+            }
+
+            if (true !== response)
+            {
+                // continue
+                cancelCloningUpdate();
+                return;
+            }
+
+            // Load overview
+            loadOverview();
+        }
+        );
+    };
+    /**
+     * Cancel Cloning Process
+     */
+    var restart = function ()
+    {
+        if (true === that.isFinished)
+        {
+            return true;
+        }
+
+        ajax(
+                {
+                    action: "wpstg_restart",
+                    //clone: that.data.cloneID,
                     nonce: wpstg.nonce
                 },
         function (response)

@@ -117,6 +117,7 @@
 
 							for ( i=0; i<d.length; i++ )
 							{
+								if(!/fieldname/i.test(d[i])) continue;
 								dep = d[i]+identifier;
 								delete toHide[ dep ];
 								if( typeof toShow[ dep ] == 'undefined' )
@@ -132,6 +133,7 @@
 
 							for ( i=0; i<n.length; i++ )
 							{
+								if(!/fieldname/i.test(n[i])) continue;
 								dep = n[i]+identifier;
 								clearRef(dep);
 								if (

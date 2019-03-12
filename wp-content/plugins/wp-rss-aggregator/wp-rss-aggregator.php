@@ -3,7 +3,7 @@
      * Plugin Name: WP RSS Aggregator
      * Plugin URI: https://www.wprssaggregator.com/#utm_source=wpadmin&utm_medium=plugin&utm_campaign=wpraplugin
      * Description: Imports and aggregates multiple RSS Feeds.
-     * Version: 4.11.3
+     * Version: 4.12.1
      * Author: RebelCode
      * Author URI: https://www.wprssaggregator.com
      * Text Domain: wprss
@@ -12,7 +12,7 @@
      */
 
     /**
-     * Copyright (C) 2012-2016 RebelCode Ltd.
+     * Copyright (C) 2012-2018 RebelCode Ltd.
      *
      * This program is free software: you can redistribute it and/or modify
      * it under the terms of the GNU General Public License as published by
@@ -30,10 +30,10 @@
 
     /**
      * @package     WPRSSAggregator
-     * @version     4.11.3
+     * @version     4.12.1
      * @since       1.0
      * @author      RebelCode
-     * @copyright   Copyright (c) 2012-2016, RebelCode Ltd.
+     * @copyright   Copyright (c) 2012-2018, RebelCode Ltd.
      * @link        https://www.wprssaggregator.com/
      * @license     http://www.gnu.org/licenses/gpl.html
      */
@@ -44,10 +44,13 @@
 
     // Set the version number of the plugin.
     if( !defined( 'WPRSS_VERSION' ) )
-        define( 'WPRSS_VERSION', '4.11.3', true );
+        define( 'WPRSS_VERSION', '4.12.1', true );
 
     if( !defined( 'WPRSS_WP_MIN_VERSION' ) )
         define( 'WPRSS_WP_MIN_VERSION', '4.0', true );
+
+    if( !defined( 'WPRSS_MIN_PHP_VERSION' ) )
+        define( 'WPRSS_MIN_PHP_VERSION', '5.3.9', true );
 
     // Set the database version number of the plugin.
     if( !defined( 'WPRSS_DB_VERSION' ) )
@@ -88,6 +91,9 @@
     if( !defined( 'WPRSS_LANG' ) )
         define( 'WPRSS_LANG', WPRSS_DIR . trailingslashit( 'languages' ), true );
 
+    if( !defined( 'WPRSS_TEMPLATES' ) )
+        define( 'WPRSS_TEMPLATES', WPRSS_DIR . trailingslashit( 'templates' ), true );
+
     // Set the constant path to the plugin's log file.
     if( !defined( 'WPRSS_LOG_FILE' ) )
         define( 'WPRSS_LOG_FILE', WP_CONTENT_DIR . '/log/wprss/log', true );
@@ -96,7 +102,7 @@
         define( 'WPRSS_LOG_FILE_EXT', '.txt', true );
 
 	if ( !defined('WPRSS_SL_STORE_URL') ) {
-		define( 'WPRSS_SL_STORE_URL', 'http://www.wprssaggregator.com', TRUE );
+		define( 'WPRSS_SL_STORE_URL', 'https://www.wprssaggregator.com', TRUE );
 	}
 
 	if ( !defined( 'WPRSS_TEXT_DOMAIN' ) ) {
@@ -165,11 +171,18 @@
     /* Only function definitions, no effect! */
     require_once(WPRSS_INC . 'functions.php');
 
+    /* SimplePie */
+    require_once ( ABSPATH . WPINC . '/class-simplepie.php' );
+
+    /* Twig */
+    require_once ( WPRSS_INC . '/twig.php' );
+
     /* Dependency injection */
     require_once ( WPRSS_INC . 'di.php' );
 
     /* Load install, upgrade and migration code. */
     require_once ( WPRSS_INC . 'update.php' );
+
     /* Load the shortcodes functions file. */
     require_once ( WPRSS_INC . 'shortcodes.php' );
 
@@ -278,8 +291,11 @@
     /* Load the admin settings help file */
     require_once ( WPRSS_INC . 'admin-help-settings.php' );
 
-	/* SimplePie */
-	require_once ( ABSPATH . WPINC . '/class-simplepie.php' );
+    /* Admin plugin activation events */
+    require_once ( WPRSS_INC . 'admin-activate.php' );
+
+	/* Add components to the plugins page  */
+	require_once(WPRSS_INC . 'admin-plugins.php');
 
 	/* Access to feed */
 	require_once ( WPRSS_INC . 'feed-access.php' );
@@ -489,23 +505,76 @@
 	}
 
 
-	add_action( 'init', 'wprss_add_php_version_change_warning' );
-	function wprss_add_php_version_change_warning() {
-		$minVersion = '5.3';
-		if ( version_compare(PHP_VERSION, $minVersion, '>=') )
-			return;
+    add_action( 'init', 'wprss_add_php_version_warning' );
+    function wprss_add_php_version_warning() {
+        if (version_compare(PHP_VERSION, WPRSS_MIN_PHP_VERSION, '>=')) {
+            return;
+        }
 
-		wprss_admin_notice_add(array(
-			'id'			=> 'php_version_change_warning',
-			'content'		=> sprintf( __(
-					'<p><strong>%2$s is moving to PHP %1$s</strong></br>'
-					. 'The next release of your favourite aggregator will not support PHP 5.2. <a href="http://www.wprssaggregator.com/wp-rss-aggregator-to-require-php-5-3/" target="_blank">Read why here</a></p>',
-				WPRSS_TEXT_DOMAIN ), $minVersion, WPRSS_CORE_PLUGIN_NAME ),
-			'notice_type'	=> 'error',
-			'condition'		=> 'wprss_is_wprss_page'
-		));
+        if (!function_exists('deactivate_plugins')) {
+            require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+        }
+
+        deactivate_plugins(plugin_basename(__FILE__));
+
+        $firstLine = get_transient('_wprss_activation_redirect')
+            ? __('WP RSS Aggregator cannot be activated.', WPRSS_TEXT_DOMAIN)
+            : __('WP RSS Aggregator has been deactivated.', WPRSS_TEXT_DOMAIN);
+
+        $supportLink = sprintf(
+        '<a href="%2$s" target="_blank">%1$s</a>',
+            _x(
+                'contact support',
+                'Used like "Kindly contact your hosting provider or contact support for more information."',
+                WPRSS_TEXT_DOMAIN
+            ),
+            'https://wordpress.org/support/plugin/wp-rss-aggregator'
+        );
+        $secondLine = sprintf(
+            __("The plugin requires version %s or later and your site's PHP version is %s.", WPRSS_TEXT_DOMAIN),
+            '<strong>' . WPRSS_MIN_PHP_VERSION . '</strong>',
+            '<strong>' . PHP_VERSION . '</strong>'
+        );
+        $thirdLine = sprintf(
+            _x(
+                'Kindly contact your hosting provider to upgrade your PHP version or %s for more information.',
+                'the "%s" part is a link with text = "contact support"',
+                WPRSS_TEXT_DOMAIN
+            ),
+            $supportLink
+        );
+
+        wp_die(
+            implode('<br/>', array($firstLine, $secondLine, $thirdLine)),
+            __('WP RSS Aggregator - PHP version error'),
+            array(
+                'back_link' => true
+            )
+        );
 	}
 
+    /**
+     * Informs users that have not updated to 4.13 that 4.13 will stop supporting PHP 5.3, if their PHP version is
+     * less than 5.4.
+     *
+     * @since 4.12.1
+     */
+    add_action('after_plugin_row', function($plugin_file) {
+        if ($plugin_file !== plugin_basename(__FILE__)
+            || version_compare(WPRSS_VERSION, '4.13', '>=')
+            || version_compare(PHP_VERSION, '5.4', '>=')
+        ) {
+            return;
+        }
+
+        $message = __(
+            'As of version 4.13, WP RSS Aggregator will stop supporting PHP 5.3 and will require PHP 5.4 or later. Kindly contact your site\'s hosting provider for PHP version update options.',
+            WPRSS_TEXT_DOMAIN
+        );
+        $notice = sprintf('<div class="update-notice notice inline notice-error notice-alt"><p>%s</p></div>', $message);
+        $td = sprintf('<td colspan="3" class="plugin-update colspanchange">%s</td>', $notice);
+        printf('<tr class="plugin-update-tr active">%s</tr>', $td);
+    }, 5, 2);
 
     /**
      * Plugin activation procedure
@@ -523,13 +592,8 @@
         flush_rewrite_rules();
         wprss_schedule_fetch_all_feeds_cron();
 
-        // Get the previous welcome screen version
-        $pwsv = get_option( 'wprss_pwsv', '0.0' );
-        // If the aggregator version is higher than the previous version ...
-        if ( version_compare( WPRSS_VERSION, $pwsv, '>' ) ) {
-            // Sets a transient to trigger a redirect upon completion of activation procedure
-            set_transient( '_wprss_activation_redirect', true, 30 );
-        }
+        // Sets a transient to trigger a redirect upon completion of activation procedure
+        set_transient( '_wprss_activation_redirect', true, 30 );
 
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		// Check if WordPress SEO is activate, if yes set its options for hiding the metaboxes on the wprss_feed and wprss_feed_item screens

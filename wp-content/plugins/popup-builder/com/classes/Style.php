@@ -19,7 +19,7 @@ class Style
 		$popupType = AdminHelper::getCurrentPopupType();
 		$currentPostType = AdminHelper::getCurrentPostType();
 
-		if ($hook == 'popupbuilder_page_popupbuilder') {
+		if($hook == SG_POPUP_POST_TYPE.'_page_'.SG_POPUP_POST_TYPE) {
 			$pageName = 'popupType';
 		}
 		else if (($hook == 'post-new.php' || $hook == 'post.php') && $currentPostType == SG_POPUP_POST_TYPE) {
@@ -28,8 +28,8 @@ class Style
 		else if ($hook == 'edit.php' && !empty($currentPostType) && $currentPostType == SG_POPUP_POST_TYPE) {
 			$pageName = 'popupspage';
 		}
-		else if ($hook == 'popupbuilder_page_subscribers') {
-			$pageName = 'sgpbSubscribers';
+		else if ($hook == SG_POPUP_POST_TYPE.'_page_'.SG_POPUP_SUBSCRIBERS_PAGE) {
+			$pageName = SG_POPUP_SUBSCRIBERS_PAGE;
 		}
 
 		$registeredPlugins = get_option('SG_POPUP_BUILDER_REGISTERED_PLUGINS');

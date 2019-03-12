@@ -27,6 +27,69 @@ $settings = get_option($KcSeoWPSchema->options['main_settings']);
                         </td>
                     </tr>
                     <tr class="default">
+                        <th>
+                            <?php _e("Post Type", "wp-seo-structured-data-schema-pro") ?>
+                            <span class='kcseo-pro-label'><?php _e("PRO", "wp-seo-structured-data-schema-pro") ?></span>
+                        </th>
+                        <td align="left" scope="row">
+                            <?php
+                            $postTypes = $KcSeoWPSchema->get_post_type_list();
+                            foreach ($postTypes as $key => $value) {
+                                echo "<label for='pt-{$key}'><input disabled id='pt-{$key}' type='checkbox' /> {$value}</label><br>";
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                    <tr class="default">
+                        <th style="font-size: 18px; padding: 30px 0 5px;"
+                            colspan="2"><?php _e("Site Navigation Element Schema", "wp-seo-structured-data-schema-pro") ?></th>
+                    </tr>
+                    <tr class="default">
+                        <th>
+                            <?php _e("Publisher Name", "wp-seo-structured-data-schema-pro") ?>
+                            <span class='kcseo-pro-label'><?php _e("PRO", "wp-seo-structured-data-schema-pro") ?></span>
+                        </th>
+                        <td align="left" scope="row">
+                            <select disabled>
+                                <option value=""><?php _e("Select one menu", "wp-seo-structure-data-schema-pro") ?></option>
+                                <?php
+                                $menus = get_terms('nav_menu');
+                                if (!empty($menus)) {
+                                    foreach ($menus as $menu) {
+                                        $slt = (!empty($settings['site_nav']) && $settings['site_nav'] == $menu->term_id) ? " selected" : null;
+                                        echo "<option value='{$menu->term_id}'{$slt}>{$menu->name}</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                            <p class="description"><?php _e("Please deselect the navigation menu if you want to deactivate site navigation
+                        schema.", "wp-seo-structured-data-schema-pro") ?></p>
+                        </td>
+                    </tr>
+                    <tr class="default">
+                        <th style="font-size: 18px; padding: 30px 0 5px;"><?php _e("Publisher Information", "wp-seo-structured-data-schema-pro") ?></th>
+                    </tr>
+                    <tr class="default">
+                        <th>
+                            <?php _e("Publisher Name", "wp-seo-structured-data-schema-pro") ?>
+                            <span class='kcseo-pro-label'><?php _e("PRO", "wp-seo-structured-data-schema-pro") ?></span>
+                        </th>
+                        <td align="left" scope="row">
+                            <input type="text" disabled class="disabled regular-text" value=""/>
+                        </td>
+                    </tr>
+                    <tr class="default">
+                        <th>
+                            <?php _e("Publisher Logo", "wp-seo-structured-data-schema-pro") ?>
+                            <span class='kcseo-pro-label'><?php _e("PRO", "wp-seo-structured-data-schema-pro") ?></span>
+                        </th>
+                        <td align="left" scope="row"></td>
+                    </tr>
+                    <tr class="default">
+                        <th style="font-size: 18px; padding: 30px 0 5px;"
+                            colspan="2"><?php _e("System Settings", "wp-seo-structured-data-schema-pro") ?></th>
+                    </tr>
+                    <tr class="default">
                         <th><?php _e("Delete all data", "wp-seo-structured-data-schema") ?></th>
                         <td align="left" scope="row">
                             <?php $dd = !empty($settings['delete-data']) ? "checked" : null; ?>
@@ -45,29 +108,7 @@ $settings = get_option($KcSeoWPSchema->options['main_settings']);
             </form>
             <div id="response"></div>
         </div>
-        <div class='kc-get-pro'>
-            <h3><?php _e("Pro Version Features", "wp-seo-structured-data-schema") ?></h3>
-            <ol>
-                <li><?php _e("Includes Auto-fill function <---Popular", "wp-seo-structured-data-schema") ?></li>
-                <li><?php _e("Supports Custom Post Types beyond default page and posts", "wp-seo-structured-data-schema") ?></li>
-                <li><?php _e("Supports WordPress Multisite", "wp-seo-structured-data-schema") ?></li>
-                <li><?php _e("Supports more schema types:", "wp-seo-structured-data-schema") ?>
-                    <ol>
-                        <li><?php _e("Books", "wp-seo-structured-data-schema") ?></li>
-                        <li><?php _e("Courses", "wp-seo-structured-data-schema") ?></li>
-                        <li><?php _e("Job Postings", "wp-seo-structured-data-schema") ?></li>
-                        <li><?php _e("Movies", "wp-seo-structured-data-schema") ?></li>
-                        <li><?php _e("Music", "wp-seo-structured-data-schema") ?></li>
-                        <li><?php _e("Recipe", "wp-seo-structured-data-schema") ?></li>
-                        <li><?php _e("TV Episode", "wp-seo-structured-data-schema") ?></li>
-                    </ol>
-                </li>
-            </ol>
-            <div class="kc-pro-action"><a class='button button-primary'
-                                          href='https://wpsemplugins.com/downloads/wordpress-schema-plugin/'
-                                          target='_blank'><?php _e("Get the Pro Version", "wp-seo-structured-data-schema") ?></a>
-            </div>
-        </div>
+        <?php $KcSeoWPSchema->advertisingBlock(); ?>
     </div>
 
 </div>

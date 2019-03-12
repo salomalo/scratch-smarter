@@ -163,6 +163,24 @@ class Functions
 		return $inputElement;
 	}
 
+	public static function getDatabaseEngine()
+	{
+		global $wpdb;
+		$dbName = $wpdb->dbname;
+		$engine = 'InnoDB';
+		$engineCheckSql = "SELECT ENGINE FROM information_schema.TABLES WHERE TABLE_SCHEMA = '$dbName'";
+		$result = $wpdb->get_results($engineCheckSql, ARRAY_A);
+		if (!empty($result)) {
+			$engineCheckSql = "SHOW TABLE STATUS WHERE Name = '".$wpdb->prefix."users' AND Engine = 'MyISAM'";
+			$result = $wpdb->get_results($engineCheckSql, ARRAY_A);
+			if (isset($result[0]['Engine']) && $result[0]['Engine'] == 'MyISAM') {
+				$engine = 'MyISAM';
+			}
+		}
+
+		return $engine;
+	}
+
 	public static function getPopupTypeToAllowToShowMetabox()
 	{
 		global $post;
@@ -199,23 +217,5 @@ class Functions
 		}
 
 		return $dir;
-	}
-
-	public static function getDatabaseEngine()
-	{
-		global $wpdb;
-		$dbName = $wpdb->dbname;
-		$engine = 'InnoDB';
-		$engineCheckSql = "SELECT ENGINE FROM information_schema.TABLES WHERE TABLE_SCHEMA = '$dbName'";
-		$result = $wpdb->get_results($engineCheckSql, ARRAY_A);
-		if (!empty($result)) {
-			$engineCheckSql = "SHOW TABLE STATUS WHERE Name = '".$wpdb->prefix."users' AND Engine = 'MyISAM'";
-			$result = $wpdb->get_results($engineCheckSql, ARRAY_A);
-			if (isset($result[0]['Engine']) && $result[0]['Engine'] == 'MyISAM') {
-				$engine = 'MyISAM';
-			}
-		}
-
-		return $engine;
 	}
 }

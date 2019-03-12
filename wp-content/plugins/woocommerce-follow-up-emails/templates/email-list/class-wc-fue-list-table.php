@@ -465,22 +465,21 @@ class WC_FUE_List_Table extends WP_List_Table {
         <?php
         }
         ?>
-			<span class="edit"><a href="<?php echo esc_html( $email->get_preview_url() ); ?>" target="_blank"><?php esc_attr_e( 'Preview', 'follow_up_emails' ); ?></a></span>
+			<span class="edit">
+				<a href="<?php echo esc_html( $email->get_preview_url() ); ?>" target="_blank"><?php esc_attr_e( 'Preview', 'follow_up_emails' ); ?></a>
+			</span>
 			|
-		<span class="edit">
-			<a href="post.php?post=<?php echo esc_html( $email->id ); ?>&action=edit"><?php esc_attr_e( 'Edit', 'follow_up_emails' ); ?></a>
-        </span>
+			<span class="edit">
+				<a href="post.php?post=<?php echo esc_html( $email->id ); ?>&action=edit"><?php esc_attr_e( 'Edit', 'follow_up_emails' ); ?></a>
+			</span>
             |
-        <?php
-        if ( 'manual' !== $email->type ) {
-        ?>
-			<span class="edit"><a href="#" class="clone-email" data-id="<?php echo esc_html( $email->id ); ?>"><?php esc_attr_e( 'Duplicate', 'follow_up_emails' ); ?></a></span>
+			<span class="edit">
+				<a href="#" class="clone-email" data-id="<?php echo esc_attr( $email->id ); ?>"><?php esc_html_e( 'Duplicate', 'follow_up_emails' ); ?></a>
+			</span>
 			|
-        <?php
-        }
-        ?>
-			|
-			<span class="trash"><a onclick="return confirm('Really delete this email?');" href="<?php echo esc_url( wp_nonce_url( 'admin-post.php?action=fue_followup_delete&id=' . $email->id, 'delete-email' ) ); ?>"><?php esc_attr_e( 'Delete', 'follow_up_emails' ); ?></a></span>
+			<span class="trash">
+				<a onclick="return confirm( '<?php esc_html_e( 'Really delete this email?', 'follow_up_emails' ); ?>' );" href="<?php echo esc_url( wp_nonce_url( 'admin-post.php?action=fue_followup_delete&id=' . $email->id, 'delete-email' ) ); ?>"><?php esc_html_e( 'Delete', 'follow_up_emails' ); ?></a>
+			</span>
 		<?php
 	}
 
@@ -514,7 +513,7 @@ class WC_FUE_List_Table extends WP_List_Table {
 
 	public function column_type( $email ) {
 		$types = Follow_Up_Emails::get_email_types();
-		return $types[ $email->type ]->singular_label;
+		return isset( $types[ $email->type ] ) ? $types[ $email->type ]->singular_label : '';
 	}
 
 	public function column_stats( $email ) {

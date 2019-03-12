@@ -7,6 +7,7 @@ use \SgpbDataConfig;
 class Actions
 {
 	public $customPostTypeObj;
+	public $mediaButton = false;
 
 	public function __construct()
 	{
@@ -22,6 +23,7 @@ class Actions
 		add_filter('get_sample_permalink_html', array($this, 'removePostPermalink'), 1, 1);
 		add_action('manage_'.SG_POPUP_POST_TYPE.'_posts_custom_column' , array($this, 'popupsTableColumnsValues'), 10, 2);
 		add_action('media_buttons', array($this, 'popupMediaButton'));
+		add_action('mce_external_plugins', array($this, 'editorButton'));
 		add_action('admin_enqueue_scripts', array('sgpb\Style', 'enqueueStyles'));
 		add_action('admin_enqueue_scripts', array('sgpb\Javascript', 'enqueueScripts'));
 		add_action('add_meta_boxes', array($this, 'popupMetaboxes'), 100);
@@ -39,6 +41,7 @@ class Actions
 		add_filter('cron_schedules', array($this, 'cronAddMinutes'), 10, 1);
 		add_action('sgpb_send_newsletter', array($this, 'newsletterSendEmail'), 10, 1);
 		add_action('sgpbGetBannerContent', array($this, 'getBannerContent'), 10, 1);
+		add_action('sgpbGetBannerContentOnce', array($this, 'getBannerContent'), 10, 1);
 		add_action('admin_post_sgpbSaveSettings', array($this, 'saveSettings'), 10, 1);
 		add_action('admin_init', array($this, 'disableAutosave'));
 		add_action('admin_init', array($this, 'userRolesCaps'));
@@ -52,7 +55,6 @@ class Actions
 		add_action('pre_get_posts', array($this, 'preGetPosts'));
 		add_action('template_redirect', array($this, 'redirectFromPopupPage'));
 		add_filter('views_edit-popupbuilder', array($this, 'mainActionButtons'), 10, 1);
-
 		// activate extensions
 		add_action('wp_before_admin_bar_render', array($this, 'pluginActivated'), 10, 2);
 		new Ajax();
@@ -72,9 +74,9 @@ class Actions
 
 	public function wpInit()
 	{
-		if (!get_option('sgpb-banner-cron-once')) {
-			update_option('sgpb-banner-cron-once', 1);
-			wp_schedule_event(time(), 'daily', 'sgpbGetBannerContent');
+		if (!get_option('sgpb-banner-cron-only-once')) {
+			update_option('sgpb-banner-cron-only-once', 1);
+			wp_schedule_event(time(), 'daily', 'sgpbGetBannerContentOnce');
 		}
 		new Updates();
 	}
@@ -94,7 +96,7 @@ class Actions
 		$popupBuilderLangDir = SG_POPUP_BUILDER_PATH.'/languages/';
 		$popupBuilderLangDir = apply_filters('popupBuilderLanguagesDirectory', $popupBuilderLangDir);
 
-		$locale = apply_filters('sgpb_plugin_locale', get_locale(), SG_POPUP_TEXT_DOMAIN);
+		$locale = apply_filters('sgpbPluginLocale', get_locale(), SG_POPUP_TEXT_DOMAIN);
 		$mofile = sprintf('%1$s-%2$s.mo', SG_POPUP_TEXT_DOMAIN, $locale);
 
 		$mofileLocal = $popupBuilderLangDir.$mofile;
@@ -123,13 +125,15 @@ class Actions
 			global $post_type;
 			$currentPostType = $post_type;
 		}
-
-		if (!is_admin() && SG_POPUP_POST_TYPE == $currentPostType && !is_preview()) {
-			// it's for seo optimization
-			status_header(301);
-			$homeURL = home_url();
-			wp_redirect($homeURL);
-			exit();
+		// for editing popup content via page builders on backend
+		if (!isset($_GET) || empty($_GET)) {
+			if (!is_admin() && SG_POPUP_POST_TYPE == $currentPostType && !is_preview()) {
+				// it's for seo optimization
+				status_header(301);
+				$homeURL = home_url();
+				wp_redirect($homeURL);
+				exit();
+			}
 		}
 	}
 
@@ -156,6 +160,7 @@ class Actions
 			$query->set('orderby', 'ID');
 			$query->set('order', 'desc');
 		}
+		$query = apply_filters('sgpbPreGetPosts', $query);
 
 		return true;
 	}
@@ -249,7 +254,18 @@ class Actions
 
 	public function popupMediaButton()
 	{
-		echo new MediaButton();
+		if (!$this->mediaButton) {
+			$this->mediaButton = true;
+			echo new MediaButton();
+		}
+	}
+
+	public function editorButton()
+	{
+		if (!$this->mediaButton) {
+			$this->mediaButton = true;
+			echo new MediaButton(false);
+		}
 	}
 
 	public function userRolesCaps()
@@ -285,6 +301,7 @@ class Actions
 			$role->add_cap('sgpb_manage_options');
 			$role->add_cap('manage_popup_terms');
 			$role->add_cap('manage_popup_categories_terms');
+			$role = apply_filters('sgpbUserRoleCap', $role);
 		}
 
 		return true;
@@ -325,6 +342,7 @@ class Actions
 		}
 
 		$popup = SGPopup::find($popupId);
+		$popup = apply_filters('sgpbShortCodePopupObj', $popup);
 
 		$event = preg_replace('/on/', '', @$args['event']);
 		// when popup does not exists or popup post status it's not publish ex when popup in trash
@@ -402,6 +420,7 @@ class Actions
 		if (isset($event) && $event != 'onload' && !empty($content)) {
 			$shortcodeContent = SGPopup::renderPopupContentShortcode($content, $argsId, $event, $args);
 		}
+		$shortcodeContent = apply_filters('sgpbPopupShortCodeContent', $shortcodeContent);
 
 		return do_shortcode($shortcodeContent);
 	}
@@ -421,6 +440,7 @@ class Actions
 			'interval' => SGPB_CRON_REPEAT_INTERVAL * 60,
 			'display' => __('Once Every Minute', SG_POPUP_TEXT_DOMAIN)
 		);
+		$schedules = apply_filters('sgpNewsletterSendMinute', $schedules);
 
 		return $schedules;
 	}
@@ -476,6 +496,8 @@ class Actions
 		$getAllDataSql = $wpdb->prepare('SELECT id, firstName, lastName, email FROM '.$wpdb->prefix.SGPB_SUBSCRIBERS_TABLE_NAME.' WHERE unsubscribed = 0 and id >= %d and subscriptionType = %s limit %d', $currentStateEmailId, $subscriptionFormId, $emailsInFlow);
 		$subscribers = $wpdb->get_results($getAllDataSql, ARRAY_A);
 
+		$subscribers = apply_filters('sgpNewsletterSendingSubscribers', $subscribers);
+
 		$blogInfo = get_bloginfo();
 		$headers = array(
 			'From: "'.$blogInfo.'" <'.$fromEmail.'>' ,
@@ -509,6 +531,9 @@ class Actions
 			$emailMessageCustom = preg_replace($patternUserName, $replacementUserName, $emailMessageCustom);
 			$emailMessageCustom = preg_replace($patternUnsubscribe, $replacementUnsubscribe, $emailMessageCustom);
 			$emailMessageCustom = stripslashes($emailMessageCustom);
+
+			$emailMessageCustom = apply_filters('sgpNewsletterSendingMessage', $emailMessageCustom);
+
 			$mailStatus = wp_mail($subscriber['email'], $mailSubject, $emailMessageCustom, $headers);
 
 			if (!$mailStatus) {
@@ -646,6 +671,8 @@ class Actions
 						'post_status'    => 'inherit'
 					)
 				);
+				$query = apply_filters('sgpbSavePostQuery', $query);
+
 				while ($query->have_posts()) {
 					$query->the_post();
 					if (empty($posts)) {
@@ -996,6 +1023,7 @@ class Actions
 				$messages['post'][6] = __('Popup published.', SG_POPUP_TEXT_DOMAIN);
 			}
 		}
+		$messages = apply_filters('sgpbPostUpdateMessage', $messages);
 
 		return $messages;
 	}
@@ -1021,6 +1049,9 @@ class Actions
 		}
 		$content .= "\n";
 		$subscribers = $wpdb->get_results($query, ARRAY_A);
+
+		$subscribers = apply_filters('sgpbSubscribersCsv', $subscribers);
+
 		foreach($subscribers as $values) {
 			foreach ($values as $key => $value) {
 				$content .= $value;

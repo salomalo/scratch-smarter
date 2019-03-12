@@ -112,6 +112,10 @@ if(!class_exists('CPCFF_MAIN'))
 			// Fix different troubleshoots
 			$this->troubleshoots();
 
+			// Integration with Page Builders
+			require_once CP_CALCULATEDFIELDSF_BASE_PATH.'/inc/cpcff_page_builders.inc.php';
+			CPCFF_PAGE_BUILDERS::run();
+
 		} // End __construct
 
 		/**
@@ -127,7 +131,7 @@ if(!class_exists('CPCFF_MAIN'))
 				self::$_instance = new self();
 			}
 			return self::$_instance;
-		} // End init
+		} // End instance
 
 		/**
 		 * Loads the primary resources, previous to the plugin's initialization
@@ -184,9 +188,6 @@ if(!class_exists('CPCFF_MAIN'))
 				$this->_define_shortcodes();
 			}
 
-			// Integration with Page Builders
-			require_once CP_CALCULATEDFIELDSF_BASE_PATH.'/inc/cpcff_page_builders.inc.php';
-			CPCFF_PAGE_BUILDERS::init();
 		} // End init
 
 		/**
