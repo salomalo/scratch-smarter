@@ -16,6 +16,8 @@ test/
 test-jan-31-2019/
 cubitest/
 
+scraper/weekly_pdf/
+
 /.htaccess
 /license.txt
 /readme.html
