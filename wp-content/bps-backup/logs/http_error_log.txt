@@ -16595,3 +16595,9 @@ This Security Log entry is created when the BPS plugin is deactivated. An email 
 
 [BPS Plugin Deactivated:  - ]
 This Security Log entry is created when the BPS plugin is deactivated. An email alert is also sent to you when the BPS plugin is deactivated.
+
+[BPS Plugin Deactivated:  - ]
+This Security Log entry is created when the BPS plugin is deactivated. An email alert is also sent to you when the BPS plugin is deactivated.
+
+[BPS Plugin Deactivated:  - ]
+This Security Log entry is created when the BPS plugin is deactivated. An email alert is also sent to you when the BPS plugin is deactivated.

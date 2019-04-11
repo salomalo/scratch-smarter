@@ -1,1 +1,0 @@
-/srv/www/vhosts/www.scratchsmarter.com/wp-content/plugins/query-monitor/wp-content/db.php
